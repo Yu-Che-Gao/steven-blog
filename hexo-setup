@@ -26,7 +26,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="theme-color" content="#0097A7">
     <meta name="author" content="高宇哲">
-    <meta name="description" content="null">
+    <meta name="description" content="高宇哲的小窩">
     <meta name="keywords" content="null">
 
     <!--iOS -->
@@ -49,7 +49,7 @@
     <meta property="og:url" content="https://Yu-Che-Gao.github.io/steven-blog">
     <meta property="og:type" content="blog">
     <meta property="og:title" content="Hexo 基本安裝 | Steven&#39;s Blog">
-    <meta property="og:description" content="null">
+    <meta property="og:description" content="高宇哲的小窩">
 
     <!--[if lte IE 9]>
         <link rel="stylesheet" href="/css/ie-blocker.css">
@@ -324,7 +324,7 @@
 
     <!-- Share Twitter -->
     
-        <a class="post_share-link" href="https://twitter.com/intent/tweet?text=Hexo 基本安裝&url=https://Yu-Che-Gao.github.io/steven-blog/steven-blog//steven-blog/2017/02/04/hexo-setup/index.html&via=高宇哲" target="_blank">
+        <a class="post_share-link" href="https://twitter.com/intent/tweet?text=Hexo 基本安裝&url=https://Yu-Che-Gao.github.io/steven-blog/steven-blog//steven-blog/hexo-setup&via=高宇哲" target="_blank">
             <li class="mdl-menu__item">
                 分享到 Twitter
             </li>
@@ -333,7 +333,7 @@
 
     <!-- Share Facebook -->
     
-        <a class="post_share-link" href="https://www.facebook.com/sharer/sharer.php?u=https://Yu-Che-Gao.github.io/steven-blog/steven-blog//steven-blog/2017/02/04/hexo-setup/index.html" target="_blank">
+        <a class="post_share-link" href="https://www.facebook.com/sharer/sharer.php?u=https://Yu-Che-Gao.github.io/steven-blog/steven-blog//steven-blog/hexo-setup" target="_blank">
             <li class="mdl-menu__item">
                 分享到 Facebook
             </li>
@@ -342,7 +342,7 @@
 
     <!-- Share Google+ -->
     
-        <a class="post_share-link" href="https://plus.google.com/share?url=https://Yu-Che-Gao.github.io/steven-blog/steven-blog//steven-blog/2017/02/04/hexo-setup/index.html" target="_blank">
+        <a class="post_share-link" href="https://plus.google.com/share?url=https://Yu-Che-Gao.github.io/steven-blog/steven-blog//steven-blog/hexo-setup" target="_blank">
             <li class="mdl-menu__item">
                 分享到 Google+
             </li>
@@ -351,7 +351,7 @@
 
     <!-- Share LinkedIn -->
     
-        <a class="post_share-link" href="https://www.linkedin.com/shareArticle?mini=true&url=https://Yu-Che-Gao.github.io/steven-blog/steven-blog//steven-blog/2017/02/04/hexo-setup/index.html&title=Hexo 基本安裝" target="_blank">
+        <a class="post_share-link" href="https://www.linkedin.com/shareArticle?mini=true&url=https://Yu-Che-Gao.github.io/steven-blog/steven-blog//steven-blog/hexo-setup&title=Hexo 基本安裝" target="_blank">
             <li class="mdl-menu__item">
                 分享到 LinkedIn
             </li>
@@ -402,7 +402,7 @@
     $('html').ready(function() {
         setTimeout(function() {
             var disqus_config = function () {
-                this.page.url = 'https://Yu-Che-Gao.github.io/steven-blog/steven-blog/2017/02/04/hexo-setup/index.html';  // Replace PAGE_URL with your page's canonical URL variable
+                this.page.url = 'https://Yu-Che-Gao.github.io/steven-blog/steven-blog/hexo-setup';  // Replace PAGE_URL with your page's canonical URL variable
                 this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
             };
 
@@ -836,7 +836,7 @@ It will not impact the appearance and can give developers a lot of support :)
     <script>
         var inputArea = document.querySelector('#search');
         var getSearchFile = function() {
-            var path = 'search.xml';
+            var path = '/.xml';
             searchFunc(path, 'search', 'local-search-result');
         }
 
