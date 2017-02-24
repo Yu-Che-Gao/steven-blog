@@ -5,7 +5,7 @@
     
     <entry>
       <title><![CDATA[你所不知道的C#: Compiler篇]]></title>
-      <url>https://Yu-Che-Gao.github.io/steven-blog/cizjpgzhl0001ngvabarey40b/</url>
+      <url>https://Yu-Che-Gao.github.io/steven-blog/cizjpkt4t0003asva52ss9vix/</url>
       <content type="html"><![CDATA[<h1 id="基本Compiler原理"><a href="#基本Compiler原理" class="headerlink" title="基本Compiler原理"></a>基本Compiler原理</h1><center><img src="/steven-blog/images/compiler-flow.jpg" alt="Compiler-flow" title="編譯器流程"></center>
 
 <p>上圖即是一般編譯器的處理過程，編譯，組譯，連結，之後載入。</p>
@@ -19,7 +19,7 @@
 <center><img src="https://i-msdn.sec.s-msft.com/dynimg/IC15013.jpeg" alt="CSharp-Compiler-Flow" title="CSharp-Compiler-Flow"></center>
 
 <p>上圖即是C#編譯的過程，值得注意的是C# Compiler並沒有直接將程式碼編譯成Binary Code，而是先將程式碼編譯成MSIL(Microsoft Intermediated Language，微軟中間碼)，在執行時期時利用.NET Framework內建的CLR(Common Language Runtime)執行JIT Compiler轉成Binary Code執行。</p>
-<h1 id="Hello-World"><a href="#Hello-World" class="headerlink" title="Hello World!!"></a>Hello World!!</h1><p>以下是一段hello world的程式碼</p>
+<h1 id="Hello-World"><a href="#Hello-World" class="headerlink" title="Hello World!!"></a>Hello World!!</h1><p>以下是一段hello world的<a href="https://github.com/Yu-Che-Gao/steven-blog/blob/gh-pages/code/hello.cs" target="_blank" rel="external">程式碼</a></p>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">using</span> System;</div><div class="line"></div><div class="line"><span class="keyword">namespace</span> hello</div><div class="line">&#123;</div><div class="line">    <span class="keyword">class</span> Program</div><div class="line">    &#123;</div><div class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">Main</span><span class="params">(<span class="built_in">string</span>[] args)</span></span></div><div class="line">        &#123;</div><div class="line">            System.Console.WriteLine(<span class="string">"hello world"</span>);</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <p>利用<a href="https://msdn.microsoft.com/en-us/library/78f4aasd.aspx" target="_blank" rel="external">csc.exe</a>編譯完之後會產生一個exe檔。</p>
 <p>使用<a href="http://ilspy.net/" target="_blank" rel="external">ILSpy</a>分析這個exe檔，會發現IL碼長這樣。</p>
@@ -30,7 +30,7 @@
     
     <entry>
       <title><![CDATA[我的大靈C1專題：聖靈的洗]]></title>
-      <url>https://Yu-Che-Gao.github.io/steven-blog/cizjpgzi50006ngvat7bpuy0n/</url>
+      <url>https://Yu-Che-Gao.github.io/steven-blog/cizjpkt480000asvap5j9lncp/</url>
       <content type="html"><![CDATA[<h1 id="前記"><a href="#前記" class="headerlink" title="前記"></a>前記</h1><p>感謝俊平哥還有C1-02組的所有組員們，以及每天晚上都一起研經的室友們，讓我度過了一個體驗研讀神的話是多麼美好的一個禮拜。我們一起跟著使徒的腳步走完整卷使徒行傳，讓我們一起用我們的生命寫下使徒行傳第29章。</p>
 <p>今年大靈班C1組最後要我們每個人做不同主題的專題，我分到的題目是&quot;聖靈的洗&quot;，實在覺得神所賜下真理何等美好，因此特此紀錄。讀神的話絕對不是只有知識上的增長，它是絕對能整理出一些值得基督徒一生去活一生去思考的原則。</p>
 <h1 id="基本假設"><a href="#基本假設" class="headerlink" title="基本假設"></a>基本假設</h1><p>本文會根據以下三點假設進行推論，不代表任何基督教教派立場，僅嘗試以歸納法從聖經中歸納出一些原則。</p>
@@ -143,7 +143,7 @@
     
     <entry>
       <title><![CDATA[我的大靈日記: 猶太會堂]]></title>
-      <url>https://Yu-Che-Gao.github.io/steven-blog/cizjpgzi10005ngval6dd57gv/</url>
+      <url>https://Yu-Che-Gao.github.io/steven-blog/cizjpkt4w0004asva5j3pnzpy/</url>
       <content type="html"><![CDATA[<h1 id="猶太會堂簡介"><a href="#猶太會堂簡介" class="headerlink" title="猶太會堂簡介"></a>猶太會堂簡介</h1><p>根據<a href="https://zh.wikipedia.org/wiki/%E7%8C%B6%E5%A4%AA%E6%9C%83%E5%A0%82" target="_blank" rel="external">維基百科</a>，
 猶太教堂（或稱猶太會堂）的西文名稱是從希臘語συναγωγη而來，轉換成拉丁字母是synagogé，直譯就是「聚會的場所」。</p>
 <p>下面就是其中一間猶太會堂的圖。</p>
@@ -159,7 +159,7 @@
     
     <entry>
       <title><![CDATA[我的大靈日記使徒行傳第四~八章]]></title>
-      <url>https://Yu-Che-Gao.github.io/steven-blog/cizjpgzie000bngvajz128luw/</url>
+      <url>https://Yu-Che-Gao.github.io/steven-blog/cizjpkt5h0009asvacmo54sb8/</url>
       <content type="html"><![CDATA[<h1 id="使徒行傳4-32-5-16細研"><a href="#使徒行傳4-32-5-16細研" class="headerlink" title="使徒行傳4:32~5:16細研"></a>使徒行傳4:32~5:16細研</h1><h2 id="觀察"><a href="#觀察" class="headerlink" title="觀察"></a>觀察</h2><ol>
 <li>4:32~4:35 初代教會凡物公用的光景</li>
 <li>4:36~4:37 巴拿巴是好榜樣</li>
@@ -234,7 +234,7 @@
     
     <entry>
       <title><![CDATA[我的大靈日記:使徒行傳第二~四章]]></title>
-      <url>https://Yu-Che-Gao.github.io/steven-blog/cizjpgzia0008ngvac0f2qrog/</url>
+      <url>https://Yu-Che-Gao.github.io/steven-blog/cizjpkt5c0007asva4kt6rl6f/</url>
       <content type="html"><![CDATA[<h1 id="使徒行傳第二章細研"><a href="#使徒行傳第二章細研" class="headerlink" title="使徒行傳第二章細研"></a>使徒行傳第二章細研</h1><h2 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h2><p>五旬節聖靈降臨(v1~v5)</p>
 <p>--&gt;聖靈給門徒說各國鄉談的能力(v6~v12)</p>
 <p>--&gt;有人譏笑說門徒喝醉了(v13)</p>
@@ -405,7 +405,7 @@ b. 寫作風格與醫生吻合(徒28:6)
     
     <entry>
       <title><![CDATA[我的大靈日記:使徒行傳第一章之觀察篇]]></title>
-      <url>https://Yu-Che-Gao.github.io/steven-blog/cizjpgzhw0003ngvap0qnj6aq/</url>
+      <url>https://Yu-Che-Gao.github.io/steven-blog/cizjpkt570005asval7rhbrzh/</url>
       <content type="html"><![CDATA[<h1 id="歸納法查經REVIEW"><a href="#歸納法查經REVIEW" class="headerlink" title="歸納法查經REVIEW"></a>歸納法查經REVIEW</h1><ol>
 <li>觀察: 分段</li>
 <li>解釋: 問問題</li>
@@ -440,7 +440,7 @@ b. 寫作風格與醫生吻合(徒28:6)
     
     <entry>
       <title><![CDATA[Hexo 基本安裝]]></title>
-      <url>https://Yu-Che-Gao.github.io/steven-blog/cizjpgzhe0000ngvabhk1416t/</url>
+      <url>https://Yu-Che-Gao.github.io/steven-blog/cizjpkt4e0001asvaededpwo0/</url>
       <content type="html"><![CDATA[<p>Welcome to <a href="https://hexo.io/" target="_blank" rel="external">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="external">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="external">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="external">GitHub</a>.</p>
 <h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo new <span class="string">"My New Post"</span></div></pre></td></tr></table></figure>
 <p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="external">Writing</a></p>

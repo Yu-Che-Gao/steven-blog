@@ -5,7 +5,7 @@
   <link href="/steven-blog/atom.xml" rel="self"/>
   
   <link href="https://Yu-Che-Gao.github.io/"/>
-  <updated>2017-02-24T10:56:05.231Z</updated>
+  <updated>2017-02-24T11:03:54.000Z</updated>
   <id>https://Yu-Che-Gao.github.io/</id>
   
   <author>
@@ -17,10 +17,10 @@
   
   <entry>
     <title>你所不知道的C#: Compiler篇</title>
-    <link href="https://Yu-Che-Gao.github.io/cizjpgzhl0001ngvabarey40b/"/>
-    <id>https://Yu-Che-Gao.github.io/cizjpgzhl0001ngvabarey40b/</id>
+    <link href="https://Yu-Che-Gao.github.io/cizjpkt4t0003asva52ss9vix/"/>
+    <id>https://Yu-Che-Gao.github.io/cizjpkt4t0003asva52ss9vix/</id>
     <published>2017-02-24T08:12:14.000Z</published>
-    <updated>2017-02-24T10:56:05.231Z</updated>
+    <updated>2017-02-24T11:03:54.000Z</updated>
     
     <content type="html"><![CDATA[<h1 id="基本Compiler原理"><a href="#基本Compiler原理" class="headerlink" title="基本Compiler原理"></a>基本Compiler原理</h1><center><img src="/steven-blog/images/compiler-flow.jpg" alt="Compiler-flow" title="編譯器流程"></center>
 
@@ -35,7 +35,7 @@
 <center><img src="https://i-msdn.sec.s-msft.com/dynimg/IC15013.jpeg" alt="CSharp-Compiler-Flow" title="CSharp-Compiler-Flow"></center>
 
 <p>上圖即是C#編譯的過程，值得注意的是C# Compiler並沒有直接將程式碼編譯成Binary Code，而是先將程式碼編譯成MSIL(Microsoft Intermediated Language，微軟中間碼)，在執行時期時利用.NET Framework內建的CLR(Common Language Runtime)執行JIT Compiler轉成Binary Code執行。</p>
-<h1 id="Hello-World"><a href="#Hello-World" class="headerlink" title="Hello World!!"></a>Hello World!!</h1><p>以下是一段hello world的程式碼</p>
+<h1 id="Hello-World"><a href="#Hello-World" class="headerlink" title="Hello World!!"></a>Hello World!!</h1><p>以下是一段hello world的<a href="https://github.com/Yu-Che-Gao/steven-blog/blob/gh-pages/code/hello.cs" target="_blank" rel="external">程式碼</a></p>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">using</span> System;</div><div class="line"></div><div class="line"><span class="keyword">namespace</span> hello</div><div class="line">&#123;</div><div class="line">    <span class="keyword">class</span> Program</div><div class="line">    &#123;</div><div class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">Main</span><span class="params">(<span class="built_in">string</span>[] args)</span></span></div><div class="line">        &#123;</div><div class="line">            System.Console.WriteLine(<span class="string">"hello world"</span>);</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <p>利用<a href="https://msdn.microsoft.com/en-us/library/78f4aasd.aspx" target="_blank" rel="external">csc.exe</a>編譯完之後會產生一個exe檔。</p>
 <p>使用<a href="http://ilspy.net/" target="_blank" rel="external">ILSpy</a>分析這個exe檔，會發現IL碼長這樣。</p>
@@ -49,15 +49,15 @@
     
     </summary>
     
+      <category term="C#" scheme="https://Yu-Che-Gao.github.io/categories/C/"/>
     
-      <category term="C#" scheme="https://Yu-Che-Gao.github.io/tags/C/"/>
     
   </entry>
   
   <entry>
     <title>我的大靈C1專題：聖靈的洗</title>
-    <link href="https://Yu-Che-Gao.github.io/cizjpgzi50006ngvat7bpuy0n/"/>
-    <id>https://Yu-Che-Gao.github.io/cizjpgzi50006ngvat7bpuy0n/</id>
+    <link href="https://Yu-Che-Gao.github.io/cizjpkt480000asvap5j9lncp/"/>
+    <id>https://Yu-Che-Gao.github.io/cizjpkt480000asvap5j9lncp/</id>
     <published>2017-02-14T13:24:11.000Z</published>
     <updated>2017-02-14T14:35:57.445Z</updated>
     
@@ -183,8 +183,8 @@
   
   <entry>
     <title>我的大靈日記: 猶太會堂</title>
-    <link href="https://Yu-Che-Gao.github.io/cizjpgzi10005ngval6dd57gv/"/>
-    <id>https://Yu-Che-Gao.github.io/cizjpgzi10005ngval6dd57gv/</id>
+    <link href="https://Yu-Che-Gao.github.io/cizjpkt4w0004asva5j3pnzpy/"/>
+    <id>https://Yu-Che-Gao.github.io/cizjpkt4w0004asva5j3pnzpy/</id>
     <published>2017-02-09T06:00:07.000Z</published>
     <updated>2017-02-14T06:15:53.982Z</updated>
     
@@ -213,8 +213,8 @@
   
   <entry>
     <title>我的大靈日記使徒行傳第四~八章</title>
-    <link href="https://Yu-Che-Gao.github.io/cizjpgzie000bngvajz128luw/"/>
-    <id>https://Yu-Che-Gao.github.io/cizjpgzie000bngvajz128luw/</id>
+    <link href="https://Yu-Che-Gao.github.io/cizjpkt5h0009asvacmo54sb8/"/>
+    <id>https://Yu-Che-Gao.github.io/cizjpkt5h0009asvacmo54sb8/</id>
     <published>2017-02-07T15:23:22.000Z</published>
     <updated>2017-02-14T06:24:29.642Z</updated>
     
@@ -302,8 +302,8 @@
   
   <entry>
     <title>我的大靈日記:使徒行傳第二~四章</title>
-    <link href="https://Yu-Che-Gao.github.io/cizjpgzia0008ngvac0f2qrog/"/>
-    <id>https://Yu-Che-Gao.github.io/cizjpgzia0008ngvac0f2qrog/</id>
+    <link href="https://Yu-Che-Gao.github.io/cizjpkt5c0007asva4kt6rl6f/"/>
+    <id>https://Yu-Che-Gao.github.io/cizjpkt5c0007asva4kt6rl6f/</id>
     <published>2017-02-06T05:07:42.000Z</published>
     <updated>2017-02-14T06:24:21.116Z</updated>
     
@@ -487,8 +487,8 @@ b. 寫作風格與醫生吻合(徒28:6)
   
   <entry>
     <title>我的大靈日記:使徒行傳第一章之觀察篇</title>
-    <link href="https://Yu-Che-Gao.github.io/cizjpgzhw0003ngvap0qnj6aq/"/>
-    <id>https://Yu-Che-Gao.github.io/cizjpgzhw0003ngvap0qnj6aq/</id>
+    <link href="https://Yu-Che-Gao.github.io/cizjpkt570005asval7rhbrzh/"/>
+    <id>https://Yu-Che-Gao.github.io/cizjpkt570005asval7rhbrzh/</id>
     <published>2017-02-05T14:54:37.000Z</published>
     <updated>2017-02-14T06:24:23.312Z</updated>
     
@@ -538,8 +538,8 @@ b. 寫作風格與醫生吻合(徒28:6)
   
   <entry>
     <title>Hexo 基本安裝</title>
-    <link href="https://Yu-Che-Gao.github.io/cizjpgzhe0000ngvabhk1416t/"/>
-    <id>https://Yu-Che-Gao.github.io/cizjpgzhe0000ngvabhk1416t/</id>
+    <link href="https://Yu-Che-Gao.github.io/cizjpkt4e0001asvaededpwo0/"/>
+    <id>https://Yu-Che-Gao.github.io/cizjpkt4e0001asvaededpwo0/</id>
     <published>2017-02-04T13:19:59.747Z</published>
     <updated>2017-02-14T06:24:46.993Z</updated>
     
