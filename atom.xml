@@ -5,7 +5,7 @@
   <link href="/steven-blog/atom.xml" rel="self"/>
   
   <link href="https://Yu-Che-Gao.github.io/"/>
-  <updated>2017-02-24T11:03:54.000Z</updated>
+  <updated>2017-02-24T14:29:30.348Z</updated>
   <id>https://Yu-Che-Gao.github.io/</id>
   
   <author>
@@ -20,11 +20,23 @@
     <link href="https://Yu-Che-Gao.github.io/2017/02/24/%E4%BD%A0%E6%89%80%E4%B8%8D%E7%9F%A5%E9%81%93%E7%9A%84C-Compiler%E7%AF%87/"/>
     <id>https://Yu-Che-Gao.github.io/2017/02/24/你所不知道的C-Compiler篇/</id>
     <published>2017-02-24T08:12:14.000Z</published>
-    <updated>2017-02-24T11:03:54.000Z</updated>
+    <updated>2017-02-24T14:29:30.348Z</updated>
     
     <content type="html"><![CDATA[<h1 id="基本Compiler原理"><a href="#基本Compiler原理" class="headerlink" title="基本Compiler原理"></a>基本Compiler原理</h1><center><img src="/steven-blog/images/compiler-flow.jpg" alt="Compiler-flow" title="編譯器流程"></center>
 
 <p>上圖即是一般編譯器的處理過程，編譯，組譯，連結，之後載入。</p>
+<center>編譯示意圖</center>
+
+<center><img src="/steven-blog/images/compiler-and-elf.jpg" alt="編譯示意圖" title="編譯示意圖"></center>
+
+<center>連結示意圖</center>
+
+<center><img src="/steven-blog/images/linker.jpg" alt="連結示意圖" title="連結示意圖"></center>
+
+<center>載入示意圖</center>
+
+<center><img src="/steven-blog/images/loading.jpg" alt="載入示意圖" title="載入示意圖"></center>
+
 <p>進階閱讀:</p>
 <ol>
 <li>交大開放式課程: <a href="http://ocw.nctu.edu.tw/course_detail.php?bgid=9&amp;gid=0&amp;nid=546#.WK_1yvl96Uk" target="_blank" rel="external">作業系統設計與實作</a></li>
@@ -59,7 +71,7 @@
     <link href="https://Yu-Che-Gao.github.io/2017/02/14/%E6%88%91%E7%9A%84%E5%A4%A7%E9%9D%88C1%E5%B0%88%E9%A1%8C%EF%BC%9A%E8%81%96%E9%9D%88%E7%9A%84%E6%B4%97/"/>
     <id>https://Yu-Che-Gao.github.io/2017/02/14/我的大靈C1專題：聖靈的洗/</id>
     <published>2017-02-14T13:24:11.000Z</published>
-    <updated>2017-02-14T14:35:57.445Z</updated>
+    <updated>2017-02-24T14:24:12.164Z</updated>
     
     <content type="html"><![CDATA[<h1 id="前記"><a href="#前記" class="headerlink" title="前記"></a>前記</h1><p>感謝俊平哥還有C1-02組的所有組員們，以及每天晚上都一起研經的室友們，讓我度過了一個體驗研讀神的話是多麼美好的一個禮拜。我們一起跟著使徒的腳步走完整卷使徒行傳，讓我們一起用我們的生命寫下使徒行傳第29章。</p>
 <p>今年大靈班C1組最後要我們每個人做不同主題的專題，我分到的題目是&quot;聖靈的洗&quot;，實在覺得神所賜下真理何等美好，因此特此紀錄。讀神的話絕對不是只有知識上的增長，它是絕對能整理出一些值得基督徒一生去活一生去思考的原則。</p>
@@ -153,7 +165,7 @@
 <li>聖靈的洗要給所有信徒</li>
 <li>聖靈的洗與約翰的洗並沒有順序性</li>
 </ol>
-<p>根據第三第四點的延伸：信的人都受了聖靈的洗 --&gt; 弗1：13</p>
+<p>根據第四第五點的延伸：信的人都受了聖靈的洗 --&gt; 弗1：13</p>
 <h1 id="聖靈充滿-VS-聖靈的洗"><a href="#聖靈充滿-VS-聖靈的洗" class="headerlink" title="聖靈充滿 VS 聖靈的洗"></a>聖靈充滿 VS 聖靈的洗</h1><p>&quot;聖靈充滿&quot;是&quot;聖靈的洗&quot;之結果，那麼聖靈充滿會有何特徵。</p>
 <p><a href="https://bible.fhl.net/new/search.php?VERSION=unv&amp;orig=0&amp;TABFLAG=1&amp;keyword=%E8%81%96%E9%9D%88%E5%85%85%E6%BB%BF" target="_blank" rel="external">搜尋全本聖經</a>會發現弗5：18~5：19給出這個問題的解答：</p>
 <ol>
@@ -167,7 +179,7 @@
 <li>要一直被聖靈充滿。</li>
 <li>在理性上知道真理，在感性上讚美神。</li>
 </ol>
-<h1 id="參考文獻"><a href="#參考文獻" class="headerlink" title="參考文獻"></a>參考文獻</h1><p>斯托得&lt;當代聖靈手冊&gt;</p>
+<h1 id="參考文獻"><a href="#參考文獻" class="headerlink" title="參考文獻"></a>參考文獻</h1><p>斯托得&lt;當代聖靈工作&gt;</p>
 ]]></content>
     
     <summary type="html">
