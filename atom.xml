@@ -5,7 +5,7 @@
   <link href="/steven-blog/atom.xml" rel="self"/>
   
   <link href="https://Yu-Che-Gao.github.io/"/>
-  <updated>2017-02-14T14:35:57.445Z</updated>
+  <updated>2017-02-24T10:56:05.231Z</updated>
   <id>https://Yu-Che-Gao.github.io/</id>
   
   <author>
@@ -16,9 +16,48 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>你所不知道的C#: Compiler篇</title>
+    <link href="https://Yu-Che-Gao.github.io/cizjpgzhl0001ngvabarey40b/"/>
+    <id>https://Yu-Che-Gao.github.io/cizjpgzhl0001ngvabarey40b/</id>
+    <published>2017-02-24T08:12:14.000Z</published>
+    <updated>2017-02-24T10:56:05.231Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="基本Compiler原理"><a href="#基本Compiler原理" class="headerlink" title="基本Compiler原理"></a>基本Compiler原理</h1><center><img src="/steven-blog/images/compiler-flow.jpg" alt="Compiler-flow" title="編譯器流程"></center>
+
+<p>上圖即是一般編譯器的處理過程，編譯，組譯，連結，之後載入。</p>
+<p>進階閱讀:</p>
+<ol>
+<li>交大開放式課程: <a href="http://ocw.nctu.edu.tw/course_detail.php?bgid=9&amp;gid=0&amp;nid=546#.WK_1yvl96Uk" target="_blank" rel="external">作業系統設計與實作</a></li>
+<li>工程師必讀: <a href="http://www.books.com.tw/products/0010456858" target="_blank" rel="external">程式設計師的自我修養</a></li>
+<li>資工界的龍之書: <a href="http://www.books.com.tw/products/0010465432" target="_blank" rel="external">編譯系統設計</a></li>
+</ol>
+<h1 id="C-compiler原理"><a href="#C-compiler原理" class="headerlink" title="C# compiler原理"></a>C# compiler原理</h1><p>C#奠基於.NET Framework之上，.NET Framework所採用名叫JIT(Just In Time)的編譯技術，找出程式執行的熱點(Hot Spot)，以進行即時編譯。</p>
+<center><img src="https://i-msdn.sec.s-msft.com/dynimg/IC15013.jpeg" alt="CSharp-Compiler-Flow" title="CSharp-Compiler-Flow"></center>
+
+<p>上圖即是C#編譯的過程，值得注意的是C# Compiler並沒有直接將程式碼編譯成Binary Code，而是先將程式碼編譯成MSIL(Microsoft Intermediated Language，微軟中間碼)，在執行時期時利用.NET Framework內建的CLR(Common Language Runtime)執行JIT Compiler轉成Binary Code執行。</p>
+<h1 id="Hello-World"><a href="#Hello-World" class="headerlink" title="Hello World!!"></a>Hello World!!</h1><p>以下是一段hello world的程式碼</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">using</span> System;</div><div class="line"></div><div class="line"><span class="keyword">namespace</span> hello</div><div class="line">&#123;</div><div class="line">    <span class="keyword">class</span> Program</div><div class="line">    &#123;</div><div class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">Main</span><span class="params">(<span class="built_in">string</span>[] args)</span></span></div><div class="line">        &#123;</div><div class="line">            System.Console.WriteLine(<span class="string">"hello world"</span>);</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>利用<a href="https://msdn.microsoft.com/en-us/library/78f4aasd.aspx" target="_blank" rel="external">csc.exe</a>編譯完之後會產生一個exe檔。</p>
+<p>使用<a href="http://ilspy.net/" target="_blank" rel="external">ILSpy</a>分析這個exe檔，會發現IL碼長這樣。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div></pre></td><td class="code"><pre><div class="line">.namespace hello</div><div class="line">&#123;</div><div class="line">	.class private auto ansi beforefieldinit hello.Program</div><div class="line">		extends [mscorlib]System.Object</div><div class="line">	&#123;</div><div class="line">		// Methods</div><div class="line">		.method public hidebysig static </div><div class="line">			void Main (</div><div class="line">				string[] args</div><div class="line">			) cil managed </div><div class="line">		&#123;</div><div class="line">			// Method begins at RVA 0x2050</div><div class="line">			// Code size 13 (0xd)</div><div class="line">			.maxstack 8</div><div class="line">			.entrypoint</div><div class="line"></div><div class="line">			IL_0000: nop</div><div class="line">			IL_0001: ldstr &quot;hello world&quot;</div><div class="line">			IL_0006: call void [mscorlib]System.Console::WriteLine(string)</div><div class="line">			IL_000b: nop</div><div class="line">			IL_000c: ret</div><div class="line">		&#125; // end of method Program::Main</div><div class="line"></div><div class="line">		.method public hidebysig specialname rtspecialname </div><div class="line">			instance void .ctor () cil managed </div><div class="line">		&#123;</div><div class="line">			// Method begins at RVA 0x205e</div><div class="line">			// Code size 7 (0x7)</div><div class="line">			.maxstack 8</div><div class="line"></div><div class="line">			IL_0000: ldarg.0</div><div class="line">			IL_0001: call instance void [mscorlib]System.Object::.ctor()</div><div class="line">			IL_0006: ret</div><div class="line">		&#125; // end of method Program::.ctor</div><div class="line">	&#125; // end of class hello.Program</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>值得注意的是第19行: call void [mscorlib]System.Console::WriteLine(string)。在IL階段並沒有把Console.WriteLine編進去，而是等到CLR載入時才編譯。</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;h1 id=&quot;基本Compiler原理&quot;&gt;&lt;a href=&quot;#基本Compiler原理&quot; class=&quot;headerlink&quot; title=&quot;基本Compiler原理&quot;&gt;&lt;/a&gt;基本Compiler原理&lt;/h1&gt;&lt;center&gt;&lt;img src=&quot;/steven-blog/im
+    
+    </summary>
+    
+    
+      <category term="C#" scheme="https://Yu-Che-Gao.github.io/tags/C/"/>
+    
+  </entry>
+  
+  <entry>
     <title>我的大靈C1專題：聖靈的洗</title>
-    <link href="https://Yu-Che-Gao.github.io/ciz5kxrad0000h8vag3y5ei1w/"/>
-    <id>https://Yu-Che-Gao.github.io/ciz5kxrad0000h8vag3y5ei1w/</id>
+    <link href="https://Yu-Che-Gao.github.io/cizjpgzi50006ngvat7bpuy0n/"/>
+    <id>https://Yu-Che-Gao.github.io/cizjpgzi50006ngvat7bpuy0n/</id>
     <published>2017-02-14T13:24:11.000Z</published>
     <updated>2017-02-14T14:35:57.445Z</updated>
     
@@ -144,8 +183,8 @@
   
   <entry>
     <title>我的大靈日記: 猶太會堂</title>
-    <link href="https://Yu-Che-Gao.github.io/ciz5kxrb50004h8vaqnonlc81/"/>
-    <id>https://Yu-Che-Gao.github.io/ciz5kxrb50004h8vaqnonlc81/</id>
+    <link href="https://Yu-Che-Gao.github.io/cizjpgzi10005ngval6dd57gv/"/>
+    <id>https://Yu-Che-Gao.github.io/cizjpgzi10005ngval6dd57gv/</id>
     <published>2017-02-09T06:00:07.000Z</published>
     <updated>2017-02-14T06:15:53.982Z</updated>
     
@@ -174,8 +213,8 @@
   
   <entry>
     <title>我的大靈日記使徒行傳第四~八章</title>
-    <link href="https://Yu-Che-Gao.github.io/ciz5kxrb80005h8va4pgg4cu1/"/>
-    <id>https://Yu-Che-Gao.github.io/ciz5kxrb80005h8va4pgg4cu1/</id>
+    <link href="https://Yu-Che-Gao.github.io/cizjpgzie000bngvajz128luw/"/>
+    <id>https://Yu-Che-Gao.github.io/cizjpgzie000bngvajz128luw/</id>
     <published>2017-02-07T15:23:22.000Z</published>
     <updated>2017-02-14T06:24:29.642Z</updated>
     
@@ -263,8 +302,8 @@
   
   <entry>
     <title>我的大靈日記:使徒行傳第二~四章</title>
-    <link href="https://Yu-Che-Gao.github.io/ciz5kxrbc0007h8vaixe36enr/"/>
-    <id>https://Yu-Che-Gao.github.io/ciz5kxrbc0007h8vaixe36enr/</id>
+    <link href="https://Yu-Che-Gao.github.io/cizjpgzia0008ngvac0f2qrog/"/>
+    <id>https://Yu-Che-Gao.github.io/cizjpgzia0008ngvac0f2qrog/</id>
     <published>2017-02-06T05:07:42.000Z</published>
     <updated>2017-02-14T06:24:21.116Z</updated>
     
@@ -448,8 +487,8 @@ b. 寫作風格與醫生吻合(徒28:6)
   
   <entry>
     <title>我的大靈日記:使徒行傳第一章之觀察篇</title>
-    <link href="https://Yu-Che-Gao.github.io/ciz5kxrb30003h8va7w98w6wn/"/>
-    <id>https://Yu-Che-Gao.github.io/ciz5kxrb30003h8va7w98w6wn/</id>
+    <link href="https://Yu-Che-Gao.github.io/cizjpgzhw0003ngvap0qnj6aq/"/>
+    <id>https://Yu-Che-Gao.github.io/cizjpgzhw0003ngvap0qnj6aq/</id>
     <published>2017-02-05T14:54:37.000Z</published>
     <updated>2017-02-14T06:24:23.312Z</updated>
     
@@ -499,8 +538,8 @@ b. 寫作風格與醫生吻合(徒28:6)
   
   <entry>
     <title>Hexo 基本安裝</title>
-    <link href="https://Yu-Che-Gao.github.io/ciz5kxrat0001h8va9271l443/"/>
-    <id>https://Yu-Che-Gao.github.io/ciz5kxrat0001h8va9271l443/</id>
+    <link href="https://Yu-Che-Gao.github.io/cizjpgzhe0000ngvabhk1416t/"/>
+    <id>https://Yu-Che-Gao.github.io/cizjpgzhe0000ngvabhk1416t/</id>
     <published>2017-02-04T13:19:59.747Z</published>
     <updated>2017-02-14T06:24:46.993Z</updated>
     
