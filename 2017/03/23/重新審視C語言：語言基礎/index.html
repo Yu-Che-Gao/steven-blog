@@ -10,7 +10,7 @@
     
     <title>
         
-            分類: 歸納法研經 | 
+            重新審視C語言：語言基礎 | 
         
         Steven&#39;s Blog
     </title>
@@ -48,7 +48,7 @@
     <!-- The Open Graph protocol -->
     <meta property="og:url" content="https://Yu-Che-Gao.github.io">
     <meta property="og:type" content="blog">
-    <meta property="og:title" content="分類: 歸納法研經 | Steven&#39;s Blog">
+    <meta property="og:title" content="重新審視C語言：語言基礎 | Steven&#39;s Blog">
     <meta property="og:description" content="高宇哲的小窩">
 
     <!--[if lte IE 9]>
@@ -200,307 +200,247 @@
                         </button>
                     
 
-                    <!-- Index Module -->
-<div class="material-index mdl-grid">
-    
-    <div class="locate-thumbnail-symbol"></div>
+                    <!-- Post TOC -->
 
     
-        
-            <!-- Paradox Thumbnail -->
-            <div class="post_entry-module mdl-card mdl-cell mdl-cell--12-col fade out">
-    <!-- Post Thumbnail -->
+    <!-- Back Button -->
+    <!--
+    <div class="material-back" id="backhome-div" tabindex="0">
+        <a class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon"
+           href="#" onclick="window.history.back();return false;"
+           target="_self"
+           role="button"
+           data-upgraded=",MaterialButton,MaterialRipple">
+            <i class="material-icons" role="presentation">arrow_back</i>
+            <span class="mdl-button__ripple-container">
+                <span class="mdl-ripple"></span>
+            </span>
+        </a>
+    </div>
+    -->
+
+    <!-- Left aligned menu below button -->
+    <button id="post-toc-trigger-btn"
+        class="mdl-button mdl-js-button mdl-button--icon">
+        <i class="material-icons">format_list_numbered</i>
+    </button>
+
+    <ul class="post-toc-wrap mdl-menu mdl-menu--bottom-left mdl-js-menu mdl-js-ripple-effect" for="post-toc-trigger-btn">
+        <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#C的特性"><span class="post-toc-number">1.</span> <span class="post-toc-text">C的特性</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#C的歷史"><span class="post-toc-number">2.</span> <span class="post-toc-text">C的歷史</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#C程式的結構"><span class="post-toc-number">3.</span> <span class="post-toc-text">C程式的結構</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#C語言的原始檔"><span class="post-toc-number">4.</span> <span class="post-toc-text">C語言的原始檔</span></a></li></ol>
+
+        <!--
+        <li class="mdl-menu__item">
+            Some Action
+        </li>
+        -->
+    </ul>
+
+
+
+
+<!-- Layouts -->
+
+    <!-- Post Module -->
+    <div class="material-post_container">
+
+        <div class="material-post mdl-grid">
+            <div class="mdl-card mdl-shadow--4dp mdl-cell mdl-cell--12-col">
+
+                <!-- Post Header(Thumbnail & Title) -->
+                
+    <!-- Paradox Post Header -->
     
         
             <!-- Random Thumbnail -->
             <div class="post_thumbnail-random mdl-card__media mdl-color-text--grey-50">
-        
-    
+            <script>
+    var randomNum = Math.floor(Math.random() * 19 + 1);
 
-        <!-- Post Title -->
-        <p class="article-headline-p"><a href="/steven-blog/2017/02/14/我的大靈C1專題：聖靈的洗/">我的大靈C1專題：聖靈的洗</a></p>
-    </div>
-
-    <!-- Post Excerpt -->
-    <div class="mdl-color-text--grey-600 mdl-card__supporting-text post_entry-content">
-        
-            前記感謝俊平哥還有...
-        
-        &nbsp;&nbsp;&nbsp;
-        <span>
-            <a href="/steven-blog/2017/02/14/我的大靈C1專題：聖靈的洗/" target="_self">繼續閱讀</a>
-        </span>
-    </div>
-    <!-- Post_entry Info-->
-    <div id="post_entry-info">
-        <div id="post_entry-left-info" class="mdl-card__supporting-text meta mdl-color-text--grey-600 ">
-            <!-- Author Avatar -->
-            <div id="author-avatar">
-                <img src="/steven-blog/img/steven_small_pic.jpg" width="44px" height="44px" alt="高宇哲's avatar">
-            </div>
-            <div>
-                <strong>高宇哲</strong>
-                <span>2月 14, 2017</span>
-            </div>
-        </div>
-        <div id="post_entry-right-info">
-            <!-- Category -->
-            <span class="post_entry-category">
-                <a class="post_category-link" href="/steven-blog/categories/歸納法研經/">歸納法研經</a>
-            </span>
-
-            
-
-            <!-- Post Views -->
-            <span class="post_entry-views">
-            </span>
-        </div>
-    </div>
-</div>
-
-        
-        
-    
-        
-            <!-- Paradox Thumbnail -->
-            <div class="post_entry-module mdl-card mdl-cell mdl-cell--12-col fade out">
-    <!-- Post Thumbnail -->
-    
-        
-            <!-- Random Thumbnail -->
-            <div class="post_thumbnail-random mdl-card__media mdl-color-text--grey-50">
-        
-    
-
-        <!-- Post Title -->
-        <p class="article-headline-p"><a href="/steven-blog/2017/02/09/我的大靈日記-猶太會堂/">我的大靈日記: 猶太會堂</a></p>
-    </div>
-
-    <!-- Post Excerpt -->
-    <div class="mdl-color-text--grey-600 mdl-card__supporting-text post_entry-content">
-        
-            猶太會堂簡...
-        
-        &nbsp;&nbsp;&nbsp;
-        <span>
-            <a href="/steven-blog/2017/02/09/我的大靈日記-猶太會堂/" target="_self">繼續閱讀</a>
-        </span>
-    </div>
-    <!-- Post_entry Info-->
-    <div id="post_entry-info">
-        <div id="post_entry-left-info" class="mdl-card__supporting-text meta mdl-color-text--grey-600 ">
-            <!-- Author Avatar -->
-            <div id="author-avatar">
-                <img src="/steven-blog/img/steven_small_pic.jpg" width="44px" height="44px" alt="高宇哲's avatar">
-            </div>
-            <div>
-                <strong>高宇哲</strong>
-                <span>2月 09, 2017</span>
-            </div>
-        </div>
-        <div id="post_entry-right-info">
-            <!-- Category -->
-            <span class="post_entry-category">
-                <a class="post_category-link" href="/steven-blog/categories/歸納法研經/">歸納法研經</a>
-            </span>
-
-            
-
-            <!-- Post Views -->
-            <span class="post_entry-views">
-            </span>
-        </div>
-    </div>
-</div>
-
-        
-        
-    
-        
-            <!-- Paradox Thumbnail -->
-            <div class="post_entry-module mdl-card mdl-cell mdl-cell--12-col fade out">
-    <!-- Post Thumbnail -->
-    
-        
-            <!-- Random Thumbnail -->
-            <div class="post_thumbnail-random mdl-card__media mdl-color-text--grey-50">
-        
-    
-
-        <!-- Post Title -->
-        <p class="article-headline-p"><a href="/steven-blog/2017/02/07/我的大靈日記使徒行傳第四-八章/">我的大靈日記使徒行傳第四~八章</a></p>
-    </div>
-
-    <!-- Post Excerpt -->
-    <div class="mdl-color-text--grey-600 mdl-card__supporting-text post_entry-content">
-        
-            
-        
-        &nbsp;&nbsp;&nbsp;
-        <span>
-            <a href="/steven-blog/2017/02/07/我的大靈日記使徒行傳第四-八章/" target="_self">繼續閱讀</a>
-        </span>
-    </div>
-    <!-- Post_entry Info-->
-    <div id="post_entry-info">
-        <div id="post_entry-left-info" class="mdl-card__supporting-text meta mdl-color-text--grey-600 ">
-            <!-- Author Avatar -->
-            <div id="author-avatar">
-                <img src="/steven-blog/img/steven_small_pic.jpg" width="44px" height="44px" alt="高宇哲's avatar">
-            </div>
-            <div>
-                <strong>高宇哲</strong>
-                <span>2月 07, 2017</span>
-            </div>
-        </div>
-        <div id="post_entry-right-info">
-            <!-- Category -->
-            <span class="post_entry-category">
-                <a class="post_category-link" href="/steven-blog/categories/歸納法研經/">歸納法研經</a>
-            </span>
-
-            
-
-            <!-- Post Views -->
-            <span class="post_entry-views">
-            </span>
-        </div>
-    </div>
-</div>
-
-        
-        
-    
-        
-            <!-- Paradox Thumbnail -->
-            <div class="post_entry-module mdl-card mdl-cell mdl-cell--12-col fade out">
-    <!-- Post Thumbnail -->
-    
-        
-            <!-- Random Thumbnail -->
-            <div class="post_thumbnail-random mdl-card__media mdl-color-text--grey-50">
-        
-    
-
-        <!-- Post Title -->
-        <p class="article-headline-p"><a href="/steven-blog/2017/02/06/我的大靈日記使徒行傳第二~四章/">我的大靈日記:使徒行傳第二~四章</a></p>
-    </div>
-
-    <!-- Post Excerpt -->
-    <div class="mdl-color-text--grey-600 mdl-card__supporting-text post_entry-content">
-        
-            ...
-        
-        &nbsp;&nbsp;&nbsp;
-        <span>
-            <a href="/steven-blog/2017/02/06/我的大靈日記使徒行傳第二~四章/" target="_self">繼續閱讀</a>
-        </span>
-    </div>
-    <!-- Post_entry Info-->
-    <div id="post_entry-info">
-        <div id="post_entry-left-info" class="mdl-card__supporting-text meta mdl-color-text--grey-600 ">
-            <!-- Author Avatar -->
-            <div id="author-avatar">
-                <img src="/steven-blog/img/steven_small_pic.jpg" width="44px" height="44px" alt="高宇哲's avatar">
-            </div>
-            <div>
-                <strong>高宇哲</strong>
-                <span>2月 06, 2017</span>
-            </div>
-        </div>
-        <div id="post_entry-right-info">
-            <!-- Category -->
-            <span class="post_entry-category">
-                <a class="post_category-link" href="/steven-blog/categories/歸納法研經/">歸納法研經</a>
-            </span>
-
-            
-
-            <!-- Post Views -->
-            <span class="post_entry-views">
-            </span>
-        </div>
-    </div>
-</div>
-
-        
-        
-    
-        
-            <!-- Paradox Thumbnail -->
-            <div class="post_entry-module mdl-card mdl-cell mdl-cell--12-col fade out">
-    <!-- Post Thumbnail -->
-    
-        
-            <!-- Random Thumbnail -->
-            <div class="post_thumbnail-random mdl-card__media mdl-color-text--grey-50">
-        
-    
-
-        <!-- Post Title -->
-        <p class="article-headline-p"><a href="/steven-blog/2017/02/05/我的大靈日記-使徒行傳第一章之觀察篇/">我的大靈日記:使徒行傳第一章之觀察篇</a></p>
-    </div>
-
-    <!-- Post Excerpt -->
-    <div class="mdl-color-text--grey-600 mdl-card__supporting-text post_entry-content">
-        
-            
-        
-        &nbsp;&nbsp;&nbsp;
-        <span>
-            <a href="/steven-blog/2017/02/05/我的大靈日記-使徒行傳第一章之觀察篇/" target="_self">繼續閱讀</a>
-        </span>
-    </div>
-    <!-- Post_entry Info-->
-    <div id="post_entry-info">
-        <div id="post_entry-left-info" class="mdl-card__supporting-text meta mdl-color-text--grey-600 ">
-            <!-- Author Avatar -->
-            <div id="author-avatar">
-                <img src="/steven-blog/img/steven_small_pic.jpg" width="44px" height="44px" alt="高宇哲's avatar">
-            </div>
-            <div>
-                <strong>高宇哲</strong>
-                <span>2月 05, 2017</span>
-            </div>
-        </div>
-        <div id="post_entry-right-info">
-            <!-- Category -->
-            <span class="post_entry-category">
-                <a class="post_category-link" href="/steven-blog/categories/歸納法研經/">歸納法研經</a>
-            </span>
-
-            
-
-            <!-- Post Views -->
-            <span class="post_entry-views">
-            </span>
-        </div>
-    </div>
-</div>
-
-        
-        
-    
-
-    
-
-    
-        <script>
-    var randomNum;
-
-    var locatePost = $('.locate-thumbnail-symbol').next();
-    for(var i = 0; i < 10; i++) {
-        randomNum = Math.floor(Math.random() * 19 + 1);
-
-        locatePost.children('.post_thumbnail-random').attr('id', 'random_thumbnail-'+randomNum);
-        locatePost.children('.post_thumbnail-random').css('background-image', 'url(' + '/steven-blog/img/random/material-' + randomNum + '.png' + ')')
-
-        locatePost = locatePost.next();
-    }
+    $('.post_thumbnail-random').css('background-image', 'url(' + '/steven-blog/img/random/material-' + randomNum + '.png' + ')');
 </script>
 
+        
+    
+            <p class="article-headline-p">
+                重新審視C語言：語言基礎
+            </p>
+        </div>
+
+
+
+
+
+                
+                    <!-- Paradox Post Info -->
+                    <div class="mdl-color-text--grey-700 mdl-card__supporting-text meta">
+
+    <!-- Author Avatar -->
+    <div id="author-avatar">
+        <img src="/steven-blog/img/steven_small_pic.jpg" width="44px" height="44px" alt="Author Avatar"/>
+    </div>
+    <!-- Author Name & Date -->
+    <div>
+        <strong>高宇哲</strong>
+        <span>3月 23, 2017</span>
+    </div>
+
+    <div class="section-spacer"></div>
+
+    <!-- Favorite -->
+    <!--
+        <button id="article-functions-like-button" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon btn-like">
+            <i class="material-icons" role="presentation">favorite</i>
+            <span class="visuallyhidden">favorites</span>
+        </button>
+    -->
+
+    <!-- Qrcode -->
+    
+
+    <!-- Tags (bookmark) -->
+    
+    <button id="article-functions-viewtags-button" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon">
+        <i class="material-icons" role="presentation">bookmark</i>
+        <span class="visuallyhidden">bookmark</span>
+    </button>
+    <ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="article-functions-viewtags-button">
+        <li class="mdl-menu__item">
+        
+    </ul>
+    
+
+    <!-- Share -->
+    <button id="article-fuctions-share-button" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon">
+    <i class="material-icons" role="presentation">share</i>
+    <span class="visuallyhidden">share</span>
+</button>
+<ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="article-fuctions-share-button">
+    
+
+    
+
+    <!-- Share Weibo -->
+    
+
+    <!-- Share Twitter -->
+    
+
+    <!-- Share Facebook -->
+    
+
+    <!-- Share Google+ -->
+    
+
+    <!-- Share LinkedIn -->
+    
+
+    <!-- Share QQ -->
+    
+
+    <!-- Share Telegram -->
+    
+</ul>
+
+</div>
+
+                
+
+                <!-- Post Content -->
+                <div id="post-content" class="markdown-Github mdl-color-text--grey-700 mdl-card__supporting-text fade out">
+    
+        <h1 id="C的特性"><a href="#C的特性" class="headerlink" title="C的特性"></a>C的特性</h1><ul>
+<li>原始碼可攜性</li>
+<li>面對硬體的能力</li>
+<li>效率</li>
+</ul>
+<h1 id="C的歷史"><a href="#C的歷史" class="headerlink" title="C的歷史"></a>C的歷史</h1><p>C可追溯到Richard Martin開發的<a href="https://en.wikipedia.org/wiki/BCPL" target="_blank" rel="external">BCPL</a>語言，1978年出版了第一份C語言的官方文件，簡稱K&amp;R。</p>
+<h1 id="C程式的結構"><a href="#C程式的結構" class="headerlink" title="C程式的結構"></a>C程式的結構</h1><p>觀察以下程式碼</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// circle.c: Calculate and print the areas of circles</span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span> <span class="comment">// Preprocessor directive</span></span></div><div class="line"></div><div class="line"><span class="function"><span class="keyword">double</span> <span class="title">circularArea</span><span class="params">( <span class="keyword">double</span> r )</span></span>; <span class="comment">// Function declaration (prototype form)</span></div><div class="line"></div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> <span class="comment">// Definition of main() begins</span></span></div><div class="line">&#123;</div><div class="line">    <span class="keyword">double</span> radius = <span class="number">1.0</span>, area = <span class="number">0.0</span>;</div><div class="line"></div><div class="line">    <span class="built_in">printf</span>( <span class="string">" Areas of Circles\n\n"</span> );</div><div class="line">    <span class="built_in">printf</span>( <span class="string">" Radius Area\n"</span></div><div class="line">    <span class="string">"-------------------------\n"</span> );</div><div class="line"></div><div class="line">    area = circularArea( radius );</div><div class="line">    <span class="built_in">printf</span>( <span class="string">"%10.1f %10.2f\n"</span>, radius, area );</div><div class="line">    radius = <span class="number">5.0</span>;</div><div class="line">    area = circularArea( radius );</div><div class="line">    <span class="built_in">printf</span>( <span class="string">"%10.1f %10.2f\n"</span>, radius, area );</div><div class="line">    <span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">// The function circularArea( ) calculates the area of a circle</span></div><div class="line"><span class="comment">// Parameter: The radius of the circle</span></div><div class="line"><span class="comment">// Return value: The area of the circle</span></div><div class="line"><span class="function"><span class="keyword">double</span> <span class="title">circularArea</span><span class="params">( <span class="keyword">double</span> r )</span> <span class="comment">// Definition of circularArea( ) begins</span></span></div><div class="line">&#123;</div><div class="line">    <span class="keyword">const</span> <span class="keyword">double</span> pi = <span class="number">3.1415926536</span>; <span class="comment">// Pi is a constant</span></div><div class="line">    <span class="keyword">return</span> pi * r * r;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>circularArea()的原型(Prototype)宣告提供了必要的資訊，呼叫此函式的陳述式能得以編譯。但circularArea()放在main()之前，這讓該函式原型宣告變得多餘，這是因為函式的定義本身就是宣告。於是我們可以把C程式先定義到別的C程式中</p>
+<h1 id="C語言的原始檔"><a href="#C語言的原始檔" class="headerlink" title="C語言的原始檔"></a>C語言的原始檔</h1><p>通常C語言的原始檔具有下列三點特性</p>
+<ul>
+<li>前置處理器指示詞</li>
+<li>全域宣告</li>
+<li>函式定義</li>
+</ul>
+<p>考慮以下程式碼</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// circle.c: Calculate and print the areas of circles</span></div><div class="line"></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span> <span class="comment">// Preprocessor directive</span></span></div><div class="line"></div><div class="line"><span class="function"><span class="keyword">double</span> <span class="title">circularArea</span><span class="params">( <span class="keyword">double</span> r )</span></span>; <span class="comment">// Function declaration (prototype form)</span></div><div class="line"></div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> <span class="comment">// Definition of main() begins</span></span></div><div class="line">&#123;</div><div class="line">    <span class="keyword">double</span> radius = <span class="number">1.0</span>, area = <span class="number">0.0</span>;</div><div class="line"></div><div class="line">    <span class="built_in">printf</span>( <span class="string">" Areas of Circles\n\n"</span> );</div><div class="line">    <span class="built_in">printf</span>( <span class="string">" Radius Area\n"</span></div><div class="line">    <span class="string">"-------------------------\n"</span> );</div><div class="line"></div><div class="line">    area = circularArea( radius );</div><div class="line">    <span class="built_in">printf</span>( <span class="string">"%10.1f %10.2f\n"</span>, radius, area );</div><div class="line">    radius = <span class="number">5.0</span>;</div><div class="line">    area = circularArea( radius );</div><div class="line">    <span class="built_in">printf</span>( <span class="string">"%10.1f %10.2f\n"</span>, radius, area );</div><div class="line">    <span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// circulararea.c: Calculates the areas of circles.</span></div><div class="line"><span class="comment">// Called by main() in circle.c</span></div><div class="line"></div><div class="line"><span class="function"><span class="keyword">double</span> <span class="title">circularArea</span><span class="params">( <span class="keyword">double</span> r )</span> <span class="comment">// Definition of circularArea( ) begins</span></span></div><div class="line">&#123;</div><div class="line">    <span class="keyword">const</span> <span class="keyword">double</span> pi = <span class="number">3.1415926536</span>; <span class="comment">// Pi is a constant</span></div><div class="line">    <span class="keyword">return</span> pi * r * r;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>每個C原始檔構成了轉譯單位(Translation Unit)，編譯器會依序處理轉譯單位的內容，將原始碼解析成最小的語意單位，稱作符記(Token)</p>
+<p>但是在有許多C程式的情況下我們要如何進行編譯呢，我們可以建置一個Makefile來編譯以上程式</p>
+<figure class="highlight cmake"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># A basic makefile for "circle".</span></div><div class="line"></div><div class="line">CC = gcc</div><div class="line">CFLAGS = -Wall -g -std=c99</div><div class="line">LDFLAGS = -lm</div><div class="line"></div><div class="line">circle : circle.o circulararea.o</div><div class="line">	$(CC) $(LDFLAGS) -o $@ $^</div><div class="line">circle.o : circle.c</div><div class="line">	$(CC) $(CFLAGS) -o $@ -c $&lt;</div><div class="line">circulararea.o: circulararea.c</div><div class="line">	$(CC) $(CFLAGS) -o $@ -c $&lt;</div></pre></td></tr></table></figure>
+<p>只要將以上程式放在原始檔同一層下make指令就能進行編譯，可以參考<a href="http://mropengate.blogspot.tw/2015/06/makefile-makefile.html" target="_blank" rel="external">猴子都會寫的Makefile</a></p>
+
+    
+
     
 </div>
+
+
+                
+
+                <!-- Post Comments -->
+                
+                    
+
+
+    <!-- 使用 DISQUS -->
+    <div id="disqus-comment">
+        <div id="disqus_thread"></div>
+<script>
+    $('html').ready(function() {
+        setTimeout(function() {
+            var disqus_config = function () {
+                this.page.url = 'https://Yu-Che-Gao.github.io/steven-blog/2017/03/23/重新審視C語言：語言基礎/index.html';  // Replace PAGE_URL with your page's canonical URL variable
+                this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+            };
+
+            (function() { // DON'T EDIT BELOW THIS LINE
+                var d = document;
+                var s = d.createElement('script');
+                s.src = '//https-yu-che-gao-github-io-steven-blog.disqus.com/embed.js';
+                s.setAttribute('data-timestamp', + new Date());
+                (d.head || d.body).appendChild(s);
+            })();
+        },1500);
+    });
+</script>
+
+    </div>
+    <style>
+        #disqus-comment{
+            background-color: #eee;
+            padding: 2pc;
+        }
+    </style>
+
+
+                
+            </div>
+
+            <!-- Post Prev & Next Nav -->
+            <nav class="material-nav mdl-color-text--grey-50 mdl-cell mdl-cell--12-col">
+    <!-- Prev Nav -->
+    
+
+    <!-- Section Spacer -->
+    <div class="section-spacer"></div>
+
+    <!-- Next Nav -->
+    
+        <a href="/steven-blog/2017/03/04/你所不知道的C-非同步-執行緒/" id="post_nav-older" class="next-content">
+            舊篇
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon mdl-color--white mdl-color-text--grey-900" role="presentation">
+                <i class="material-icons">arrow_forward</i>
+            </button>
+        </a>
+    
+</nav>
+
+        </div>
+    </div>
+
 
 
                     

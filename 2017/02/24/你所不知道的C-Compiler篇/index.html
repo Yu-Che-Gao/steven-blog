@@ -374,7 +374,7 @@
 
 <p>上圖即是C#編譯的過程，值得注意的是C# Compiler並沒有直接將程式碼編譯成Binary Code，而是先將程式碼編譯成MSIL(Microsoft Intermediated Language，微軟中間碼)，在執行時期時利用.NET Framework內建的CLR(Common Language Runtime)執行JIT Compiler轉成Binary Code執行。</p>
 <h1 id="Hello-World"><a href="#Hello-World" class="headerlink" title="Hello World!!"></a>Hello World!!</h1><p>以下是一段hello world的<a href="https://github.com/Yu-Che-Gao/steven-blog/blob/gh-pages/code/hello.cs" target="_blank" rel="external">程式碼</a></p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">using</span> System;</div><div class="line"></div><div class="line"><span class="keyword">namespace</span> hello</div><div class="line">&#123;</div><div class="line">    <span class="keyword">class</span> Program</div><div class="line">    &#123;</div><div class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">Main</span><span class="params">(<span class="built_in">string</span>[] args)</span></span></div><div class="line">        &#123;</div><div class="line">            System.Console.WriteLine(<span class="string">"hello world"</span>);</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">using System;</div><div class="line"></div><div class="line">namespace hello</div><div class="line">&#123;</div><div class="line">    class Program</div><div class="line">    &#123;</div><div class="line">        public static void Main(string[] args)</div><div class="line">        &#123;</div><div class="line">            System.Console.WriteLine(&quot;hello world&quot;);</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <p>利用<a href="https://msdn.microsoft.com/en-us/library/78f4aasd.aspx" target="_blank" rel="external">csc.exe</a>編譯完之後會產生一個exe檔。</p>
 <p>使用<a href="http://ilspy.net/" target="_blank" rel="external">ILSpy</a>分析這個exe檔，會發現IL碼長這樣。</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div></pre></td><td class="code"><pre><div class="line">.namespace hello</div><div class="line">&#123;</div><div class="line">	.class private auto ansi beforefieldinit hello.Program</div><div class="line">		extends [mscorlib]System.Object</div><div class="line">	&#123;</div><div class="line">		// Methods</div><div class="line">		.method public hidebysig static </div><div class="line">			void Main (</div><div class="line">				string[] args</div><div class="line">			) cil managed </div><div class="line">		&#123;</div><div class="line">			// Method begins at RVA 0x2050</div><div class="line">			// Code size 13 (0xd)</div><div class="line">			.maxstack 8</div><div class="line">			.entrypoint</div><div class="line"></div><div class="line">			IL_0000: nop</div><div class="line">			IL_0001: ldstr &quot;hello world&quot;</div><div class="line">			IL_0006: call void [mscorlib]System.Console::WriteLine(string)</div><div class="line">			IL_000b: nop</div><div class="line">			IL_000c: ret</div><div class="line">		&#125; // end of method Program::Main</div><div class="line"></div><div class="line">		.method public hidebysig specialname rtspecialname </div><div class="line">			instance void .ctor () cil managed </div><div class="line">		&#123;</div><div class="line">			// Method begins at RVA 0x205e</div><div class="line">			// Code size 7 (0x7)</div><div class="line">			.maxstack 8</div><div class="line"></div><div class="line">			IL_0000: ldarg.0</div><div class="line">			IL_0001: call instance void [mscorlib]System.Object::.ctor()</div><div class="line">			IL_0006: ret</div><div class="line">		&#125; // end of method Program::.ctor</div><div class="line">	&#125; // end of class hello.Program</div><div class="line">&#125;</div></pre></td></tr></table></figure>
@@ -430,6 +430,14 @@
             <!-- Post Prev & Next Nav -->
             <nav class="material-nav mdl-color-text--grey-50 mdl-cell mdl-cell--12-col">
     <!-- Prev Nav -->
+    
+        <a href="/steven-blog/2017/03/04/你所不知道的C-非同步-執行緒/" id="post_nav-newer" class="prev-content">
+            <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon mdl-color--white mdl-color-text--grey-900" role="presentation">
+                <i class="material-icons">arrow_back</i>
+            </button>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            新篇
+        </a>
     
 
     <!-- Section Spacer -->
@@ -529,7 +537,7 @@
         </a>
         <ul class="dropdown-menu">
             <li>
-            <a class="sidebar_archives-link" href="/steven-blog/archives/2017/02/">二月 2017<span class="sidebar_archives-count">7</span></a>
+            <a class="sidebar_archives-link" href="/steven-blog/archives/2017/03/">三月 2017<span class="sidebar_archives-count">2</span></a></li><li><a class="sidebar_archives-link" href="/steven-blog/archives/2017/02/">二月 2017<span class="sidebar_archives-count">7</span></a>
         </ul>
     </li>
 
@@ -543,7 +551,7 @@
             </a>
             <ul class="dropdown-menu">
                 <li>
-                <a class="sidebar_archives-link" href="/steven-blog/categories/C/">C#<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/steven-blog/categories/node-js/">node.js<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/steven-blog/categories/歸納法研經/">歸納法研經<span class="sidebar_archives-count">5</span></a>
+                <a class="sidebar_archives-link" href="/steven-blog/categories/C/">C<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/steven-blog/categories/C/">C#<span class="sidebar_archives-count">2</span></a></li><li><a class="sidebar_archives-link" href="/steven-blog/categories/node-js/">node.js<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/steven-blog/categories/歸納法研經/">歸納法研經<span class="sidebar_archives-count">5</span></a>
             </ul>
         </li>
     
@@ -559,7 +567,7 @@
     <li>
         <a href="/archives">
             文章總數
-            <span class="sidebar-badge">7</span>
+            <span class="sidebar-badge">9</span>
         </a>
     </li>
 </ul>
