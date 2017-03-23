@@ -27,7 +27,8 @@
 <p>每個C原始檔構成了轉譯單位(Translation Unit)，編譯器會依序處理轉譯單位的內容，將原始碼解析成最小的語意單位，稱作符記(Token)</p>
 <p>但是在有許多C程式的情況下我們要如何進行編譯呢，我們可以建置一個Makefile來編譯以上程式</p>
 <figure class="highlight cmake"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># A basic makefile for "circle".</span></div><div class="line"></div><div class="line">CC = gcc</div><div class="line">CFLAGS = -Wall -g -std=c99</div><div class="line">LDFLAGS = -lm</div><div class="line"></div><div class="line">circle : circle.o circulararea.o</div><div class="line">	$(CC) $(LDFLAGS) -o $@ $^</div><div class="line">circle.o : circle.c</div><div class="line">	$(CC) $(CFLAGS) -o $@ -c $&lt;</div><div class="line">circulararea.o: circulararea.c</div><div class="line">	$(CC) $(CFLAGS) -o $@ -c $&lt;</div></pre></td></tr></table></figure>
-<p>只要將以上程式放在原始檔同一層下make指令就能進行編譯，可以參考<a href="http://mropengate.blogspot.tw/2015/06/makefile-makefile.html" target="_blank" rel="external">猴子都會寫的Makefile</a></p>
+<p>只要將以上程式放在原始檔同一層下make指令就能進行編譯，可以參考<a href="http://mropengate.blogspot.tw/2015/06/makefile-makefile.html" target="_blank" rel="external">猴子都會寫的Makefile</a>，完整程式碼已放於<a href="https://github.com/Yu-Che-Gao/steven-blog/tree/gh-pages/code/c-sourcefile" target="_blank" rel="external">github</a>上</p>
+<p>參考資料：C in a nutshell</p>
 ]]></content>
     </entry>
     
