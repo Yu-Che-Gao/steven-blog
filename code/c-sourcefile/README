@@ -3,7 +3,7 @@
 Compiling an application is as easy as
 
 ```
-make
+$ make
 ```
 
 # About
