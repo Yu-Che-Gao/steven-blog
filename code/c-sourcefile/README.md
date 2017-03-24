@@ -2,7 +2,7 @@
 
 Compiling an application is as easy as
 
-```cmake
+```
 make
 ```
 
