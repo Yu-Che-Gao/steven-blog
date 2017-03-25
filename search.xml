@@ -76,11 +76,11 @@
 
 <tr><td>int_leastN_t uint_leastN_t</td><td>寬度至少為N位元的整數型別</td><td>Required for N = 8, 16, 32, 64</td></tr>
 
-<tr><td>int_fastN_t uint_fastN_t</td><td>寬度至少為N位元的整數型別</td><td>Required for N = 8, 16, 32, 64</td></tr>
+<tr><td>int_fastN_t uint_fastN_t</td><td>寬度至少為N位元且處理最快的型別</td><td>Required for N = 8, 16, 32, 64</td></tr>
 
-<tr><td>intmax_t uintmax_t</td><td>寬度至少為N位元的整數型別</td><td>Required</td></tr>
+<tr><td>intmax_t uintmax_t</td><td>所實作的最寬整數型別</td><td>Required</td></tr>
 
-<tr><td>intptr_t uintptr_t</td><td>寬度至少為N位元的整數型別</td><td>not required to provide the types</td></tr>
+<tr><td>intptr_t uintptr_t</td><td>足以儲存指標值的整數型別</td><td>not required to provide the types</td></tr>
 
 </table>]]></content>
     </entry>
