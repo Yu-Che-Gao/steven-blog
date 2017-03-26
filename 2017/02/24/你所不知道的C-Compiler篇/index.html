@@ -179,7 +179,8 @@
 
     <!-- Custom Head -->
     
-<link rel="stylesheet" href="/css/prism.css" type="text/css"></head>
+<link rel="stylesheet" href="/steven-blog/css/prism-tomorrow.css" type="text/css">
+<link rel="stylesheet" href="/steven-blog/css/prism-line-numbers.css" type="text/css"></head>
 
 
     
@@ -374,11 +375,58 @@
 
 <p>上圖即是C#編譯的過程，值得注意的是C# Compiler並沒有直接將程式碼編譯成Binary Code，而是先將程式碼編譯成MSIL(Microsoft Intermediated Language，微軟中間碼)，在執行時期時利用.NET Framework內建的CLR(Common Language Runtime)執行JIT Compiler轉成Binary Code執行。</p>
 <h1 id="Hello-World"><a href="#Hello-World" class="headerlink" title="Hello World!!"></a>Hello World!!</h1><p>以下是一段hello world的<a href="https://github.com/Yu-Che-Gao/steven-blog/blob/gh-pages/code/hello.cs" target="_blank" rel="external">程式碼</a></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">using System;</div><div class="line"></div><div class="line">namespace hello</div><div class="line">&#123;</div><div class="line">    class Program</div><div class="line">    &#123;</div><div class="line">        public static void Main(string[] args)</div><div class="line">        &#123;</div><div class="line">            System.Console.WriteLine(&quot;hello world&quot;);</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<pre class="line-numbers language-clike="><code class="language-clike=">using System;
+
+namespace hello
+{
+    class Program
+    {
+        public static void Main(string[] args)
+        {
+            System.Console.WriteLine("hello world");
+        }
+    }
+}
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>利用<a href="https://msdn.microsoft.com/en-us/library/78f4aasd.aspx" target="_blank" rel="external">csc.exe</a>編譯完之後會產生一個exe檔。</p>
 <p>使用<a href="http://ilspy.net/" target="_blank" rel="external">ILSpy</a>分析這個exe檔，會發現IL碼長這樣。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div></pre></td><td class="code"><pre><div class="line">.namespace hello</div><div class="line">&#123;</div><div class="line">	.class private auto ansi beforefieldinit hello.Program</div><div class="line">		extends [mscorlib]System.Object</div><div class="line">	&#123;</div><div class="line">		// Methods</div><div class="line">		.method public hidebysig static </div><div class="line">			void Main (</div><div class="line">				string[] args</div><div class="line">			) cil managed </div><div class="line">		&#123;</div><div class="line">			// Method begins at RVA 0x2050</div><div class="line">			// Code size 13 (0xd)</div><div class="line">			.maxstack 8</div><div class="line">			.entrypoint</div><div class="line"></div><div class="line">			IL_0000: nop</div><div class="line">			IL_0001: ldstr &quot;hello world&quot;</div><div class="line">			IL_0006: call void [mscorlib]System.Console::WriteLine(string)</div><div class="line">			IL_000b: nop</div><div class="line">			IL_000c: ret</div><div class="line">		&#125; // end of method Program::Main</div><div class="line"></div><div class="line">		.method public hidebysig specialname rtspecialname </div><div class="line">			instance void .ctor () cil managed </div><div class="line">		&#123;</div><div class="line">			// Method begins at RVA 0x205e</div><div class="line">			// Code size 7 (0x7)</div><div class="line">			.maxstack 8</div><div class="line"></div><div class="line">			IL_0000: ldarg.0</div><div class="line">			IL_0001: call instance void [mscorlib]System.Object::.ctor()</div><div class="line">			IL_0006: ret</div><div class="line">		&#125; // end of method Program::.ctor</div><div class="line">	&#125; // end of class hello.Program</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>值得注意的是第19行: call void [mscorlib]System.Console::WriteLine(string)。在IL階段並沒有把Console.WriteLine編進去，而是等到CLR載入時才編譯。</p>
+<pre><code>.namespace hello
+{
+    .class private auto ansi beforefieldinit hello.Program
+        extends [mscorlib]System.Object
+    {
+        // Methods
+        .method public hidebysig static 
+            void Main (
+                string[] args
+            ) cil managed 
+        {
+            // Method begins at RVA 0x2050
+            // Code size 13 (0xd)
+            .maxstack 8
+            .entrypoint
+
+            IL_0000: nop
+            IL_0001: ldstr &quot;hello world&quot;
+            IL_0006: call void [mscorlib]System.Console::WriteLine(string)
+            IL_000b: nop
+            IL_000c: ret
+        } // end of method Program::Main
+
+        .method public hidebysig specialname rtspecialname 
+            instance void .ctor () cil managed 
+        {
+            // Method begins at RVA 0x205e
+            // Code size 7 (0x7)
+            .maxstack 8
+
+            IL_0000: ldarg.0
+            IL_0001: call instance void [mscorlib]System.Object::.ctor()
+            IL_0006: ret
+        } // end of method Program::.ctor
+    } // end of class hello.Program
+}
+</code></pre><p>值得注意的是第19行: call void [mscorlib]System.Console::WriteLine(string)。在IL階段並沒有把Console.WriteLine編進去，而是等到CLR載入時才編譯。</p>
 
     
 

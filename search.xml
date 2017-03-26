@@ -7,24 +7,104 @@
       <title><![CDATA[Mongodb基本操作：insert & update]]></title>
       <url>https://Yu-Che-Gao.github.io/steven-blog/2017/03/26/Mongodb%E5%9F%BA%E6%9C%AC%E6%93%8D%E4%BD%9C%EF%BC%9Ainsert-update/</url>
       <content type="html"><![CDATA[<h1 id="Insert-amp-Update"><a href="#Insert-amp-Update" class="headerlink" title="Insert &amp; Update"></a>Insert &amp; Update</h1><h2 id="insert"><a href="#insert" class="headerlink" title="insert"></a>insert</h2><p>mongodb insert的方式</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">db.log.insert(&#123;</div><div class="line">    編號: <span class="number">4</span>,</div><div class="line">    書本資料: <span class="string">"超人氣台灣美食"</span>,</div><div class="line">    價錢: <span class="number">250</span>,</div><div class="line">    借閱人: <span class="string">"小華"</span>,</div><div class="line">    借閱時間: ISODate(<span class="string">"2015-07-30T22:30:30:00Z"</span>)</div><div class="line">&#125;)</div></pre></td></tr></table></figure>
+<pre class="line-numbers language-javascript"><code class="language-javascript">db<span class="token punctuation">.</span>log<span class="token punctuation">.</span><span class="token function">insert</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+    編號<span class="token punctuation">:</span> <span class="token number">4</span><span class="token punctuation">,</span>
+    書本資料<span class="token punctuation">:</span> <span class="token string">"超人氣台灣美食"</span><span class="token punctuation">,</span>
+    價錢<span class="token punctuation">:</span> <span class="token number">250</span><span class="token punctuation">,</span>
+    借閱人<span class="token punctuation">:</span> <span class="token string">"小華"</span><span class="token punctuation">,</span>
+    借閱時間<span class="token punctuation">:</span> <span class="token function">ISODate</span><span class="token punctuation">(</span><span class="token string">"2015-07-30T22:30:30:00Z"</span><span class="token punctuation">)</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <h2 id="update"><a href="#update" class="headerlink" title="update"></a>update</h2><p>mongodb update的方式</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">db.log.update(&#123;</div><div class="line">    書本資料:<span class="string">"超人氣台灣美食"</span></div><div class="line">&#125;, &#123;</div><div class="line">    <span class="attr">$set</span>:&#123;<span class="string">"借閱人"</span>: <span class="string">"高宇哲"</span>&#125;</div><div class="line">&#125;)</div></pre></td></tr></table></figure>
+<pre class="line-numbers language-javascript"><code class="language-javascript">db<span class="token punctuation">.</span>log<span class="token punctuation">.</span><span class="token function">update</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+    書本資料<span class="token punctuation">:</span><span class="token string">"超人氣台灣美食"</span>
+<span class="token punctuation">}</span><span class="token punctuation">,</span> <span class="token punctuation">{</span>
+    $<span class="token keyword">set</span><span class="token punctuation">:</span><span class="token punctuation">{</span><span class="token string">"借閱人"</span><span class="token punctuation">:</span> <span class="token string">"高宇哲"</span><span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <h1 id="Field-Update-Operators"><a href="#Field-Update-Operators" class="headerlink" title="Field Update Operators"></a>Field Update Operators</h1><p>Reference: <a href="https://docs.mongodb.com/manual/reference/operator/update-field/" target="_blank" rel="external">https://docs.mongodb.com/manual/reference/operator/update-field/</a></p>
 <h2 id="batch-insert"><a href="#batch-insert" class="headerlink" title="batch insert"></a>batch insert</h2><p>mongodb需要大量insert時的方式</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">db.user.remove(&#123;&#125;)</div><div class="line">db.user.insert([</div><div class="line">    &#123;<span class="attr">_id</span>:<span class="string">"001"</span>, <span class="attr">name</span>:<span class="string">"小明"</span>, <span class="attr">balance</span>:<span class="number">1500</span>&#125;,</div><div class="line">    &#123;<span class="attr">_id</span>:<span class="string">"002"</span>, <span class="attr">name</span>:<span class="string">"小高"</span>, <span class="attr">balance</span>:<span class="number">3000</span>&#125;,</div><div class="line">    &#123;<span class="attr">_id</span>:<span class="string">"003"</span>, <span class="attr">name</span>:<span class="string">"小華"</span>, <span class="attr">balance</span>:<span class="number">4500</span>&#125;,</div><div class="line">    &#123;<span class="attr">_id</span>:<span class="string">"004"</span>, <span class="attr">name</span>:<span class="string">"小花"</span>, <span class="attr">balance</span>:<span class="number">1500</span>&#125;,</div><div class="line">    &#123;<span class="attr">_id</span>:<span class="string">"005"</span>, <span class="attr">name</span>:<span class="string">"魔人啾啾"</span>, <span class="attr">balance</span>:<span class="number">1800</span>&#125;</div><div class="line">])</div></pre></td></tr></table></figure>
+<pre class="line-numbers language-javascript"><code class="language-javascript">db<span class="token punctuation">.</span>user<span class="token punctuation">.</span><span class="token function">remove</span><span class="token punctuation">(</span><span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">)</span>
+db<span class="token punctuation">.</span>user<span class="token punctuation">.</span><span class="token function">insert</span><span class="token punctuation">(</span><span class="token punctuation">[</span>
+    <span class="token punctuation">{</span>_id<span class="token punctuation">:</span><span class="token string">"001"</span><span class="token punctuation">,</span> name<span class="token punctuation">:</span><span class="token string">"小明"</span><span class="token punctuation">,</span> balance<span class="token punctuation">:</span><span class="token number">1500</span><span class="token punctuation">}</span><span class="token punctuation">,</span>
+    <span class="token punctuation">{</span>_id<span class="token punctuation">:</span><span class="token string">"002"</span><span class="token punctuation">,</span> name<span class="token punctuation">:</span><span class="token string">"小高"</span><span class="token punctuation">,</span> balance<span class="token punctuation">:</span><span class="token number">3000</span><span class="token punctuation">}</span><span class="token punctuation">,</span>
+    <span class="token punctuation">{</span>_id<span class="token punctuation">:</span><span class="token string">"003"</span><span class="token punctuation">,</span> name<span class="token punctuation">:</span><span class="token string">"小華"</span><span class="token punctuation">,</span> balance<span class="token punctuation">:</span><span class="token number">4500</span><span class="token punctuation">}</span><span class="token punctuation">,</span>
+    <span class="token punctuation">{</span>_id<span class="token punctuation">:</span><span class="token string">"004"</span><span class="token punctuation">,</span> name<span class="token punctuation">:</span><span class="token string">"小花"</span><span class="token punctuation">,</span> balance<span class="token punctuation">:</span><span class="token number">1500</span><span class="token punctuation">}</span><span class="token punctuation">,</span>
+    <span class="token punctuation">{</span>_id<span class="token punctuation">:</span><span class="token string">"005"</span><span class="token punctuation">,</span> name<span class="token punctuation">:</span><span class="token string">"魔人啾啾"</span><span class="token punctuation">,</span> balance<span class="token punctuation">:</span><span class="token number">1800</span><span class="token punctuation">}</span>
+<span class="token punctuation">]</span><span class="token punctuation">)</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <h2 id="inc-operator"><a href="#inc-operator" class="headerlink" title="$inc operator"></a>$inc operator</h2><p>使用$inc運算子對某欄位增加一特定值，其格式為</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&#123; $inc: &#123; &lt;field1&gt;: &lt;amount1&gt;, &lt;field2&gt;: &lt;amount2&gt;, ... &#125; &#125;</div></pre></td></tr></table></figure>
-<p>Example：</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">db.user.update(&#123;</div><div class="line">    <span class="attr">name</span>: <span class="string">"小明"</span></div><div class="line">&#125;, &#123;</div><div class="line">    <span class="attr">$inc</span>: &#123;<span class="attr">balance</span>:<span class="number">-1000</span>&#125;</div><div class="line">&#125;)</div></pre></td></tr></table></figure>
-<h2 id="set-operator"><a href="#set-operator" class="headerlink" title="$set operator"></a>$set operator</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">db.user.update(&#123;</div><div class="line">    <span class="attr">name</span>: <span class="string">"小明"</span></div><div class="line">&#125;, &#123;</div><div class="line">    <span class="attr">$set</span>: &#123;<span class="attr">balance</span>:<span class="number">1500</span>&#125;</div><div class="line">&#125;)</div></pre></td></tr></table></figure>
+<pre><code>{ $inc: { &lt;field1&gt;: &lt;amount1&gt;, &lt;field2&gt;: &lt;amount2&gt;, ... } }
+</code></pre><p>Example：</p>
+<pre class="line-numbers language-javascript"><code class="language-javascript">db<span class="token punctuation">.</span>user<span class="token punctuation">.</span><span class="token function">update</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+    name<span class="token punctuation">:</span> <span class="token string">"小明"</span>
+<span class="token punctuation">}</span><span class="token punctuation">,</span> <span class="token punctuation">{</span>
+    $inc<span class="token punctuation">:</span> <span class="token punctuation">{</span>balance<span class="token punctuation">:</span><span class="token operator">-</span><span class="token number">1000</span><span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h2 id="set-operator"><a href="#set-operator" class="headerlink" title="$set operator"></a>$set operator</h2><pre class="line-numbers language-javascript"><code class="language-javascript">db<span class="token punctuation">.</span>user<span class="token punctuation">.</span><span class="token function">update</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+    name<span class="token punctuation">:</span> <span class="token string">"小明"</span>
+<span class="token punctuation">}</span><span class="token punctuation">,</span> <span class="token punctuation">{</span>
+    $<span class="token keyword">set</span><span class="token punctuation">:</span> <span class="token punctuation">{</span>balance<span class="token punctuation">:</span><span class="token number">1500</span><span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <h2 id="unset-operator"><a href="#unset-operator" class="headerlink" title="$unset operator"></a>$unset operator</h2><p>使用$unset運算子刪除部分欄位，其格式如下：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&#123; $unset: &#123; &lt;field1&gt;: &quot;&quot;, ... &#125; &#125;</div></pre></td></tr></table></figure>
-<p>Example：</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">db.user.update(&#123;</div><div class="line">    <span class="attr">name</span>: <span class="string">"小明"</span></div><div class="line">&#125;, &#123;</div><div class="line">    <span class="attr">$unset</span>:&#123;<span class="attr">balance</span>:<span class="string">""</span>&#125;</div><div class="line">&#125;)</div></pre></td></tr></table></figure>
-<h1 id="案例"><a href="#案例" class="headerlink" title="案例"></a>案例</h1><h2 id="Question：將以下資料的UST改成NTD-price乘以31-4"><a href="#Question：將以下資料的UST改成NTD-price乘以31-4" class="headerlink" title="Question：將以下資料的UST改成NTD, price乘以31.4"></a>Question：將以下資料的UST改成NTD, price乘以31.4</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">&#123; <span class="attr">_id</span>: <span class="string">"001"</span>, <span class="attr">product</span>: <span class="string">"Sony, SBH60"</span>, <span class="attr">type</span>: <span class="string">"USD"</span>, <span class="attr">price</span>: <span class="number">76.4</span> &#125;,</div><div class="line">&#123; <span class="attr">_id</span>: <span class="string">"002"</span>, <span class="attr">product</span>: <span class="string">"Sony, SBH70"</span>, <span class="attr">type</span>: <span class="string">"USD"</span>, <span class="attr">price</span>: <span class="number">75.8</span> &#125;,</div><div class="line">&#123; <span class="attr">_id</span>: <span class="string">"003"</span>, <span class="attr">product</span>: <span class="string">"Sony, SBH80"</span>, <span class="attr">type</span>: <span class="string">"NTD"</span>, <span class="attr">price</span>: <span class="number">2980</span> &#125;</div></pre></td></tr></table></figure>
-<h2 id="Ans"><a href="#Ans" class="headerlink" title="Ans"></a>Ans</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line">use product</div><div class="line">db.list.remove(&#123;&#125;)</div><div class="line">db.list.insert([</div><div class="line">    &#123; <span class="attr">_id</span>: <span class="string">"001"</span>, <span class="attr">product</span>: <span class="string">"Sony, SBH60"</span>, <span class="attr">type</span>: <span class="string">"USD"</span>, <span class="attr">price</span>: <span class="number">76.4</span> &#125;,</div><div class="line">    &#123; <span class="attr">_id</span>: <span class="string">"002"</span>, <span class="attr">product</span>: <span class="string">"Sony, SBH70"</span>, <span class="attr">type</span>: <span class="string">"USD"</span>, <span class="attr">price</span>: <span class="number">75.8</span> &#125;,</div><div class="line">    &#123; <span class="attr">_id</span>: <span class="string">"003"</span>, <span class="attr">product</span>: <span class="string">"Sony, SBH80"</span>, <span class="attr">type</span>: <span class="string">"NTD"</span>, <span class="attr">price</span>: <span class="number">2980</span> &#125;</div><div class="line">])</div><div class="line"></div><div class="line">db.list.update(&#123;</div><div class="line">    <span class="attr">type</span>:<span class="string">"USD"</span></div><div class="line">&#125;, &#123;</div><div class="line">    <span class="attr">$mul</span>: &#123;<span class="attr">price</span>:<span class="number">31.4</span>&#125;,</div><div class="line">    <span class="attr">$set</span>: &#123;<span class="attr">type</span>:<span class="string">"NTD"</span>&#125;</div><div class="line">&#125;, &#123;</div><div class="line">    <span class="attr">multi</span>: <span class="literal">true</span></div><div class="line">&#125;)</div></pre></td></tr></table></figure>
-<h1 id="Array-Update-Operator"><a href="#Array-Update-Operator" class="headerlink" title="Array Update Operator"></a>Array Update Operator</h1><h2 id="push-operator"><a href="#push-operator" class="headerlink" title="$push operator"></a>$push operator</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div></pre></td><td class="code"><pre><div class="line">use product</div><div class="line">db.serial.remove(&#123;&#125;)</div><div class="line">db.serial.insert(&#123;</div><div class="line">    <span class="attr">_id</span>: <span class="string">"001"</span>, <span class="attr">list</span>: [<span class="number">30</span>, <span class="number">40</span>, <span class="number">50</span>]</div><div class="line">&#125;)</div><div class="line"></div><div class="line">db.serial.update(&#123;</div><div class="line">    <span class="attr">_id</span>: <span class="string">"001"</span></div><div class="line">&#125;, &#123;</div><div class="line">    <span class="attr">$push</span>: &#123;<span class="attr">list</span>: <span class="number">80</span>&#125;</div><div class="line">&#125;)</div><div class="line"></div><div class="line">db.serial.update(&#123;</div><div class="line">    <span class="attr">_id</span>: <span class="string">"001"</span></div><div class="line">&#125;, &#123;</div><div class="line">    <span class="attr">$push</span>: &#123;<span class="attr">list</span>: <span class="number">80</span>&#125;</div><div class="line">&#125;)</div><div class="line"></div><div class="line">db.serial.update(&#123;</div><div class="line">    <span class="attr">_id</span>: <span class="string">"001"</span></div><div class="line">&#125;, &#123;</div><div class="line">    <span class="attr">$push</span>: &#123;</div><div class="line">        <span class="attr">list</span>:&#123;<span class="attr">$each</span>: [<span class="number">70</span>], <span class="attr">$position</span>: <span class="number">3</span>&#125;</div><div class="line">    &#125;</div><div class="line">&#125;)</div></pre></td></tr></table></figure>]]></content>
+<pre><code>{ $unset: { &lt;field1&gt;: &quot;&quot;, ... } }
+</code></pre><p>Example：</p>
+<pre class="line-numbers language-javascript"><code class="language-javascript">db<span class="token punctuation">.</span>user<span class="token punctuation">.</span><span class="token function">update</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+    name<span class="token punctuation">:</span> <span class="token string">"小明"</span>
+<span class="token punctuation">}</span><span class="token punctuation">,</span> <span class="token punctuation">{</span>
+    $unset<span class="token punctuation">:</span><span class="token punctuation">{</span>balance<span class="token punctuation">:</span><span class="token string">""</span><span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h1 id="案例"><a href="#案例" class="headerlink" title="案例"></a>案例</h1><h2 id="Question：將以下資料的UST改成NTD-price乘以31-4"><a href="#Question：將以下資料的UST改成NTD-price乘以31-4" class="headerlink" title="Question：將以下資料的UST改成NTD, price乘以31.4"></a>Question：將以下資料的UST改成NTD, price乘以31.4</h2><pre class="line-numbers language-javascript"><code class="language-javascript"><span class="token punctuation">{</span> _id<span class="token punctuation">:</span> <span class="token string">"001"</span><span class="token punctuation">,</span> product<span class="token punctuation">:</span> <span class="token string">"Sony, SBH60"</span><span class="token punctuation">,</span> type<span class="token punctuation">:</span> <span class="token string">"USD"</span><span class="token punctuation">,</span> price<span class="token punctuation">:</span> <span class="token number">76.4</span> <span class="token punctuation">}</span><span class="token punctuation">,</span>
+<span class="token punctuation">{</span> _id<span class="token punctuation">:</span> <span class="token string">"002"</span><span class="token punctuation">,</span> product<span class="token punctuation">:</span> <span class="token string">"Sony, SBH70"</span><span class="token punctuation">,</span> type<span class="token punctuation">:</span> <span class="token string">"USD"</span><span class="token punctuation">,</span> price<span class="token punctuation">:</span> <span class="token number">75.8</span> <span class="token punctuation">}</span><span class="token punctuation">,</span>
+<span class="token punctuation">{</span> _id<span class="token punctuation">:</span> <span class="token string">"003"</span><span class="token punctuation">,</span> product<span class="token punctuation">:</span> <span class="token string">"Sony, SBH80"</span><span class="token punctuation">,</span> type<span class="token punctuation">:</span> <span class="token string">"NTD"</span><span class="token punctuation">,</span> price<span class="token punctuation">:</span> <span class="token number">2980</span> <span class="token punctuation">}</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+<h2 id="Ans"><a href="#Ans" class="headerlink" title="Ans"></a>Ans</h2><pre class="line-numbers language-javascript"><code class="language-javascript">use product
+db<span class="token punctuation">.</span>list<span class="token punctuation">.</span><span class="token function">remove</span><span class="token punctuation">(</span><span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">)</span>
+db<span class="token punctuation">.</span>list<span class="token punctuation">.</span><span class="token function">insert</span><span class="token punctuation">(</span><span class="token punctuation">[</span>
+    <span class="token punctuation">{</span> _id<span class="token punctuation">:</span> <span class="token string">"001"</span><span class="token punctuation">,</span> product<span class="token punctuation">:</span> <span class="token string">"Sony, SBH60"</span><span class="token punctuation">,</span> type<span class="token punctuation">:</span> <span class="token string">"USD"</span><span class="token punctuation">,</span> price<span class="token punctuation">:</span> <span class="token number">76.4</span> <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    <span class="token punctuation">{</span> _id<span class="token punctuation">:</span> <span class="token string">"002"</span><span class="token punctuation">,</span> product<span class="token punctuation">:</span> <span class="token string">"Sony, SBH70"</span><span class="token punctuation">,</span> type<span class="token punctuation">:</span> <span class="token string">"USD"</span><span class="token punctuation">,</span> price<span class="token punctuation">:</span> <span class="token number">75.8</span> <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    <span class="token punctuation">{</span> _id<span class="token punctuation">:</span> <span class="token string">"003"</span><span class="token punctuation">,</span> product<span class="token punctuation">:</span> <span class="token string">"Sony, SBH80"</span><span class="token punctuation">,</span> type<span class="token punctuation">:</span> <span class="token string">"NTD"</span><span class="token punctuation">,</span> price<span class="token punctuation">:</span> <span class="token number">2980</span> <span class="token punctuation">}</span>
+<span class="token punctuation">]</span><span class="token punctuation">)</span>
+
+db<span class="token punctuation">.</span>list<span class="token punctuation">.</span><span class="token function">update</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+    type<span class="token punctuation">:</span><span class="token string">"USD"</span>
+<span class="token punctuation">}</span><span class="token punctuation">,</span> <span class="token punctuation">{</span>
+    $mul<span class="token punctuation">:</span> <span class="token punctuation">{</span>price<span class="token punctuation">:</span><span class="token number">31.4</span><span class="token punctuation">}</span><span class="token punctuation">,</span>
+    $<span class="token keyword">set</span><span class="token punctuation">:</span> <span class="token punctuation">{</span>type<span class="token punctuation">:</span><span class="token string">"NTD"</span><span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">,</span> <span class="token punctuation">{</span>
+    multi<span class="token punctuation">:</span> <span class="token boolean">true</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h1 id="Array-Update-Operator"><a href="#Array-Update-Operator" class="headerlink" title="Array Update Operator"></a>Array Update Operator</h1><h2 id="push-operator"><a href="#push-operator" class="headerlink" title="$push operator"></a>$push operator</h2><pre class="line-numbers language-javascript"><code class="language-javascript">use product
+db<span class="token punctuation">.</span>serial<span class="token punctuation">.</span><span class="token function">remove</span><span class="token punctuation">(</span><span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">)</span>
+db<span class="token punctuation">.</span>serial<span class="token punctuation">.</span><span class="token function">insert</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+    _id<span class="token punctuation">:</span> <span class="token string">"001"</span><span class="token punctuation">,</span> list<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token number">30</span><span class="token punctuation">,</span> <span class="token number">40</span><span class="token punctuation">,</span> <span class="token number">50</span><span class="token punctuation">]</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span>
+
+db<span class="token punctuation">.</span>serial<span class="token punctuation">.</span><span class="token function">update</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+    _id<span class="token punctuation">:</span> <span class="token string">"001"</span>
+<span class="token punctuation">}</span><span class="token punctuation">,</span> <span class="token punctuation">{</span>
+    $push<span class="token punctuation">:</span> <span class="token punctuation">{</span>list<span class="token punctuation">:</span> <span class="token number">80</span><span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span>
+
+db<span class="token punctuation">.</span>serial<span class="token punctuation">.</span><span class="token function">update</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+    _id<span class="token punctuation">:</span> <span class="token string">"001"</span>
+<span class="token punctuation">}</span><span class="token punctuation">,</span> <span class="token punctuation">{</span>
+    $push<span class="token punctuation">:</span> <span class="token punctuation">{</span>list<span class="token punctuation">:</span> <span class="token number">80</span><span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span>
+
+db<span class="token punctuation">.</span>serial<span class="token punctuation">.</span><span class="token function">update</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+    _id<span class="token punctuation">:</span> <span class="token string">"001"</span>
+<span class="token punctuation">}</span><span class="token punctuation">,</span> <span class="token punctuation">{</span>
+    $push<span class="token punctuation">:</span> <span class="token punctuation">{</span>
+        list<span class="token punctuation">:</span><span class="token punctuation">{</span>$each<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token number">70</span><span class="token punctuation">]</span><span class="token punctuation">,</span> $position<span class="token punctuation">:</span> <span class="token number">3</span><span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+]]></content>
     </entry>
     
     <entry>
@@ -79,37 +159,41 @@
 </table>
 
 <p>你可以自行決定是否要將char變數裡的數字解譯成字元碼或是其他東西，以以下程式碼為例</p>
-<pre><code>int main()
-{
-    char ch=&#39;A&#39;; // A variable with type char.
-    printf(&quot;The character %c has the character code %d.\n&quot;, ch, ch);
-    for ( ; ch &lt;= &#39;Z&#39;; ++ch )
-        printf(&quot;%2c&quot;, ch);
-    return 0;
-}
-</code></pre><p>此程式碼結果將會是</p>
+<pre class="line-numbers language-clike"><code class="language-clike">#include<span class="token operator">&lt;</span>stdio<span class="token punctuation">.</span>h<span class="token operator">></span>
+int <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token punctuation">{</span>
+    char ch<span class="token operator">=</span><span class="token string">'A'</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// A variable with type char.</span>
+    <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"The character %c has the character code %d.\n"</span><span class="token punctuation">,</span> ch<span class="token punctuation">,</span> ch<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">for</span> <span class="token punctuation">(</span> <span class="token punctuation">;</span> ch <span class="token operator">&lt;=</span> <span class="token string">'Z'</span><span class="token punctuation">;</span> <span class="token operator">++</span>ch <span class="token punctuation">)</span>
+        <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"%2c"</span><span class="token punctuation">,</span> ch<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">return</span> <span class="token number">0</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>此程式碼結果將會是</p>
 <pre><code>The character A has the character code 65.
  A B C D E F G H I J K L M N O P Q R S T U V W X Y Z
 </code></pre><p>值得注意的是，若需要char保有小於0或大於127的值，則應該改用signed char或unsinged char</p>
 <p>C只對其他標準型別定義最小儲存空間(Minimum Storage Sizes)，雖然整數型別可能比它們的最小儲存空間還大，但實作上必須以以下順序為原則</p>
-<pre><code>sizeof(short) &lt;= sizeof(int) &lt;= sizeof(long) &lt;= sizeof(long long)
-</code></pre><p>在C compiler中，limits.h標頭檔裡可以找到整數型別的值範圍，其中也定義了INT_MIN、INT_MAX、UNIT_MAX等巨集，以以下程式碼為例</p>
-<pre><code>// limits.c: Display the value ranges of char and int.
-// ---------------------------------------------------
-#include &lt;stdio.h&gt;
-#include &lt;limits.h&gt; // Contains the macros CHAR_MIN, INT_MIN, etc.
+<pre class="line-numbers language-clike"><code class="language-clike"><span class="token function">sizeof</span><span class="token punctuation">(</span>short<span class="token punctuation">)</span> <span class="token operator">&lt;=</span> <span class="token function">sizeof</span><span class="token punctuation">(</span>int<span class="token punctuation">)</span> <span class="token operator">&lt;=</span> <span class="token function">sizeof</span><span class="token punctuation">(</span>long<span class="token punctuation">)</span> <span class="token operator">&lt;=</span> <span class="token function">sizeof</span><span class="token punctuation">(</span>long long<span class="token punctuation">)</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p>在C compiler中，limits.h標頭檔裡可以找到整數型別的值範圍，其中也定義了INT_MIN、INT_MAX、UNIT_MAX等巨集，以以下程式碼為例</p>
+<pre class="line-numbers language-clike"><code class="language-clike"><span class="token comment" spellcheck="true">// limits.c: Display the value ranges of char and int.</span>
+<span class="token comment" spellcheck="true">// ---------------------------------------------------</span>
+#include <span class="token operator">&lt;</span>stdio<span class="token punctuation">.</span>h<span class="token operator">></span>
+#include <span class="token operator">&lt;</span>limits<span class="token punctuation">.</span>h<span class="token operator">></span> <span class="token comment" spellcheck="true">// Contains the macros CHAR_MIN, INT_MIN, etc.</span>
 
-int main( )
-{
-    printf(&quot;Storage sizes and value ranges of the types char and int\n\n&quot;);
-    printf(&quot;The type char is %s.\n\n&quot;, CHAR_MIN &lt; 0 ? &quot;signed&quot; :&quot;unsigned&quot;);
-    printf(&quot; Type Size (in bytes) Minimum Maximum\n&quot;
-    &quot;---------------------------------------------------\n&quot;);
-    printf(&quot; char %8d %20d %15d\n&quot;, sizeof(char), CHAR_MIN, CHAR_MAX );
-    printf(&quot; int  %8d %20d %15d\n&quot;, sizeof(int), INT_MIN, INT_MAX );
-    return 0;
-}
-</code></pre><p>編譯後執行結果將會顯示char以及int的最小和最大值</p>
+int <span class="token function">main</span><span class="token punctuation">(</span> <span class="token punctuation">)</span>
+<span class="token punctuation">{</span>
+    <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"Storage sizes and value ranges of the types char and int\n\n"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"The type char is %s.\n\n"</span><span class="token punctuation">,</span> CHAR_MIN <span class="token operator">&lt;</span> <span class="token number">0</span> <span class="token operator">?</span> <span class="token string">"signed"</span> <span class="token punctuation">:</span><span class="token string">"unsigned"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">" Type Size (in bytes) Minimum Maximum\n"</span>
+    <span class="token string">"---------------------------------------------------\n"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">" char %8d %20d %15d\n"</span><span class="token punctuation">,</span> <span class="token function">sizeof</span><span class="token punctuation">(</span>char<span class="token punctuation">)</span><span class="token punctuation">,</span> CHAR_MIN<span class="token punctuation">,</span> CHAR_MAX <span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">" int  %8d %20d %15d\n"</span><span class="token punctuation">,</span> <span class="token function">sizeof</span><span class="token punctuation">(</span>int<span class="token punctuation">)</span><span class="token punctuation">,</span> INT_MIN<span class="token punctuation">,</span> INT_MAX <span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">return</span> <span class="token number">0</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>編譯後執行結果將會顯示char以及int的最小和最大值</p>
 <pre><code>Storage sizes and value ranges of the types char and int
 
 The type char is signed.
@@ -155,7 +239,35 @@ The type char is signed.
 </ul>
 <h1 id="C的歷史"><a href="#C的歷史" class="headerlink" title="C的歷史"></a>C的歷史</h1><p>C可追溯到Richard Martin開發的<a href="https://en.wikipedia.org/wiki/BCPL" target="_blank" rel="external">BCPL</a>語言，1978年出版了第一份C語言的官方文件，簡稱K&amp;R。</p>
 <h1 id="C程式的結構"><a href="#C程式的結構" class="headerlink" title="C程式的結構"></a>C程式的結構</h1><p>觀察以下程式碼</p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// circle.c: Calculate and print the areas of circles</span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span> <span class="comment">// Preprocessor directive</span></span></div><div class="line"></div><div class="line"><span class="function"><span class="keyword">double</span> <span class="title">circularArea</span><span class="params">( <span class="keyword">double</span> r )</span></span>; <span class="comment">// Function declaration (prototype form)</span></div><div class="line"></div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> <span class="comment">// Definition of main() begins</span></span></div><div class="line">&#123;</div><div class="line">    <span class="keyword">double</span> radius = <span class="number">1.0</span>, area = <span class="number">0.0</span>;</div><div class="line"></div><div class="line">    <span class="built_in">printf</span>( <span class="string">" Areas of Circles\n\n"</span> );</div><div class="line">    <span class="built_in">printf</span>( <span class="string">" Radius Area\n"</span></div><div class="line">    <span class="string">"-------------------------\n"</span> );</div><div class="line"></div><div class="line">    area = circularArea( radius );</div><div class="line">    <span class="built_in">printf</span>( <span class="string">"%10.1f %10.2f\n"</span>, radius, area );</div><div class="line">    radius = <span class="number">5.0</span>;</div><div class="line">    area = circularArea( radius );</div><div class="line">    <span class="built_in">printf</span>( <span class="string">"%10.1f %10.2f\n"</span>, radius, area );</div><div class="line">    <span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">// The function circularArea( ) calculates the area of a circle</span></div><div class="line"><span class="comment">// Parameter: The radius of the circle</span></div><div class="line"><span class="comment">// Return value: The area of the circle</span></div><div class="line"><span class="function"><span class="keyword">double</span> <span class="title">circularArea</span><span class="params">( <span class="keyword">double</span> r )</span> <span class="comment">// Definition of circularArea( ) begins</span></span></div><div class="line">&#123;</div><div class="line">    <span class="keyword">const</span> <span class="keyword">double</span> pi = <span class="number">3.1415926536</span>; <span class="comment">// Pi is a constant</span></div><div class="line">    <span class="keyword">return</span> pi * r * r;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<pre class="line-numbers language-clike"><code class="language-clike"><span class="token comment" spellcheck="true">// circle.c: Calculate and print the areas of circles</span>
+#include <span class="token operator">&lt;</span>stdio<span class="token punctuation">.</span>h<span class="token operator">></span> <span class="token comment" spellcheck="true">// Preprocessor directive</span>
+double <span class="token function">circularArea</span><span class="token punctuation">(</span> double r <span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// Function declaration (prototype form)</span>
+
+int <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token comment" spellcheck="true">// Definition of main() begins</span>
+<span class="token punctuation">{</span>
+    double radius <span class="token operator">=</span> <span class="token number">1.0</span><span class="token punctuation">,</span> area <span class="token operator">=</span> <span class="token number">0.0</span><span class="token punctuation">;</span>
+
+    <span class="token function">printf</span><span class="token punctuation">(</span> <span class="token string">" Areas of Circles\n\n"</span> <span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token function">printf</span><span class="token punctuation">(</span> <span class="token string">" Radius Area\n"</span>
+    <span class="token string">"-------------------------\n"</span> <span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    area <span class="token operator">=</span> <span class="token function">circularArea</span><span class="token punctuation">(</span> radius <span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token function">printf</span><span class="token punctuation">(</span> <span class="token string">"%10.1f %10.2f\n"</span><span class="token punctuation">,</span> radius<span class="token punctuation">,</span> area <span class="token punctuation">)</span><span class="token punctuation">;</span>
+    radius <span class="token operator">=</span> <span class="token number">5.0</span><span class="token punctuation">;</span>
+    area <span class="token operator">=</span> <span class="token function">circularArea</span><span class="token punctuation">(</span> radius <span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token function">printf</span><span class="token punctuation">(</span> <span class="token string">"%10.1f %10.2f\n"</span><span class="token punctuation">,</span> radius<span class="token punctuation">,</span> area <span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">return</span> <span class="token number">0</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token comment" spellcheck="true">// The function circularArea( ) calculates the area of a circle</span>
+<span class="token comment" spellcheck="true">// Parameter: The radius of the circle</span>
+<span class="token comment" spellcheck="true">// Return value: The area of the circle</span>
+double <span class="token function">circularArea</span><span class="token punctuation">(</span> double r <span class="token punctuation">)</span> <span class="token comment" spellcheck="true">// Definition of circularArea( ) begins</span>
+<span class="token punctuation">{</span>
+    const double pi <span class="token operator">=</span> <span class="token number">3.1415926536</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// Pi is a constant</span>
+    <span class="token keyword">return</span> pi <span class="token operator">*</span> r <span class="token operator">*</span> r<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>circularArea()的原型(Prototype)宣告提供了必要的資訊，呼叫此函式的陳述式能得以編譯。但circularArea()放在main()之前，這讓該函式原型宣告變得多餘，這是因為函式的定義本身就是宣告。於是我們可以把C程式先定義到別的C程式中</p>
 <h1 id="C語言的原始檔"><a href="#C語言的原始檔" class="headerlink" title="C語言的原始檔"></a>C語言的原始檔</h1><p>通常C語言的原始檔具有下列三點特性</p>
 <ul>
@@ -164,11 +276,50 @@ The type char is signed.
 <li>函式定義</li>
 </ul>
 <p>考慮以下程式碼</p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// circle.c: Calculate and print the areas of circles</span></div><div class="line"></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span> <span class="comment">// Preprocessor directive</span></span></div><div class="line"></div><div class="line"><span class="function"><span class="keyword">double</span> <span class="title">circularArea</span><span class="params">( <span class="keyword">double</span> r )</span></span>; <span class="comment">// Function declaration (prototype form)</span></div><div class="line"></div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> <span class="comment">// Definition of main() begins</span></span></div><div class="line">&#123;</div><div class="line">    <span class="keyword">double</span> radius = <span class="number">1.0</span>, area = <span class="number">0.0</span>;</div><div class="line"></div><div class="line">    <span class="built_in">printf</span>( <span class="string">" Areas of Circles\n\n"</span> );</div><div class="line">    <span class="built_in">printf</span>( <span class="string">" Radius Area\n"</span></div><div class="line">    <span class="string">"-------------------------\n"</span> );</div><div class="line"></div><div class="line">    area = circularArea( radius );</div><div class="line">    <span class="built_in">printf</span>( <span class="string">"%10.1f %10.2f\n"</span>, radius, area );</div><div class="line">    radius = <span class="number">5.0</span>;</div><div class="line">    area = circularArea( radius );</div><div class="line">    <span class="built_in">printf</span>( <span class="string">"%10.1f %10.2f\n"</span>, radius, area );</div><div class="line">    <span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// circulararea.c: Calculates the areas of circles.</span></div><div class="line"><span class="comment">// Called by main() in circle.c</span></div><div class="line"></div><div class="line"><span class="function"><span class="keyword">double</span> <span class="title">circularArea</span><span class="params">( <span class="keyword">double</span> r )</span> <span class="comment">// Definition of circularArea( ) begins</span></span></div><div class="line">&#123;</div><div class="line">    <span class="keyword">const</span> <span class="keyword">double</span> pi = <span class="number">3.1415926536</span>; <span class="comment">// Pi is a constant</span></div><div class="line">    <span class="keyword">return</span> pi * r * r;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<pre class="line-numbers language-clike"><code class="language-clike"><span class="token comment" spellcheck="true">// circle.c: Calculate and print the areas of circles</span>
+#include <span class="token operator">&lt;</span>stdio<span class="token punctuation">.</span>h<span class="token operator">></span> <span class="token comment" spellcheck="true">// Preprocessor directive</span>
+double <span class="token function">circularArea</span><span class="token punctuation">(</span> double r <span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// Function declaration (prototype form)</span>
+
+int <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token comment" spellcheck="true">// Definition of main() begins</span>
+<span class="token punctuation">{</span>
+    double radius <span class="token operator">=</span> <span class="token number">1.0</span><span class="token punctuation">,</span> area <span class="token operator">=</span> <span class="token number">0.0</span><span class="token punctuation">;</span>
+
+    <span class="token function">printf</span><span class="token punctuation">(</span> <span class="token string">" Areas of Circles\n\n"</span> <span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token function">printf</span><span class="token punctuation">(</span> <span class="token string">" Radius Area\n"</span>
+    <span class="token string">"-------------------------\n"</span> <span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    area <span class="token operator">=</span> <span class="token function">circularArea</span><span class="token punctuation">(</span> radius <span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token function">printf</span><span class="token punctuation">(</span> <span class="token string">"%10.1f %10.2f\n"</span><span class="token punctuation">,</span> radius<span class="token punctuation">,</span> area <span class="token punctuation">)</span><span class="token punctuation">;</span>
+    radius <span class="token operator">=</span> <span class="token number">5.0</span><span class="token punctuation">;</span>
+    area <span class="token operator">=</span> <span class="token function">circularArea</span><span class="token punctuation">(</span> radius <span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token function">printf</span><span class="token punctuation">(</span> <span class="token string">"%10.1f %10.2f\n"</span><span class="token punctuation">,</span> radius<span class="token punctuation">,</span> area <span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">return</span> <span class="token number">0</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<pre class="line-numbers language-clike"><code class="language-clike"><span class="token comment" spellcheck="true">// circulararea.c: Calculates the areas of circles.</span>
+<span class="token comment" spellcheck="true">// Called by main() in circle.c</span>
+
+double <span class="token function">circularArea</span><span class="token punctuation">(</span> double r <span class="token punctuation">)</span> <span class="token comment" spellcheck="true">// Definition of circularArea( ) begins</span>
+<span class="token punctuation">{</span>
+    const double pi <span class="token operator">=</span> <span class="token number">3.1415926536</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// Pi is a constant</span>
+    <span class="token keyword">return</span> pi <span class="token operator">*</span> r <span class="token operator">*</span> r<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>每個C原始檔構成了轉譯單位(Translation Unit)，編譯器會依序處理轉譯單位的內容，將原始碼解析成最小的語意單位，稱作符記(Token)</p>
 <p>但是在有許多C程式的情況下我們要如何進行編譯呢，我們可以建置一個Makefile來編譯以上程式</p>
-<figure class="highlight cmake"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># A basic makefile for "circle".</span></div><div class="line"></div><div class="line">CC = gcc</div><div class="line">CFLAGS = -Wall -g -std=c99</div><div class="line">LDFLAGS = -lm</div><div class="line"></div><div class="line">circle : circle.o circulararea.o</div><div class="line">	$(CC) $(LDFLAGS) -o $@ $^</div><div class="line">circle.o : circle.c</div><div class="line">	$(CC) $(CFLAGS) -o $@ -c $&lt;</div><div class="line">circulararea.o: circulararea.c</div><div class="line">	$(CC) $(CFLAGS) -o $@ -c $&lt;</div></pre></td></tr></table></figure>
+<pre class="line-numbers language-bash"><code class="language-bash"><span class="token comment" spellcheck="true"># A basic makefile for "circle".</span>
+
+CC <span class="token operator">=</span> gcc
+CFLAGS <span class="token operator">=</span> -Wall -g -std<span class="token operator">=</span>c99
+LDFLAGS <span class="token operator">=</span> -lm
+
+circle <span class="token keyword">:</span> circle.o circulararea.o
+    <span class="token variable"><span class="token variable">$(</span>CC<span class="token variable">)</span></span> <span class="token variable"><span class="token variable">$(</span>LDFLAGS<span class="token variable">)</span></span> -o <span class="token variable">$@</span> $^
+circle.o <span class="token keyword">:</span> circle.c
+    <span class="token variable"><span class="token variable">$(</span>CC<span class="token variable">)</span></span> <span class="token variable"><span class="token variable">$(</span>CFLAGS<span class="token variable">)</span></span> -o <span class="token variable">$@</span> -c $<span class="token operator">&lt;</span>
+circulararea.o: circulararea.c
+    <span class="token variable"><span class="token variable">$(</span>CC<span class="token variable">)</span></span> <span class="token variable"><span class="token variable">$(</span>CFLAGS<span class="token variable">)</span></span> -o <span class="token variable">$@</span> -c $<span class="token operator">&lt;</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>只要將以上程式放在原始檔同一層下make指令就能進行編譯，可以參考<a href="http://mropengate.blogspot.tw/2015/06/makefile-makefile.html" target="_blank" rel="external">猴子都會寫的Makefile</a>，完整程式碼已放於<a href="https://github.com/Yu-Che-Gao/steven-blog/tree/gh-pages/code/c-sourcefile" target="_blank" rel="external">github</a>上</p>
 <p>參考資料：C in a nutshell</p>
 ]]></content>
@@ -177,9 +328,33 @@ The type char is signed.
     <entry>
       <title><![CDATA[你所不知道的C#: 非同步&執行緒]]></title>
       <url>https://Yu-Che-Gao.github.io/steven-blog/2017/03/04/%E4%BD%A0%E6%89%80%E4%B8%8D%E7%9F%A5%E9%81%93%E7%9A%84C-%E9%9D%9E%E5%90%8C%E6%AD%A5-%E5%9F%B7%E8%A1%8C%E7%B7%92/</url>
-      <content type="html"><![CDATA[<h1 id="非同步的C-程式"><a href="#非同步的C-程式" class="headerlink" title="非同步的C#程式"></a>非同步的C#程式</h1><h2 id="一個同步的下載網頁程式"><a href="#一個同步的下載網頁程式" class="headerlink" title="一個同步的下載網頁程式"></a>一個同步的下載網頁程式</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div></pre></td><td class="code"><pre><div class="line">using System;</div><div class="line">using System.Net;</div><div class="line"></div><div class="line">namespace test</div><div class="line">&#123;</div><div class="line">    public class Program</div><div class="line">    &#123;</div><div class="line">        public static void Main(string[] args)</div><div class="line">        &#123;</div><div class="line">            string content = downloadPage(&quot;https://yu-che-gao.github.io/steven-blog/&quot;);</div><div class="line">            Console.WriteLine(&quot;網頁內容總共為 &#123;0&#125; 個字元。&quot;, content.Length);</div><div class="line">            Console.ReadKey();</div><div class="line">        &#125;</div><div class="line"></div><div class="line">        static string downloadPage(string url)</div><div class="line">        &#123;</div><div class="line">            var webClient = new WebClient();  // 須引用 System.Net 命名空間。</div><div class="line">            string content = webClient.DownloadString(url);</div><div class="line">            return content;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+      <content type="html"><![CDATA[<h1 id="非同步的C-程式"><a href="#非同步的C-程式" class="headerlink" title="非同步的C#程式"></a>非同步的C#程式</h1><h2 id="一個同步的下載網頁程式"><a href="#一個同步的下載網頁程式" class="headerlink" title="一個同步的下載網頁程式"></a>一個同步的下載網頁程式</h2><pre class="line-numbers language-clike="><code class="language-clike=">using System;
+using System.Net;
+
+namespace test
+{
+    public class Program
+    {
+        public static void Main(string[] args)
+        {
+            string content = downloadPage("https://yu-che-gao.github.io/steven-blog/");
+            Console.WriteLine("網頁內容總共為 {0} 個字元。", content.Length);
+            Console.ReadKey();
+        }
+
+        static string downloadPage(string url)
+        {
+            var webClient = new WebClient();  // 須引用 System.Net 命名空間。
+            string content = webClient.DownloadString(url);
+            return content;
+        }
+    }
+}
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>考慮上面程式，上面程式利用WebClient的DownloadString()方法取得吾人部落格的原始碼，以下擷取重點程式。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">var webClient = new WebClient();  // 須引用 System.Net 命名空間。</div><div class="line">string content = webClient.DownloadString(url);</div></pre></td></tr></table></figure>
+<pre class="line-numbers language-clike="><code class="language-clike=">var webClient = new WebClient();  // 須引用 System.Net 命名空間。
+string content = webClient.DownloadString(url);
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
 <p>但可能會因為網路速度的不同，DownloadString方法執行時間會讓程式當在那裏。</p>
 ]]></content>
     </entry>
@@ -213,11 +388,58 @@ The type char is signed.
 
 <p>上圖即是C#編譯的過程，值得注意的是C# Compiler並沒有直接將程式碼編譯成Binary Code，而是先將程式碼編譯成MSIL(Microsoft Intermediated Language，微軟中間碼)，在執行時期時利用.NET Framework內建的CLR(Common Language Runtime)執行JIT Compiler轉成Binary Code執行。</p>
 <h1 id="Hello-World"><a href="#Hello-World" class="headerlink" title="Hello World!!"></a>Hello World!!</h1><p>以下是一段hello world的<a href="https://github.com/Yu-Che-Gao/steven-blog/blob/gh-pages/code/hello.cs" target="_blank" rel="external">程式碼</a></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">using System;</div><div class="line"></div><div class="line">namespace hello</div><div class="line">&#123;</div><div class="line">    class Program</div><div class="line">    &#123;</div><div class="line">        public static void Main(string[] args)</div><div class="line">        &#123;</div><div class="line">            System.Console.WriteLine(&quot;hello world&quot;);</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<pre class="line-numbers language-clike="><code class="language-clike=">using System;
+
+namespace hello
+{
+    class Program
+    {
+        public static void Main(string[] args)
+        {
+            System.Console.WriteLine("hello world");
+        }
+    }
+}
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>利用<a href="https://msdn.microsoft.com/en-us/library/78f4aasd.aspx" target="_blank" rel="external">csc.exe</a>編譯完之後會產生一個exe檔。</p>
 <p>使用<a href="http://ilspy.net/" target="_blank" rel="external">ILSpy</a>分析這個exe檔，會發現IL碼長這樣。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div></pre></td><td class="code"><pre><div class="line">.namespace hello</div><div class="line">&#123;</div><div class="line">	.class private auto ansi beforefieldinit hello.Program</div><div class="line">		extends [mscorlib]System.Object</div><div class="line">	&#123;</div><div class="line">		// Methods</div><div class="line">		.method public hidebysig static </div><div class="line">			void Main (</div><div class="line">				string[] args</div><div class="line">			) cil managed </div><div class="line">		&#123;</div><div class="line">			// Method begins at RVA 0x2050</div><div class="line">			// Code size 13 (0xd)</div><div class="line">			.maxstack 8</div><div class="line">			.entrypoint</div><div class="line"></div><div class="line">			IL_0000: nop</div><div class="line">			IL_0001: ldstr &quot;hello world&quot;</div><div class="line">			IL_0006: call void [mscorlib]System.Console::WriteLine(string)</div><div class="line">			IL_000b: nop</div><div class="line">			IL_000c: ret</div><div class="line">		&#125; // end of method Program::Main</div><div class="line"></div><div class="line">		.method public hidebysig specialname rtspecialname </div><div class="line">			instance void .ctor () cil managed </div><div class="line">		&#123;</div><div class="line">			// Method begins at RVA 0x205e</div><div class="line">			// Code size 7 (0x7)</div><div class="line">			.maxstack 8</div><div class="line"></div><div class="line">			IL_0000: ldarg.0</div><div class="line">			IL_0001: call instance void [mscorlib]System.Object::.ctor()</div><div class="line">			IL_0006: ret</div><div class="line">		&#125; // end of method Program::.ctor</div><div class="line">	&#125; // end of class hello.Program</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>值得注意的是第19行: call void [mscorlib]System.Console::WriteLine(string)。在IL階段並沒有把Console.WriteLine編進去，而是等到CLR載入時才編譯。</p>
+<pre><code>.namespace hello
+{
+    .class private auto ansi beforefieldinit hello.Program
+        extends [mscorlib]System.Object
+    {
+        // Methods
+        .method public hidebysig static 
+            void Main (
+                string[] args
+            ) cil managed 
+        {
+            // Method begins at RVA 0x2050
+            // Code size 13 (0xd)
+            .maxstack 8
+            .entrypoint
+
+            IL_0000: nop
+            IL_0001: ldstr &quot;hello world&quot;
+            IL_0006: call void [mscorlib]System.Console::WriteLine(string)
+            IL_000b: nop
+            IL_000c: ret
+        } // end of method Program::Main
+
+        .method public hidebysig specialname rtspecialname 
+            instance void .ctor () cil managed 
+        {
+            // Method begins at RVA 0x205e
+            // Code size 7 (0x7)
+            .maxstack 8
+
+            IL_0000: ldarg.0
+            IL_0001: call instance void [mscorlib]System.Object::.ctor()
+            IL_0006: ret
+        } // end of method Program::.ctor
+    } // end of class hello.Program
+}
+</code></pre><p>值得注意的是第19行: call void [mscorlib]System.Console::WriteLine(string)。在IL階段並沒有把Console.WriteLine編進去，而是等到CLR載入時才編譯。</p>
 ]]></content>
     </entry>
     
@@ -543,15 +765,15 @@ The type char is signed.
 <h3 id="Ans-2"><a href="#Ans-2" class="headerlink" title="Ans"></a>Ans</h3><p>根據v26，&quot;主的受膏者&quot;指的是耶穌，因此這裡的&quot;主&quot;是上帝。</p>
 <h1 id="專卷研經-參考政雄哥查經講道"><a href="#專卷研經-參考政雄哥查經講道" class="headerlink" title="專卷研經(參考政雄哥查經講道)"></a>專卷研經(參考政雄哥查經講道)</h1><h2 id="使徒行傳概論"><a href="#使徒行傳概論" class="headerlink" title="使徒行傳概論"></a>使徒行傳概論</h2><h3 id="作者"><a href="#作者" class="headerlink" title="作者"></a>作者</h3><p>路加</p>
 <h4 id="外證-主教愛任鈕-130-202-AD-與穆拉多利經目-175-AD"><a href="#外證-主教愛任鈕-130-202-AD-與穆拉多利經目-175-AD" class="headerlink" title="外證: 主教愛任鈕(130~202 AD)與穆拉多利經目(175 AD)"></a>外證: 主教愛任鈕(130~202 AD)與穆拉多利經目(175 AD)</h4><p>都提到路加是福音書的作者</p>
-<h4 id="內證"><a href="#內證" class="headerlink" title="內證:"></a>內證:</h4><pre><code>a. 使徒行傳多次用&quot;我們&quot;表達當時的特殊狀況:
+<h4 id="內證"><a href="#內證" class="headerlink" title="內證:"></a>內證:</h4><pre><code> a. 使徒行傳多次用&quot;我們&quot;表達當時的特殊狀況:
 
-   i. 徒16:10~17(保羅第二次宣道)
-   ii. 徒20:5~15, 徒21:1~18(保羅第三次宣道)
-   iii. 徒27:1~28:16(提撒利亞--&gt;羅馬)
-   vi. 門23~24, 西4:10~17(列路加為同伴)
-   v. 提後4:11(路加留在保羅身邊)
+    i. 徒16:10~17(保羅第二次宣道)
+    ii. 徒20:5~15, 徒21:1~18(保羅第三次宣道)
+    iii. 徒27:1~28:16(提撒利亞--&gt;羅馬)
+    vi. 門23~24, 西4:10~17(列路加為同伴)
+    v. 提後4:11(路加留在保羅身邊)
 
-b. 寫作風格與醫生吻合(徒28:6)
+ b. 寫作風格與醫生吻合(徒28:6)
 </code></pre><h3 id="寫作對象"><a href="#寫作對象" class="headerlink" title="寫作對象"></a>寫作對象</h3><p>提阿非羅(根據路1:3可能是基督徒)</p>
 <h3 id="本書特色"><a href="#本書特色" class="headerlink" title="本書特色"></a>本書特色</h3><p>具有橋梁性:</p>
 <pre><code>1. 福音書--&gt;書信
@@ -635,13 +857,17 @@ b. 寫作風格與醫生吻合(徒28:6)
       <title><![CDATA[Hexo 基本安裝]]></title>
       <url>https://Yu-Che-Gao.github.io/steven-blog/2017/02/04/hexo-setup/</url>
       <content type="html"><![CDATA[<p>Welcome to <a href="https://hexo.io/" target="_blank" rel="external">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="external">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="external">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="external">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo new <span class="string">"My New Post"</span></div></pre></td></tr></table></figure>
+<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><pre class="line-numbers language-bash"><code class="language-bash">$ hexo new <span class="token string">"My New Post"</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="external">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo server</div></pre></td></tr></table></figure>
+<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><pre class="line-numbers language-bash"><code class="language-bash">$ hexo server
+<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="external">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo generate</div></pre></td></tr></table></figure>
+<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><pre class="line-numbers language-bash"><code class="language-bash">$ hexo generate
+<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="external">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo deploy</div></pre></td></tr></table></figure>
+<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><pre class="line-numbers language-bash"><code class="language-bash">$ hexo deploy
+<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="external">Deployment</a></p>
 ]]></content>
     </entry>

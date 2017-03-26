@@ -179,7 +179,8 @@
 
     <!-- Custom Head -->
     
-<link rel="stylesheet" href="/css/prism.css" type="text/css"></head>
+<link rel="stylesheet" href="/steven-blog/css/prism-tomorrow.css" type="text/css">
+<link rel="stylesheet" href="/steven-blog/css/prism-line-numbers.css" type="text/css"></head>
 
 
     
@@ -348,9 +349,33 @@
                 <!-- Post Content -->
                 <div id="post-content" class="markdown-Github mdl-color-text--grey-700 mdl-card__supporting-text fade out">
     
-        <h1 id="非同步的C-程式"><a href="#非同步的C-程式" class="headerlink" title="非同步的C#程式"></a>非同步的C#程式</h1><h2 id="一個同步的下載網頁程式"><a href="#一個同步的下載網頁程式" class="headerlink" title="一個同步的下載網頁程式"></a>一個同步的下載網頁程式</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div></pre></td><td class="code"><pre><div class="line">using System;</div><div class="line">using System.Net;</div><div class="line"></div><div class="line">namespace test</div><div class="line">&#123;</div><div class="line">    public class Program</div><div class="line">    &#123;</div><div class="line">        public static void Main(string[] args)</div><div class="line">        &#123;</div><div class="line">            string content = downloadPage(&quot;https://yu-che-gao.github.io/steven-blog/&quot;);</div><div class="line">            Console.WriteLine(&quot;網頁內容總共為 &#123;0&#125; 個字元。&quot;, content.Length);</div><div class="line">            Console.ReadKey();</div><div class="line">        &#125;</div><div class="line"></div><div class="line">        static string downloadPage(string url)</div><div class="line">        &#123;</div><div class="line">            var webClient = new WebClient();  // 須引用 System.Net 命名空間。</div><div class="line">            string content = webClient.DownloadString(url);</div><div class="line">            return content;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+        <h1 id="非同步的C-程式"><a href="#非同步的C-程式" class="headerlink" title="非同步的C#程式"></a>非同步的C#程式</h1><h2 id="一個同步的下載網頁程式"><a href="#一個同步的下載網頁程式" class="headerlink" title="一個同步的下載網頁程式"></a>一個同步的下載網頁程式</h2><pre class="line-numbers language-clike="><code class="language-clike=">using System;
+using System.Net;
+
+namespace test
+{
+    public class Program
+    {
+        public static void Main(string[] args)
+        {
+            string content = downloadPage("https://yu-che-gao.github.io/steven-blog/");
+            Console.WriteLine("網頁內容總共為 {0} 個字元。", content.Length);
+            Console.ReadKey();
+        }
+
+        static string downloadPage(string url)
+        {
+            var webClient = new WebClient();  // 須引用 System.Net 命名空間。
+            string content = webClient.DownloadString(url);
+            return content;
+        }
+    }
+}
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>考慮上面程式，上面程式利用WebClient的DownloadString()方法取得吾人部落格的原始碼，以下擷取重點程式。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">var webClient = new WebClient();  // 須引用 System.Net 命名空間。</div><div class="line">string content = webClient.DownloadString(url);</div></pre></td></tr></table></figure>
+<pre class="line-numbers language-clike="><code class="language-clike=">var webClient = new WebClient();  // 須引用 System.Net 命名空間。
+string content = webClient.DownloadString(url);
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
 <p>但可能會因為網路速度的不同，DownloadString方法執行時間會讓程式當在那裏。</p>
 
     

@@ -179,7 +179,8 @@
 
     <!-- Custom Head -->
     
-<link rel="stylesheet" href="/css/prism.css" type="text/css"></head>
+<link rel="stylesheet" href="/steven-blog/css/prism-tomorrow.css" type="text/css">
+<link rel="stylesheet" href="/steven-blog/css/prism-line-numbers.css" type="text/css"></head>
 
 
     
@@ -390,37 +391,41 @@
 </table>
 
 <p>你可以自行決定是否要將char變數裡的數字解譯成字元碼或是其他東西，以以下程式碼為例</p>
-<pre><code>int main()
-{
-    char ch=&#39;A&#39;; // A variable with type char.
-    printf(&quot;The character %c has the character code %d.\n&quot;, ch, ch);
-    for ( ; ch &lt;= &#39;Z&#39;; ++ch )
-        printf(&quot;%2c&quot;, ch);
-    return 0;
-}
-</code></pre><p>此程式碼結果將會是</p>
+<pre class="line-numbers language-clike"><code class="language-clike">#include<span class="token operator">&lt;</span>stdio<span class="token punctuation">.</span>h<span class="token operator">></span>
+int <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token punctuation">{</span>
+    char ch<span class="token operator">=</span><span class="token string">'A'</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// A variable with type char.</span>
+    <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"The character %c has the character code %d.\n"</span><span class="token punctuation">,</span> ch<span class="token punctuation">,</span> ch<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">for</span> <span class="token punctuation">(</span> <span class="token punctuation">;</span> ch <span class="token operator">&lt;=</span> <span class="token string">'Z'</span><span class="token punctuation">;</span> <span class="token operator">++</span>ch <span class="token punctuation">)</span>
+        <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"%2c"</span><span class="token punctuation">,</span> ch<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">return</span> <span class="token number">0</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>此程式碼結果將會是</p>
 <pre><code>The character A has the character code 65.
  A B C D E F G H I J K L M N O P Q R S T U V W X Y Z
 </code></pre><p>值得注意的是，若需要char保有小於0或大於127的值，則應該改用signed char或unsinged char</p>
 <p>C只對其他標準型別定義最小儲存空間(Minimum Storage Sizes)，雖然整數型別可能比它們的最小儲存空間還大，但實作上必須以以下順序為原則</p>
-<pre><code>sizeof(short) &lt;= sizeof(int) &lt;= sizeof(long) &lt;= sizeof(long long)
-</code></pre><p>在C compiler中，limits.h標頭檔裡可以找到整數型別的值範圍，其中也定義了INT_MIN、INT_MAX、UNIT_MAX等巨集，以以下程式碼為例</p>
-<pre><code>// limits.c: Display the value ranges of char and int.
-// ---------------------------------------------------
-#include &lt;stdio.h&gt;
-#include &lt;limits.h&gt; // Contains the macros CHAR_MIN, INT_MIN, etc.
+<pre class="line-numbers language-clike"><code class="language-clike"><span class="token function">sizeof</span><span class="token punctuation">(</span>short<span class="token punctuation">)</span> <span class="token operator">&lt;=</span> <span class="token function">sizeof</span><span class="token punctuation">(</span>int<span class="token punctuation">)</span> <span class="token operator">&lt;=</span> <span class="token function">sizeof</span><span class="token punctuation">(</span>long<span class="token punctuation">)</span> <span class="token operator">&lt;=</span> <span class="token function">sizeof</span><span class="token punctuation">(</span>long long<span class="token punctuation">)</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p>在C compiler中，limits.h標頭檔裡可以找到整數型別的值範圍，其中也定義了INT_MIN、INT_MAX、UNIT_MAX等巨集，以以下程式碼為例</p>
+<pre class="line-numbers language-clike"><code class="language-clike"><span class="token comment" spellcheck="true">// limits.c: Display the value ranges of char and int.</span>
+<span class="token comment" spellcheck="true">// ---------------------------------------------------</span>
+#include <span class="token operator">&lt;</span>stdio<span class="token punctuation">.</span>h<span class="token operator">></span>
+#include <span class="token operator">&lt;</span>limits<span class="token punctuation">.</span>h<span class="token operator">></span> <span class="token comment" spellcheck="true">// Contains the macros CHAR_MIN, INT_MIN, etc.</span>
 
-int main( )
-{
-    printf(&quot;Storage sizes and value ranges of the types char and int\n\n&quot;);
-    printf(&quot;The type char is %s.\n\n&quot;, CHAR_MIN &lt; 0 ? &quot;signed&quot; :&quot;unsigned&quot;);
-    printf(&quot; Type Size (in bytes) Minimum Maximum\n&quot;
-    &quot;---------------------------------------------------\n&quot;);
-    printf(&quot; char %8d %20d %15d\n&quot;, sizeof(char), CHAR_MIN, CHAR_MAX );
-    printf(&quot; int  %8d %20d %15d\n&quot;, sizeof(int), INT_MIN, INT_MAX );
-    return 0;
-}
-</code></pre><p>編譯後執行結果將會顯示char以及int的最小和最大值</p>
+int <span class="token function">main</span><span class="token punctuation">(</span> <span class="token punctuation">)</span>
+<span class="token punctuation">{</span>
+    <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"Storage sizes and value ranges of the types char and int\n\n"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"The type char is %s.\n\n"</span><span class="token punctuation">,</span> CHAR_MIN <span class="token operator">&lt;</span> <span class="token number">0</span> <span class="token operator">?</span> <span class="token string">"signed"</span> <span class="token punctuation">:</span><span class="token string">"unsigned"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">" Type Size (in bytes) Minimum Maximum\n"</span>
+    <span class="token string">"---------------------------------------------------\n"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">" char %8d %20d %15d\n"</span><span class="token punctuation">,</span> <span class="token function">sizeof</span><span class="token punctuation">(</span>char<span class="token punctuation">)</span><span class="token punctuation">,</span> CHAR_MIN<span class="token punctuation">,</span> CHAR_MAX <span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">" int  %8d %20d %15d\n"</span><span class="token punctuation">,</span> <span class="token function">sizeof</span><span class="token punctuation">(</span>int<span class="token punctuation">)</span><span class="token punctuation">,</span> INT_MIN<span class="token punctuation">,</span> INT_MAX <span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">return</span> <span class="token number">0</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>編譯後執行結果將會顯示char以及int的最小和最大值</p>
 <pre><code>Storage sizes and value ranges of the types char and int
 
 The type char is signed.
