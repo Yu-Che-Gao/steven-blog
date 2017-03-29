@@ -349,32 +349,32 @@
                 <!-- Post Content -->
                 <div id="post-content" class="markdown-Github mdl-color-text--grey-700 mdl-card__supporting-text fade out">
     
-        <h1 id="非同步的C-程式"><a href="#非同步的C-程式" class="headerlink" title="非同步的C#程式"></a>非同步的C#程式</h1><h2 id="一個同步的下載網頁程式"><a href="#一個同步的下載網頁程式" class="headerlink" title="一個同步的下載網頁程式"></a>一個同步的下載網頁程式</h2><pre class="line-numbers language-clike="><code class="language-clike=">using System;
-using System.Net;
+        <h1 id="非同步的C-程式"><a href="#非同步的C-程式" class="headerlink" title="非同步的C#程式"></a>非同步的C#程式</h1><h2 id="一個同步的下載網頁程式"><a href="#一個同步的下載網頁程式" class="headerlink" title="一個同步的下載網頁程式"></a>一個同步的下載網頁程式</h2><pre class="line-numbers language-csharp"><code class="language-csharp"><span class="token keyword">using</span> System<span class="token punctuation">;</span>
+<span class="token keyword">using</span> System<span class="token punctuation">.</span>Net<span class="token punctuation">;</span>
 
-namespace test
-{
-    public class Program
-    {
-        public static void Main(string[] args)
-        {
-            string content = downloadPage("https://yu-che-gao.github.io/steven-blog/");
-            Console.WriteLine("網頁內容總共為 {0} 個字元。", content.Length);
-            Console.ReadKey();
-        }
+<span class="token keyword">namespace</span> test
+<span class="token punctuation">{</span>
+    <span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">Program</span>
+    <span class="token punctuation">{</span>
+        <span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">void</span> <span class="token function">Main</span><span class="token punctuation">(</span><span class="token keyword">string</span><span class="token punctuation">[</span><span class="token punctuation">]</span> args<span class="token punctuation">)</span>
+        <span class="token punctuation">{</span>
+            <span class="token keyword">string</span> content <span class="token operator">=</span> <span class="token function">downloadPage</span><span class="token punctuation">(</span><span class="token string">"https://yu-che-gao.github.io/steven-blog/"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            Console<span class="token punctuation">.</span><span class="token function">WriteLine</span><span class="token punctuation">(</span><span class="token string">"網頁內容總共為 {0} 個字元。"</span><span class="token punctuation">,</span> content<span class="token punctuation">.</span>Length<span class="token punctuation">)</span><span class="token punctuation">;</span>
+            Console<span class="token punctuation">.</span><span class="token function">ReadKey</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
 
-        static string downloadPage(string url)
-        {
-            var webClient = new WebClient();  // 須引用 System.Net 命名空間。
-            string content = webClient.DownloadString(url);
-            return content;
-        }
-    }
-}
+        <span class="token keyword">static</span> <span class="token keyword">string</span> <span class="token function">downloadPage</span><span class="token punctuation">(</span><span class="token keyword">string</span> url<span class="token punctuation">)</span>
+        <span class="token punctuation">{</span>
+            <span class="token keyword">var</span> webClient <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">WebClient</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>  <span class="token comment" spellcheck="true">// 須引用 System.Net 命名空間。</span>
+            <span class="token keyword">string</span> content <span class="token operator">=</span> webClient<span class="token punctuation">.</span><span class="token function">DownloadString</span><span class="token punctuation">(</span>url<span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token keyword">return</span> content<span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>考慮上面程式，上面程式利用WebClient的DownloadString()方法取得吾人部落格的原始碼，以下擷取重點程式。</p>
-<pre class="line-numbers language-clike="><code class="language-clike=">var webClient = new WebClient();  // 須引用 System.Net 命名空間。
-string content = webClient.DownloadString(url);
+<pre class="line-numbers language-csharp"><code class="language-csharp"><span class="token keyword">var</span> webClient <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">WebClient</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>  <span class="token comment" spellcheck="true">// 須引用 System.Net 命名空間。</span>
+<span class="token keyword">string</span> content <span class="token operator">=</span> webClient<span class="token punctuation">.</span><span class="token function">DownloadString</span><span class="token punctuation">(</span>url<span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
 <p>但可能會因為網路速度的不同，DownloadString方法執行時間會讓程式當在那裏。</p>
 

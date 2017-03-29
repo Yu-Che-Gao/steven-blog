@@ -170,9 +170,10 @@ int <span class="token function">main</span><span class="token punctuation">(</s
 <span class="token punctuation">}</span>
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>此程式碼結果將會是</p>
-<pre><code>The character A has the character code 65.
+<pre class="line-numbers language-powershell"><code class="language-powershell">The character A has the character code 65<span class="token punctuation">.</span>
  A B C D E F G H I J K L M N O P Q R S T U V W X Y Z
-</code></pre><p>值得注意的是，若需要char保有小於0或大於127的值，則應該改用signed char或unsinged char</p>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<p>值得注意的是，若需要char保有小於0或大於127的值，則應該改用signed char或unsinged char</p>
 <p>C只對其他標準型別定義最小儲存空間(Minimum Storage Sizes)，雖然整數型別可能比它們的最小儲存空間還大，但實作上必須以以下順序為原則</p>
 <pre class="line-numbers language-clike"><code class="language-clike"><span class="token function">sizeof</span><span class="token punctuation">(</span>short<span class="token punctuation">)</span> <span class="token operator">&lt;=</span> <span class="token function">sizeof</span><span class="token punctuation">(</span>int<span class="token punctuation">)</span> <span class="token operator">&lt;=</span> <span class="token function">sizeof</span><span class="token punctuation">(</span>long<span class="token punctuation">)</span> <span class="token operator">&lt;=</span> <span class="token function">sizeof</span><span class="token punctuation">(</span>long long<span class="token punctuation">)</span>
 <span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
@@ -194,15 +195,16 @@ int <span class="token function">main</span><span class="token punctuation">(</s
 <span class="token punctuation">}</span>
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>編譯後執行結果將會顯示char以及int的最小和最大值</p>
-<pre><code>Storage sizes and value ranges of the types char and int
+<pre class="line-numbers language-powershell"><code class="language-powershell">Storage sizes and value ranges of the types char and int
 
-The type char is signed.
+The <span class="token function">type</span> char is signed<span class="token punctuation">.</span>
 
- Type Size (in bytes) Minimum Maximum
----------------------------------------------------
- char        1                 -128             127
- int         4          -2147483648      2147483647
-</code></pre><p><a href="https://www.tutorialspoint.com/c_standard_library/limits_h.htm" target="_blank" rel="external">tutorialspoint</a>幫我們整理了limits.h還定義了哪些巨集</p>
+ <span class="token function">Type</span> Size <span class="token punctuation">(</span>in bytes<span class="token punctuation">)</span> Minimum Maximum
+<span class="token operator">--</span>-<span class="token operator">--</span>-<span class="token operator">--</span>-<span class="token operator">--</span>-<span class="token operator">--</span>-<span class="token operator">--</span>-<span class="token operator">--</span>-<span class="token operator">--</span>-<span class="token operator">--</span>-<span class="token operator">--</span>-<span class="token operator">--</span>-<span class="token operator">--</span>-<span class="token operator">--</span>-<span class="token operator">--</span>-<span class="token operator">--</span>-<span class="token operator">--</span>-<span class="token operator">--</span><span class="token operator">-</span>
+ char        1                 <span class="token operator">-</span>128             127
+ int         4          <span class="token operator">-</span>2147483648      2147483647
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p><a href="https://www.tutorialspoint.com/c_standard_library/limits_h.htm" target="_blank" rel="external">tutorialspoint</a>幫我們整理了limits.h還定義了哪些巨集</p>
 <h1 id="擁有精確寬度的整數型別-C99"><a href="#擁有精確寬度的整數型別-C99" class="headerlink" title="擁有精確寬度的整數型別(C99)"></a>擁有精確寬度的整數型別(C99)</h1><p>ISO/IEC 9899第225頁定義了stdint.h的所有規格，其中定義了許多已知寬度需求的整數型別</p>
 <p>以下擷取規格書中描述stdint.h所定義的種類</p>
 <ul>
@@ -328,32 +330,32 @@ circulararea.o: circulararea.c
     <entry>
       <title><![CDATA[你所不知道的C#: 非同步&執行緒]]></title>
       <url>https://Yu-Che-Gao.github.io/steven-blog/2017/03/04/%E4%BD%A0%E6%89%80%E4%B8%8D%E7%9F%A5%E9%81%93%E7%9A%84C-%E9%9D%9E%E5%90%8C%E6%AD%A5-%E5%9F%B7%E8%A1%8C%E7%B7%92/</url>
-      <content type="html"><![CDATA[<h1 id="非同步的C-程式"><a href="#非同步的C-程式" class="headerlink" title="非同步的C#程式"></a>非同步的C#程式</h1><h2 id="一個同步的下載網頁程式"><a href="#一個同步的下載網頁程式" class="headerlink" title="一個同步的下載網頁程式"></a>一個同步的下載網頁程式</h2><pre class="line-numbers language-clike="><code class="language-clike=">using System;
-using System.Net;
+      <content type="html"><![CDATA[<h1 id="非同步的C-程式"><a href="#非同步的C-程式" class="headerlink" title="非同步的C#程式"></a>非同步的C#程式</h1><h2 id="一個同步的下載網頁程式"><a href="#一個同步的下載網頁程式" class="headerlink" title="一個同步的下載網頁程式"></a>一個同步的下載網頁程式</h2><pre class="line-numbers language-csharp"><code class="language-csharp"><span class="token keyword">using</span> System<span class="token punctuation">;</span>
+<span class="token keyword">using</span> System<span class="token punctuation">.</span>Net<span class="token punctuation">;</span>
 
-namespace test
-{
-    public class Program
-    {
-        public static void Main(string[] args)
-        {
-            string content = downloadPage("https://yu-che-gao.github.io/steven-blog/");
-            Console.WriteLine("網頁內容總共為 {0} 個字元。", content.Length);
-            Console.ReadKey();
-        }
+<span class="token keyword">namespace</span> test
+<span class="token punctuation">{</span>
+    <span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">Program</span>
+    <span class="token punctuation">{</span>
+        <span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">void</span> <span class="token function">Main</span><span class="token punctuation">(</span><span class="token keyword">string</span><span class="token punctuation">[</span><span class="token punctuation">]</span> args<span class="token punctuation">)</span>
+        <span class="token punctuation">{</span>
+            <span class="token keyword">string</span> content <span class="token operator">=</span> <span class="token function">downloadPage</span><span class="token punctuation">(</span><span class="token string">"https://yu-che-gao.github.io/steven-blog/"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            Console<span class="token punctuation">.</span><span class="token function">WriteLine</span><span class="token punctuation">(</span><span class="token string">"網頁內容總共為 {0} 個字元。"</span><span class="token punctuation">,</span> content<span class="token punctuation">.</span>Length<span class="token punctuation">)</span><span class="token punctuation">;</span>
+            Console<span class="token punctuation">.</span><span class="token function">ReadKey</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
 
-        static string downloadPage(string url)
-        {
-            var webClient = new WebClient();  // 須引用 System.Net 命名空間。
-            string content = webClient.DownloadString(url);
-            return content;
-        }
-    }
-}
+        <span class="token keyword">static</span> <span class="token keyword">string</span> <span class="token function">downloadPage</span><span class="token punctuation">(</span><span class="token keyword">string</span> url<span class="token punctuation">)</span>
+        <span class="token punctuation">{</span>
+            <span class="token keyword">var</span> webClient <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">WebClient</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>  <span class="token comment" spellcheck="true">// 須引用 System.Net 命名空間。</span>
+            <span class="token keyword">string</span> content <span class="token operator">=</span> webClient<span class="token punctuation">.</span><span class="token function">DownloadString</span><span class="token punctuation">(</span>url<span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token keyword">return</span> content<span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>考慮上面程式，上面程式利用WebClient的DownloadString()方法取得吾人部落格的原始碼，以下擷取重點程式。</p>
-<pre class="line-numbers language-clike="><code class="language-clike=">var webClient = new WebClient();  // 須引用 System.Net 命名空間。
-string content = webClient.DownloadString(url);
+<pre class="line-numbers language-csharp"><code class="language-csharp"><span class="token keyword">var</span> webClient <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">WebClient</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>  <span class="token comment" spellcheck="true">// 須引用 System.Net 命名空間。</span>
+<span class="token keyword">string</span> content <span class="token operator">=</span> webClient<span class="token punctuation">.</span><span class="token function">DownloadString</span><span class="token punctuation">(</span>url<span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
 <p>但可能會因為網路速度的不同，DownloadString方法執行時間會讓程式當在那裏。</p>
 ]]></content>
