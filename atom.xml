@@ -454,7 +454,7 @@ circulararea.o: circulararea.c
     <link href="https://Yu-Che-Gao.github.io/2017/02/24/%E4%BD%A0%E6%89%80%E4%B8%8D%E7%9F%A5%E9%81%93%E7%9A%84C-Compiler%E7%AF%87/"/>
     <id>https://Yu-Che-Gao.github.io/2017/02/24/你所不知道的C-Compiler篇/</id>
     <published>2017-02-24T08:12:14.000Z</published>
-    <updated>2017-03-26T01:20:46.822Z</updated>
+    <updated>2017-03-29T05:12:11.843Z</updated>
     
     <content type="html"><![CDATA[<h1 id="基本Compiler原理"><a href="#基本Compiler原理" class="headerlink" title="基本Compiler原理"></a>基本Compiler原理</h1><center><img src="/steven-blog/images/compiler-flow.jpg" alt="Compiler-flow" title="編譯器流程"></center>
 
@@ -482,58 +482,59 @@ circulararea.o: circulararea.c
 
 <p>上圖即是C#編譯的過程，值得注意的是C# Compiler並沒有直接將程式碼編譯成Binary Code，而是先將程式碼編譯成MSIL(Microsoft Intermediated Language，微軟中間碼)，在執行時期時利用.NET Framework內建的CLR(Common Language Runtime)執行JIT Compiler轉成Binary Code執行。</p>
 <h1 id="Hello-World"><a href="#Hello-World" class="headerlink" title="Hello World!!"></a>Hello World!!</h1><p>以下是一段hello world的<a href="https://github.com/Yu-Che-Gao/steven-blog/blob/gh-pages/code/hello.cs" target="_blank" rel="external">程式碼</a></p>
-<pre class="line-numbers language-clike="><code class="language-clike=">using System;
+<pre class="line-numbers language-csharp"><code class="language-csharp"><span class="token keyword">using</span> System<span class="token punctuation">;</span>
 
-namespace hello
-{
-    class Program
-    {
-        public static void Main(string[] args)
-        {
-            System.Console.WriteLine("hello world");
-        }
-    }
-}
+<span class="token keyword">namespace</span> hello
+<span class="token punctuation">{</span>
+    <span class="token keyword">class</span> <span class="token class-name">Program</span>
+    <span class="token punctuation">{</span>
+        <span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">void</span> <span class="token function">Main</span><span class="token punctuation">(</span><span class="token keyword">string</span><span class="token punctuation">[</span><span class="token punctuation">]</span> args<span class="token punctuation">)</span>
+        <span class="token punctuation">{</span>
+            System<span class="token punctuation">.</span>Console<span class="token punctuation">.</span><span class="token function">WriteLine</span><span class="token punctuation">(</span><span class="token string">"hello world"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>利用<a href="https://msdn.microsoft.com/en-us/library/78f4aasd.aspx" target="_blank" rel="external">csc.exe</a>編譯完之後會產生一個exe檔。</p>
 <p>使用<a href="http://ilspy.net/" target="_blank" rel="external">ILSpy</a>分析這個exe檔，會發現IL碼長這樣。</p>
-<pre><code>.namespace hello
-{
-    .class private auto ansi beforefieldinit hello.Program
-        extends [mscorlib]System.Object
-    {
-        // Methods
-        .method public hidebysig static 
-            void Main (
-                string[] args
-            ) cil managed 
-        {
-            // Method begins at RVA 0x2050
-            // Code size 13 (0xd)
-            .maxstack 8
-            .entrypoint
+<pre class="line-numbers language-vim"><code class="language-vim"><span class="token operator">.</span>namespace hello
+<span class="token punctuation">{</span>
+    <span class="token operator">.</span>class private auto ansi beforefieldinit hello<span class="token operator">.</span>Program
+        extends <span class="token punctuation">[</span>mscorlib<span class="token punctuation">]</span>System<span class="token operator">.</span>Object
+    <span class="token punctuation">{</span>
+        <span class="token operator">/</span><span class="token operator">/</span> Methods
+        <span class="token operator">.</span>method public hidebysig static 
+            void Main <span class="token punctuation">(</span>
+                string<span class="token punctuation">[</span><span class="token punctuation">]</span> <span class="token keyword">args</span>
+            <span class="token punctuation">)</span> cil managed 
+        <span class="token punctuation">{</span>
+            <span class="token operator">/</span><span class="token operator">/</span> Method begins at RVA <span class="token number">0x2050</span>
+            <span class="token operator">/</span><span class="token operator">/</span> Code size <span class="token number">13</span> <span class="token punctuation">(</span><span class="token number">0xd</span><span class="token punctuation">)</span>
+            <span class="token operator">.</span>maxstack <span class="token number">8</span>
+            <span class="token operator">.</span>entrypoint
 
-            IL_0000: nop
-            IL_0001: ldstr &quot;hello world&quot;
-            IL_0006: call void [mscorlib]System.Console::WriteLine(string)
-            IL_000b: nop
-            IL_000c: ret
-        } // end of method Program::Main
+            IL_0000<span class="token punctuation">:</span> nop
+            IL_0001<span class="token punctuation">:</span> ldstr <span class="token string">"hello world"</span>
+            IL_0006<span class="token punctuation">:</span> <span class="token keyword">call</span> void <span class="token punctuation">[</span>mscorlib<span class="token punctuation">]</span>System<span class="token operator">.</span>Console<span class="token punctuation">:</span><span class="token punctuation">:</span><span class="token function">WriteLine</span><span class="token punctuation">(</span>string<span class="token punctuation">)</span>
+            IL_000b<span class="token punctuation">:</span> nop
+            IL_000c<span class="token punctuation">:</span> <span class="token keyword">ret</span>
+        <span class="token punctuation">}</span> <span class="token operator">/</span><span class="token operator">/</span> end of method Program<span class="token punctuation">:</span><span class="token punctuation">:</span>Main
 
-        .method public hidebysig specialname rtspecialname 
-            instance void .ctor () cil managed 
-        {
-            // Method begins at RVA 0x205e
-            // Code size 7 (0x7)
-            .maxstack 8
+        <span class="token operator">.</span>method public hidebysig specialname rtspecialname 
+            instance void <span class="token operator">.</span>ctor <span class="token punctuation">(</span><span class="token punctuation">)</span> cil managed 
+        <span class="token punctuation">{</span>
+            <span class="token operator">/</span><span class="token operator">/</span> Method begins at RVA <span class="token number">0x205e</span>
+            <span class="token operator">/</span><span class="token operator">/</span> Code size <span class="token number">7</span> <span class="token punctuation">(</span><span class="token number">0x7</span><span class="token punctuation">)</span>
+            <span class="token operator">.</span>maxstack <span class="token number">8</span>
 
-            IL_0000: ldarg.0
-            IL_0001: call instance void [mscorlib]System.Object::.ctor()
-            IL_0006: ret
-        } // end of method Program::.ctor
-    } // end of class hello.Program
-}
-</code></pre><p>值得注意的是第19行: call void [mscorlib]System.Console::WriteLine(string)。在IL階段並沒有把Console.WriteLine編進去，而是等到CLR載入時才編譯。</p>
+            IL_0000<span class="token punctuation">:</span> ldarg<span class="token operator">.</span><span class="token number">0</span>
+            IL_0001<span class="token punctuation">:</span> <span class="token keyword">call</span> instance void <span class="token punctuation">[</span>mscorlib<span class="token punctuation">]</span>System<span class="token operator">.</span>Object<span class="token punctuation">:</span><span class="token punctuation">:</span><span class="token operator">.</span><span class="token function">ctor</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+            IL_0006<span class="token punctuation">:</span> <span class="token keyword">ret</span>
+        <span class="token punctuation">}</span> <span class="token operator">/</span><span class="token operator">/</span> end of method Program<span class="token punctuation">:</span><span class="token punctuation">:</span><span class="token operator">.</span>ctor
+    <span class="token punctuation">}</span> <span class="token operator">/</span><span class="token operator">/</span> end of class hello<span class="token operator">.</span>Program
+<span class="token punctuation">}</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>值得注意的是第19行: call void [mscorlib]System.Console::WriteLine(string)。在IL階段並沒有把Console.WriteLine編進去，而是等到CLR載入時才編譯。</p>
 ]]></content>
     
     <summary type="html">
