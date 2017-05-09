@@ -10,7 +10,7 @@
     
     <title>
         
-            你所不知道的C#: 非同步&amp;執行緒 | 
+            路加福音12:13~34 | 
         
         Steven&#39;s Blog
     </title>
@@ -48,7 +48,7 @@
     <!-- The Open Graph protocol -->
     <meta property="og:url" content="https://Yu-Che-Gao.github.io">
     <meta property="og:type" content="blog">
-    <meta property="og:title" content="你所不知道的C#: 非同步&amp;執行緒 | Steven&#39;s Blog">
+    <meta property="og:title" content="路加福音12:13~34 | Steven&#39;s Blog">
     <meta property="og:description" content="高宇哲的小窩">
 
     <!--[if lte IE 9]>
@@ -227,7 +227,7 @@
     </button>
 
     <ul class="post-toc-wrap mdl-menu mdl-menu--bottom-left mdl-js-menu mdl-js-ripple-effect" for="post-toc-trigger-btn">
-        <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#非同步的C-程式"><span class="post-toc-number">1.</span> <span class="post-toc-text">非同步的C#程式</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#一個同步的下載網頁程式"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">一個同步的下載網頁程式</span></a></li></ol></li></ol>
+        <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#觀察"><span class="post-toc-number">1.</span> <span class="post-toc-text">觀察</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#分段"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">分段</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#本段大意"><span class="post-toc-number">1.2.</span> <span class="post-toc-text">本段大意</span></a></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#解釋"><span class="post-toc-number">2.</span> <span class="post-toc-text">解釋</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#Question"><span class="post-toc-number">2.1.</span> <span class="post-toc-text">Question</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#Answer"><span class="post-toc-number">2.2.</span> <span class="post-toc-text">Answer</span></a></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#歸納"><span class="post-toc-number">3.</span> <span class="post-toc-text">歸納</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#應用"><span class="post-toc-number">4.</span> <span class="post-toc-text">應用</span></a></li></ol>
 
         <!--
         <li class="mdl-menu__item">
@@ -263,7 +263,7 @@
         
     
             <p class="article-headline-p">
-                你所不知道的C#: 非同步&執行緒
+                路加福音12:13~34
             </p>
         </div>
 
@@ -282,7 +282,7 @@
     <!-- Author Name & Date -->
     <div>
         <strong>高宇哲</strong>
-        <span>3月 04, 2017</span>
+        <span>5月 08, 2017</span>
     </div>
 
     <div class="section-spacer"></div>
@@ -349,34 +349,49 @@
                 <!-- Post Content -->
                 <div id="post-content" class="markdown-Github mdl-color-text--grey-700 mdl-card__supporting-text fade out">
     
-        <h1 id="非同步的C-程式"><a href="#非同步的C-程式" class="headerlink" title="非同步的C#程式"></a>非同步的C#程式</h1><h2 id="一個同步的下載網頁程式"><a href="#一個同步的下載網頁程式" class="headerlink" title="一個同步的下載網頁程式"></a>一個同步的下載網頁程式</h2><pre class="line-numbers language-csharp"><code class="language-csharp"><span class="token keyword">using</span> System<span class="token punctuation">;</span>
-<span class="token keyword">using</span> System<span class="token punctuation">.</span>Net<span class="token punctuation">;</span>
-
-<span class="token keyword">namespace</span> test
-<span class="token punctuation">{</span>
-    <span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">Program</span>
-    <span class="token punctuation">{</span>
-        <span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">void</span> <span class="token function">Main</span><span class="token punctuation">(</span><span class="token keyword">string</span><span class="token punctuation">[</span><span class="token punctuation">]</span> args<span class="token punctuation">)</span>
-        <span class="token punctuation">{</span>
-            <span class="token keyword">string</span> content <span class="token operator">=</span> <span class="token function">downloadPage</span><span class="token punctuation">(</span><span class="token string">"https://yu-che-gao.github.io/steven-blog/"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-            Console<span class="token punctuation">.</span><span class="token function">WriteLine</span><span class="token punctuation">(</span><span class="token string">"網頁內容總共為 {0} 個字元。"</span><span class="token punctuation">,</span> content<span class="token punctuation">.</span>Length<span class="token punctuation">)</span><span class="token punctuation">;</span>
-            Console<span class="token punctuation">.</span><span class="token function">ReadKey</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-        <span class="token punctuation">}</span>
-
-        <span class="token keyword">static</span> <span class="token keyword">string</span> <span class="token function">downloadPage</span><span class="token punctuation">(</span><span class="token keyword">string</span> url<span class="token punctuation">)</span>
-        <span class="token punctuation">{</span>
-            <span class="token keyword">var</span> webClient <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">WebClient</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>  <span class="token comment" spellcheck="true">// 須引用 System.Net 命名空間。</span>
-            <span class="token keyword">string</span> content <span class="token operator">=</span> webClient<span class="token punctuation">.</span><span class="token function">DownloadString</span><span class="token punctuation">(</span>url<span class="token punctuation">)</span><span class="token punctuation">;</span>
-            <span class="token keyword">return</span> content<span class="token punctuation">;</span>
-        <span class="token punctuation">}</span>
-    <span class="token punctuation">}</span>
-<span class="token punctuation">}</span>
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<p>考慮上面程式，上面程式利用WebClient的DownloadString()方法取得吾人部落格的原始碼，以下擷取重點程式。</p>
-<pre class="line-numbers language-csharp"><code class="language-csharp"><span class="token keyword">var</span> webClient <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">WebClient</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>  <span class="token comment" spellcheck="true">// 須引用 System.Net 命名空間。</span>
-<span class="token keyword">string</span> content <span class="token operator">=</span> webClient<span class="token punctuation">.</span><span class="token function">DownloadString</span><span class="token punctuation">(</span>url<span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
-<p>但可能會因為網路速度的不同，DownloadString方法執行時間會讓程式當在那裏。</p>
+        <h1 id="觀察"><a href="#觀察" class="headerlink" title="觀察"></a>觀察</h1><h2 id="分段"><a href="#分段" class="headerlink" title="分段"></a>分段</h2><p>V13~V15 耶穌警告眾人不要貪心</p>
+<p>V16~V21 財主的比喻</p>
+<ul>
+<li>V16~V19 財主煩惱田產的收藏</li>
+<li>V20~V21 神對財主的評論</li>
+</ul>
+<p>V22~V34 耶穌對門徒說</p>
+<ul>
+<li>V22~V23 前述比喻的結論</li>
+<li>V24~V30 前述比喻的舉例</li>
+<li>V31~V34 整個事件的總結</li>
+</ul>
+<h2 id="本段大意"><a href="#本段大意" class="headerlink" title="本段大意"></a>本段大意</h2><p>有一個人想請耶穌成為分家產的中間人，耶穌告訴眾人不要貪心。耶穌用比喻繼續解釋，以&quot;財主過世後帶不走地上的田產&quot;的比喻作解釋。而耶穌回過頭來對門徒說話，首先先以&quot;不要為生命憂慮&quot;下結論，接著進一步以烏鴉、百合花與野地的草作為例子詮釋&quot;憂慮&quot;，最後以&quot;財寶即為心之所在&quot;作為結論。</p>
+<h1 id="解釋"><a href="#解釋" class="headerlink" title="解釋"></a>解釋</h1><h2 id="Question"><a href="#Question" class="headerlink" title="Question"></a>Question</h2><ol>
+<li>&quot;請耶穌分家產&quot;跟&quot;不要貪心&quot;有甚麼關係? (V14-V15)</li>
+<li>有錢的財主在擔心甚麼? (V17)</li>
+<li>甚麼是財主的&quot;無知&quot;? (V20)</li>
+<li>甚麼叫做&quot;在神面前不富足&quot;? (V21)</li>
+<li>耶穌的結論(V22-V23)跟&quot;財主的比喻&quot;(V16-V21)有甚麼關係</li>
+<li>&quot;財寶即心之所在&quot;(V34)跟&quot;求神的國&quot;(V31)有甚麼關係?</li>
+<li>所以為生命憂慮錯了嗎?(V22)</li>
+</ol>
+<h2 id="Answer"><a href="#Answer" class="headerlink" title="Answer"></a>Answer</h2><ol>
+<li>上文耶穌在講受到逼迫時當有的態度(V8-V12)，這個人突然插一句要求耶穌分家產，很顯然這個人並沒有聽耶穌在講甚麼，滿腦子只想要耶穌以夫子的身分幫他分家產</li>
+<li>錢太多(V16)沒有地方可以藏(V17)</li>
+<li>V18-V19財主想把原本的房子拆掉，蓋一個更大的房子來解決他的擔心，V20表達出這是財主的無知</li>
+<li>凡為自己積財而且在神面前不富足--&gt;就像比喻中的財主(V21) 等價於 不像比喻中的財主--&gt;不都為自己積財或者在神面前富足的，V21重點在不要像比喻中的財主</li>
+<li>無知財主擔心沒有地方收藏其實也跟我們為生命的擔心是一樣的</li>
+<li>這裡的財寶並不是指字面意義上的天上的財寶或是地上的財寶。V31講論要看重神的國勝過看重&quot;這些東西&quot;，因此這裡的財寶指的是所看重的東西</li>
+<li>V24, V27, V28 用烏鴉、百合花跟野地裡的草來表達人生本來就無常，如果人生本該無常，有甚麼好擔心的</li>
+</ol>
+<h1 id="歸納"><a href="#歸納" class="headerlink" title="歸納"></a>歸納</h1><ol>
+<li>不要看重&quot;想要的&quot;大過&quot;需要的&quot;</li>
+<li>&quot;憂慮&quot;在神看來是跟&quot;蓋更大的倉房&quot;一樣荒唐</li>
+<li>人生無常，何必憂慮</li>
+<li>不需憂慮，只要看重神</li>
+</ol>
+<h1 id="應用"><a href="#應用" class="headerlink" title="應用"></a>應用</h1><ol>
+<li>憂慮時先禱告</li>
+<li>調整優先次序</li>
+<li>多喝水，少喝飲料</li>
+<li>調整&quot;熬夜&quot;的心態</li>
+</ol>
 
     
 
@@ -398,7 +413,7 @@
     $('html').ready(function() {
         setTimeout(function() {
             var disqus_config = function () {
-                this.page.url = 'https://Yu-Che-Gao.github.io/steven-blog/2017/03/04/你所不知道的C-非同步-執行緒/index.html';  // Replace PAGE_URL with your page's canonical URL variable
+                this.page.url = 'https://Yu-Che-Gao.github.io/steven-blog/2017/05/08/路加福音12-13-34/index.html';  // Replace PAGE_URL with your page's canonical URL variable
                 this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
             };
 
@@ -429,21 +444,13 @@
             <nav class="material-nav mdl-color-text--grey-50 mdl-cell mdl-cell--12-col">
     <!-- Prev Nav -->
     
-        <a href="/steven-blog/2017/03/23/重新審視C語言：語言基礎/" id="post_nav-newer" class="prev-content">
-            <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon mdl-color--white mdl-color-text--grey-900" role="presentation">
-                <i class="material-icons">arrow_back</i>
-            </button>
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            新篇
-        </a>
-    
 
     <!-- Section Spacer -->
     <div class="section-spacer"></div>
 
     <!-- Next Nav -->
     
-        <a href="/steven-blog/2017/02/24/你所不知道的C-Compiler篇/" id="post_nav-older" class="next-content">
+        <a href="/steven-blog/2017/04/05/Deep-Learning探索之旅：初來乍到/" id="post_nav-older" class="next-content">
             舊篇
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
             <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon mdl-color--white mdl-color-text--grey-900" role="presentation">
