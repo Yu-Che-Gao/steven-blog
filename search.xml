@@ -4,6 +4,37 @@
   
     
     <entry>
+      <title><![CDATA[在Windows下掛載遠端Linux網路磁碟機]]></title>
+      <url>https://Yu-Che-Gao.github.io/steven-blog/2017/08/16/%E5%9C%A8Windows%E4%B8%8B%E6%8E%9B%E8%BC%89Linux%E7%B6%B2%E8%B7%AF%E7%A3%81%E7%A2%9F%E6%A9%9F/</url>
+      <content type="html"><![CDATA[<h1 id="動機"><a href="#動機" class="headerlink" title="動機"></a>動機</h1><p>不知道大家有沒有這種經驗，有些程式(例如相當燒CPU或GPU的LSTM...)需要在Linux上跑，可是自己的慣用OS是Windows，常常在傳檔的時候很不方便，需要很多手續才能把檔案傳到遠端機器的Linux上。筆者本機OS的環境是Win10家用版，遠端OS的環境是Azure上使用Ubuntu 16.04的虛擬機。筆者的思路是如此: 在遠端Linux上架設sftp server，在本機Windows上使用<a href="http://www.sftpnetdrive.com/" target="_blank" rel="external">SFTPNetDrive</a>建立網路磁碟機連到遠端的sftp server，這樣用起來就跟在本機上存取檔案一樣簡單。</p>
+<h1 id="先看效果"><a href="#先看效果" class="headerlink" title="先看效果"></a>先看效果</h1><p>筆者錄製了一段設定完的效果</p>
+<p><img src="/steven-blog/images/sftp架設.gif" alt="sftp架設" title="sftp架設"></p>
+<p>如上GIF動圖，筆者直接針對遠端機器進行了新增資料夾、重新命名等簡單的操作動作，而不用到終端機下命令，並且筆者在寫python時若想在Windows上測試則只需要開啟command windows下指令即可，若想在Linux上測試只需要在Putty上下指令即可，隨時可以在兩個系統間切換。但此法有一壞處即是在存取檔案時速度會較慢，因網路磁碟機並不是真正在本機的硬碟，但卻用檔案系統的方式存取，效能會較為低落。</p>
+<p><b style="color: red;">警告: 筆者利用此法傳輸大量檔案時出現藍屏，請小心使用</b></p>
+<h1 id="開始架設SFTP-Server"><a href="#開始架設SFTP-Server" class="headerlink" title="開始架設SFTP Server"></a>開始架設SFTP Server</h1><h2 id="Step1-遠端機器Linux的Sftp-server架設"><a href="#Step1-遠端機器Linux的Sftp-server架設" class="headerlink" title="Step1 遠端機器Linux的Sftp server架設"></a>Step1 遠端機器Linux的Sftp server架設</h2><p>若讀者是Azure上的機器或是已經做好ssh的相關設定，便可跳過此步驟，因SFTP是走ssh協定(port 22)進行傳輸的，若尚未設定ssh可以參考<a href="https://www.digitalocean.com/community/tutorials/initial-server-setup-with-ubuntu-16-04" target="_blank" rel="external">這篇文章</a>進行設定</p>
+<h2 id="Step2-本機機器Windwos安裝SFTPNetDrive"><a href="#Step2-本機機器Windwos安裝SFTPNetDrive" class="headerlink" title="Step2 本機機器Windwos安裝SFTPNetDrive"></a>Step2 本機機器Windwos安裝SFTPNetDrive</h2><p>在本機端連到<a href="http://www.sftpnetdrive.com/" target="_blank" rel="external">SFTPNetDrive的網站</a>進行下載，目前這個軟體針對個人使用(Personal Use)是免費的。</p>
+<p>安裝好後開啟會出現一些需要填入的設定:</p>
+<table>
+
+<tr><th>屬性</th><th>資料</th></tr>
+
+<tr><td>Profile</td><td>此連線的名稱，可任意填入</td></tr>
+
+<tr><td>Server</td><td>遠端機器的IP address</td></tr>
+
+<tr><td>Username</td><td>遠端機器的帳號</td></tr>
+
+<tr><td>Authentication</td><td>認證方式，讀者使用的認證方式是Password</td></tr>
+
+<tr><td>Password</td><td>遠端機器的密碼</td></tr>
+
+</table>
+
+<p>其他不需要特別設定，最後儲存並且連接成功後會發現您的電腦多一個磁碟，裡面即是遠端機器的所有檔案</p>
+]]></content>
+    </entry>
+    
+    <entry>
       <title><![CDATA[重新審視C語言: 型別(Type)(下)]]></title>
       <url>https://Yu-Che-Gao.github.io/steven-blog/2017/05/17/%E9%87%8D%E6%96%B0%E5%AF%A9%E8%A6%96C%E8%AA%9E%E8%A8%80-%E5%9E%8B%E5%88%A5-Type-%E4%B8%8B/</url>
       <content type="html"><![CDATA[<h1 id="浮點型別"><a href="#浮點型別" class="headerlink" title="浮點型別"></a>浮點型別</h1><p>依照IEC 60559標準，下表呈現浮點型別不同的特性</p>
@@ -118,23 +149,6 @@ The rouding error is 0<span class="token punctuation">.</span>0003906250
 <li>多喝水，少喝飲料</li>
 <li>調整&quot;熬夜&quot;的心態</li>
 </ol>
-]]></content>
-    </entry>
-    
-    <entry>
-      <title><![CDATA[Deep Learning探索之旅：初來乍到]]></title>
-      <url>https://Yu-Che-Gao.github.io/steven-blog/2017/04/05/Deep-Learning%E6%8E%A2%E7%B4%A2%E4%B9%8B%E6%97%85%EF%BC%9A%E5%88%9D%E4%BE%86%E4%B9%8D%E5%88%B0/</url>
-      <content type="html"><![CDATA[<h1 id="基本安裝"><a href="#基本安裝" class="headerlink" title="基本安裝"></a>基本安裝</h1><p>在<a href="https://www.tensorflow.org/install/install_windows" target="_blank" rel="external">tesorflow官網</a>寫得很清楚，先安裝python 3.5.x，再用pip3安裝tensorflow</p>
-<h1 id="為甚麼使用Deep-Learning"><a href="#為甚麼使用Deep-Learning" class="headerlink" title="為甚麼使用Deep Learning"></a>為甚麼使用Deep Learning</h1><p>Deep Learning簡單來說是類神經網路的強化版，其背後的設計理念是找到離解答最近的&quot;距離&quot;(就是cross-entropy)。然而中間有許多相當複雜的數學理論基礎。下面就先來簡介一下它到底用到那些數學。</p>
-<h1 id="專門壓縮向量的函數：Softmax-Function"><a href="#專門壓縮向量的函數：Softmax-Function" class="headerlink" title="專門壓縮向量的函數：Softmax Function"></a>專門壓縮向量的函數：Softmax Function</h1><p>話不多說，上個公式先</p>
-<center>
-
-<img src="https://wikimedia.org/api/rest_v1/media/math/render/svg/e348290cf48ddbb6e9a6ef4e39363568b67c09d3" alt="Softmax Function"> , for j = 1, …, K
-
-</center>
-
-<p>公式看起來複雜其實他要做的事情很簡單，就只是要把同一個向量內所有數字都壓縮到0和1之間而且總合為1而已。讀者可以參考<a href="https://en.wikipedia.org/wiki/Softmax_function" target="_blank" rel="external">維基</a>的定義。</p>
-<p>但是Deep Learning要把這個函式用在哪呢</p>
 ]]></content>
     </entry>
     

@@ -5,7 +5,7 @@
   <link href="/steven-blog/atom.xml" rel="self"/>
   
   <link href="https://Yu-Che-Gao.github.io/"/>
-  <updated>2017-05-17T15:20:34.716Z</updated>
+  <updated>2017-08-16T12:50:32.814Z</updated>
   <id>https://Yu-Che-Gao.github.io/</id>
   
   <author>
@@ -16,11 +16,56 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>在Windows下掛載遠端Linux網路磁碟機</title>
+    <link href="https://Yu-Che-Gao.github.io/2017/08/16/%E5%9C%A8Windows%E4%B8%8B%E6%8E%9B%E8%BC%89Linux%E7%B6%B2%E8%B7%AF%E7%A3%81%E7%A2%9F%E6%A9%9F/"/>
+    <id>https://Yu-Che-Gao.github.io/2017/08/16/在Windows下掛載Linux網路磁碟機/</id>
+    <published>2017-08-16T07:16:24.000Z</published>
+    <updated>2017-08-16T12:50:32.814Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="動機"><a href="#動機" class="headerlink" title="動機"></a>動機</h1><p>不知道大家有沒有這種經驗，有些程式(例如相當燒CPU或GPU的LSTM...)需要在Linux上跑，可是自己的慣用OS是Windows，常常在傳檔的時候很不方便，需要很多手續才能把檔案傳到遠端機器的Linux上。筆者本機OS的環境是Win10家用版，遠端OS的環境是Azure上使用Ubuntu 16.04的虛擬機。筆者的思路是如此: 在遠端Linux上架設sftp server，在本機Windows上使用<a href="http://www.sftpnetdrive.com/" target="_blank" rel="external">SFTPNetDrive</a>建立網路磁碟機連到遠端的sftp server，這樣用起來就跟在本機上存取檔案一樣簡單。</p>
+<h1 id="先看效果"><a href="#先看效果" class="headerlink" title="先看效果"></a>先看效果</h1><p>筆者錄製了一段設定完的效果</p>
+<p><img src="/steven-blog/images/sftp架設.gif" alt="sftp架設" title="sftp架設"></p>
+<p>如上GIF動圖，筆者直接針對遠端機器進行了新增資料夾、重新命名等簡單的操作動作，而不用到終端機下命令，並且筆者在寫python時若想在Windows上測試則只需要開啟command windows下指令即可，若想在Linux上測試只需要在Putty上下指令即可，隨時可以在兩個系統間切換。但此法有一壞處即是在存取檔案時速度會較慢，因網路磁碟機並不是真正在本機的硬碟，但卻用檔案系統的方式存取，效能會較為低落。</p>
+<p><b style="color: red;">警告: 筆者利用此法傳輸大量檔案時出現藍屏，請小心使用</b></p>
+<h1 id="開始架設SFTP-Server"><a href="#開始架設SFTP-Server" class="headerlink" title="開始架設SFTP Server"></a>開始架設SFTP Server</h1><h2 id="Step1-遠端機器Linux的Sftp-server架設"><a href="#Step1-遠端機器Linux的Sftp-server架設" class="headerlink" title="Step1 遠端機器Linux的Sftp server架設"></a>Step1 遠端機器Linux的Sftp server架設</h2><p>若讀者是Azure上的機器或是已經做好ssh的相關設定，便可跳過此步驟，因SFTP是走ssh協定(port 22)進行傳輸的，若尚未設定ssh可以參考<a href="https://www.digitalocean.com/community/tutorials/initial-server-setup-with-ubuntu-16-04" target="_blank" rel="external">這篇文章</a>進行設定</p>
+<h2 id="Step2-本機機器Windwos安裝SFTPNetDrive"><a href="#Step2-本機機器Windwos安裝SFTPNetDrive" class="headerlink" title="Step2 本機機器Windwos安裝SFTPNetDrive"></a>Step2 本機機器Windwos安裝SFTPNetDrive</h2><p>在本機端連到<a href="http://www.sftpnetdrive.com/" target="_blank" rel="external">SFTPNetDrive的網站</a>進行下載，目前這個軟體針對個人使用(Personal Use)是免費的。</p>
+<p>安裝好後開啟會出現一些需要填入的設定:</p>
+<table>
+
+<tr><th>屬性</th><th>資料</th></tr>
+
+<tr><td>Profile</td><td>此連線的名稱，可任意填入</td></tr>
+
+<tr><td>Server</td><td>遠端機器的IP address</td></tr>
+
+<tr><td>Username</td><td>遠端機器的帳號</td></tr>
+
+<tr><td>Authentication</td><td>認證方式，讀者使用的認證方式是Password</td></tr>
+
+<tr><td>Password</td><td>遠端機器的密碼</td></tr>
+
+</table>
+
+<p>其他不需要特別設定，最後儲存並且連接成功後會發現您的電腦多一個磁碟，裡面即是遠端機器的所有檔案</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;h1 id=&quot;動機&quot;&gt;&lt;a href=&quot;#動機&quot; class=&quot;headerlink&quot; title=&quot;動機&quot;&gt;&lt;/a&gt;動機&lt;/h1&gt;&lt;p&gt;不知道大家有沒有這種經驗，有些程式(例如相當燒CPU或GPU的LSTM...)需要在Linux上跑，可是自己的慣用OS是Windows，常常
+    
+    </summary>
+    
+      <category term="機器學習" scheme="https://Yu-Che-Gao.github.io/categories/%E6%A9%9F%E5%99%A8%E5%AD%B8%E7%BF%92/"/>
+    
+    
+  </entry>
+  
+  <entry>
     <title>重新審視C語言: 型別(Type)(下)</title>
     <link href="https://Yu-Che-Gao.github.io/2017/05/17/%E9%87%8D%E6%96%B0%E5%AF%A9%E8%A6%96C%E8%AA%9E%E8%A8%80-%E5%9E%8B%E5%88%A5-Type-%E4%B8%8B/"/>
     <id>https://Yu-Che-Gao.github.io/2017/05/17/重新審視C語言-型別-Type-下/</id>
     <published>2017-05-17T14:31:59.000Z</published>
-    <updated>2017-05-17T15:20:34.716Z</updated>
+    <updated>2017-05-17T15:20:34.717Z</updated>
     
     <content type="html"><![CDATA[<h1 id="浮點型別"><a href="#浮點型別" class="headerlink" title="浮點型別"></a>浮點型別</h1><p>依照IEC 60559標準，下表呈現浮點型別不同的特性</p>
 <table>
@@ -106,7 +151,7 @@ The rouding error is 0<span class="token punctuation">.</span>0003906250
     <link href="https://Yu-Che-Gao.github.io/2017/05/08/%E8%B7%AF%E5%8A%A0%E7%A6%8F%E9%9F%B312-13-34/"/>
     <id>https://Yu-Che-Gao.github.io/2017/05/08/路加福音12-13-34/</id>
     <published>2017-05-08T06:59:08.000Z</published>
-    <updated>2017-05-09T02:47:33.170Z</updated>
+    <updated>2017-05-09T02:47:33.171Z</updated>
     
     <content type="html"><![CDATA[<h1 id="觀察"><a href="#觀察" class="headerlink" title="觀察"></a>觀察</h1><h2 id="分段"><a href="#分段" class="headerlink" title="分段"></a>分段</h2><p>V13~V15 耶穌警告眾人不要貪心</p>
 <p>V16~V21 財主的比喻</p>
@@ -165,42 +210,11 @@ The rouding error is 0<span class="token punctuation">.</span>0003906250
   </entry>
   
   <entry>
-    <title>Deep Learning探索之旅：初來乍到</title>
-    <link href="https://Yu-Che-Gao.github.io/2017/04/05/Deep-Learning%E6%8E%A2%E7%B4%A2%E4%B9%8B%E6%97%85%EF%BC%9A%E5%88%9D%E4%BE%86%E4%B9%8D%E5%88%B0/"/>
-    <id>https://Yu-Che-Gao.github.io/2017/04/05/Deep-Learning探索之旅：初來乍到/</id>
-    <published>2017-04-05T14:26:48.000Z</published>
-    <updated>2017-04-06T14:01:43.841Z</updated>
-    
-    <content type="html"><![CDATA[<h1 id="基本安裝"><a href="#基本安裝" class="headerlink" title="基本安裝"></a>基本安裝</h1><p>在<a href="https://www.tensorflow.org/install/install_windows" target="_blank" rel="external">tesorflow官網</a>寫得很清楚，先安裝python 3.5.x，再用pip3安裝tensorflow</p>
-<h1 id="為甚麼使用Deep-Learning"><a href="#為甚麼使用Deep-Learning" class="headerlink" title="為甚麼使用Deep Learning"></a>為甚麼使用Deep Learning</h1><p>Deep Learning簡單來說是類神經網路的強化版，其背後的設計理念是找到離解答最近的&quot;距離&quot;(就是cross-entropy)。然而中間有許多相當複雜的數學理論基礎。下面就先來簡介一下它到底用到那些數學。</p>
-<h1 id="專門壓縮向量的函數：Softmax-Function"><a href="#專門壓縮向量的函數：Softmax-Function" class="headerlink" title="專門壓縮向量的函數：Softmax Function"></a>專門壓縮向量的函數：Softmax Function</h1><p>話不多說，上個公式先</p>
-<center>
-
-<img src="https://wikimedia.org/api/rest_v1/media/math/render/svg/e348290cf48ddbb6e9a6ef4e39363568b67c09d3" alt="Softmax Function"> , for j = 1, …, K
-
-</center>
-
-<p>公式看起來複雜其實他要做的事情很簡單，就只是要把同一個向量內所有數字都壓縮到0和1之間而且總合為1而已。讀者可以參考<a href="https://en.wikipedia.org/wiki/Softmax_function" target="_blank" rel="external">維基</a>的定義。</p>
-<p>但是Deep Learning要把這個函式用在哪呢</p>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;h1 id=&quot;基本安裝&quot;&gt;&lt;a href=&quot;#基本安裝&quot; class=&quot;headerlink&quot; title=&quot;基本安裝&quot;&gt;&lt;/a&gt;基本安裝&lt;/h1&gt;&lt;p&gt;在&lt;a href=&quot;https://www.tensorflow.org/install/install_windows&quot; 
-    
-    </summary>
-    
-    
-      <category term="機器學習" scheme="https://Yu-Che-Gao.github.io/tags/%E6%A9%9F%E5%99%A8%E5%AD%B8%E7%BF%92/"/>
-    
-  </entry>
-  
-  <entry>
     <title>Mongodb基本操作：insert &amp; update</title>
     <link href="https://Yu-Che-Gao.github.io/2017/03/26/Mongodb%E5%9F%BA%E6%9C%AC%E6%93%8D%E4%BD%9C%EF%BC%9Ainsert-update/"/>
     <id>https://Yu-Che-Gao.github.io/2017/03/26/Mongodb基本操作：insert-update/</id>
     <published>2017-03-26T04:23:35.000Z</published>
-    <updated>2017-03-26T04:40:20.749Z</updated>
+    <updated>2017-03-26T04:40:20.750Z</updated>
     
     <content type="html"><![CDATA[<h1 id="Insert-amp-Update"><a href="#Insert-amp-Update" class="headerlink" title="Insert &amp; Update"></a>Insert &amp; Update</h1><h2 id="insert"><a href="#insert" class="headerlink" title="insert"></a>insert</h2><p>mongodb insert的方式</p>
 <pre class="line-numbers language-javascript"><code class="language-javascript">db<span class="token punctuation">.</span>log<span class="token punctuation">.</span><span class="token function">insert</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
@@ -318,7 +332,7 @@ db<span class="token punctuation">.</span>serial<span class="token punctuation">
     <link href="https://Yu-Che-Gao.github.io/2017/03/26/%E9%87%8D%E5%BB%BACompiler%EF%BC%9A%E7%92%B0%E5%A2%83%E6%BA%96%E5%82%99/"/>
     <id>https://Yu-Che-Gao.github.io/2017/03/26/重建Compiler：環境準備/</id>
     <published>2017-03-26T03:59:52.000Z</published>
-    <updated>2017-03-31T14:24:28.731Z</updated>
+    <updated>2017-03-31T14:24:28.732Z</updated>
     
     <content type="html"><![CDATA[<h1 id="安裝cygwin64"><a href="#安裝cygwin64" class="headerlink" title="安裝cygwin64"></a>安裝cygwin64</h1><p>參考Kim Thomas錄製的影片以安裝cygwin64在windows裡面</p>
 <iframe width="560" height="315" src="https://www.youtube.com/embed/9Y6O5_jsVSQ?rel=0" frameborder="0" allowfullscreen></iframe>
@@ -342,7 +356,7 @@ db<span class="token punctuation">.</span>serial<span class="token punctuation">
     <link href="https://Yu-Che-Gao.github.io/2017/03/24/%E9%87%8D%E6%96%B0%E5%AF%A9%E8%A6%96C%E8%AA%9E%E8%A8%80%EF%BC%9A%E5%9E%8B%E5%88%A5-Type/"/>
     <id>https://Yu-Che-Gao.github.io/2017/03/24/重新審視C語言：型別-Type/</id>
     <published>2017-03-24T14:44:00.000Z</published>
-    <updated>2017-03-29T05:08:30.517Z</updated>
+    <updated>2017-03-29T05:08:30.518Z</updated>
     
     <content type="html"><![CDATA[<h1 id="基本定義"><a href="#基本定義" class="headerlink" title="基本定義"></a>基本定義</h1><p>物件(Object)： 記憶體裡的某個位置，它的內容可以用來表示某些值<br>
 變數(Variable)： 有名稱的物件<br>
@@ -474,7 +488,7 @@ The <span class="token function">type</span> char is signed<span class="token pu
     <link href="https://Yu-Che-Gao.github.io/2017/03/23/%E9%87%8D%E6%96%B0%E5%AF%A9%E8%A6%96C%E8%AA%9E%E8%A8%80%EF%BC%9A%E8%AA%9E%E8%A8%80%E5%9F%BA%E7%A4%8E/"/>
     <id>https://Yu-Che-Gao.github.io/2017/03/23/重新審視C語言：語言基礎/</id>
     <published>2017-03-23T07:54:05.000Z</published>
-    <updated>2017-03-29T05:08:05.590Z</updated>
+    <updated>2017-03-29T05:08:05.591Z</updated>
     
     <content type="html"><![CDATA[<h1 id="C的特性"><a href="#C的特性" class="headerlink" title="C的特性"></a>C的特性</h1><ul>
 <li>原始碼可攜性</li>
@@ -589,7 +603,7 @@ circulararea.o: circulararea.c
     <link href="https://Yu-Che-Gao.github.io/2017/03/04/%E4%BD%A0%E6%89%80%E4%B8%8D%E7%9F%A5%E9%81%93%E7%9A%84C-%E9%9D%9E%E5%90%8C%E6%AD%A5-%E5%9F%B7%E8%A1%8C%E7%B7%92/"/>
     <id>https://Yu-Che-Gao.github.io/2017/03/04/你所不知道的C-非同步-執行緒/</id>
     <published>2017-03-03T17:23:25.000Z</published>
-    <updated>2017-03-29T05:07:27.490Z</updated>
+    <updated>2017-03-29T05:07:27.491Z</updated>
     
     <content type="html"><![CDATA[<h1 id="非同步的C-程式"><a href="#非同步的C-程式" class="headerlink" title="非同步的C#程式"></a>非同步的C#程式</h1><h2 id="一個同步的下載網頁程式"><a href="#一個同步的下載網頁程式" class="headerlink" title="一個同步的下載網頁程式"></a>一個同步的下載網頁程式</h2><pre class="line-numbers language-csharp"><code class="language-csharp"><span class="token keyword">using</span> System<span class="token punctuation">;</span>
 <span class="token keyword">using</span> System<span class="token punctuation">.</span>Net<span class="token punctuation">;</span>
@@ -637,7 +651,7 @@ circulararea.o: circulararea.c
     <link href="https://Yu-Che-Gao.github.io/2017/02/24/%E4%BD%A0%E6%89%80%E4%B8%8D%E7%9F%A5%E9%81%93%E7%9A%84C-Compiler%E7%AF%87/"/>
     <id>https://Yu-Che-Gao.github.io/2017/02/24/你所不知道的C-Compiler篇/</id>
     <published>2017-02-24T08:12:14.000Z</published>
-    <updated>2017-03-29T05:12:11.843Z</updated>
+    <updated>2017-03-29T05:12:11.844Z</updated>
     
     <content type="html"><![CDATA[<h1 id="基本Compiler原理"><a href="#基本Compiler原理" class="headerlink" title="基本Compiler原理"></a>基本Compiler原理</h1><center><img src="/steven-blog/images/compiler-flow.jpg" alt="Compiler-flow" title="編譯器流程"></center>
 
@@ -863,7 +877,7 @@ circulararea.o: circulararea.c
     <link href="https://Yu-Che-Gao.github.io/2017/02/09/%E6%88%91%E7%9A%84%E5%A4%A7%E9%9D%88%E6%97%A5%E8%A8%98-%E7%8C%B6%E5%A4%AA%E6%9C%83%E5%A0%82/"/>
     <id>https://Yu-Che-Gao.github.io/2017/02/09/我的大靈日記-猶太會堂/</id>
     <published>2017-02-09T06:00:07.000Z</published>
-    <updated>2017-02-14T06:15:53.982Z</updated>
+    <updated>2017-02-14T06:15:53.983Z</updated>
     
     <content type="html"><![CDATA[<h1 id="猶太會堂簡介"><a href="#猶太會堂簡介" class="headerlink" title="猶太會堂簡介"></a>猶太會堂簡介</h1><p>根據<a href="https://zh.wikipedia.org/wiki/%E7%8C%B6%E5%A4%AA%E6%9C%83%E5%A0%82" target="_blank" rel="external">維基百科</a>，
 猶太教堂（或稱猶太會堂）的西文名稱是從希臘語συναγωγη而來，轉換成拉丁字母是synagogé，直譯就是「聚會的場所」。</p>
@@ -893,7 +907,7 @@ circulararea.o: circulararea.c
     <link href="https://Yu-Che-Gao.github.io/2017/02/07/%E6%88%91%E7%9A%84%E5%A4%A7%E9%9D%88%E6%97%A5%E8%A8%98%E4%BD%BF%E5%BE%92%E8%A1%8C%E5%82%B3%E7%AC%AC%E5%9B%9B-%E5%85%AB%E7%AB%A0/"/>
     <id>https://Yu-Che-Gao.github.io/2017/02/07/我的大靈日記使徒行傳第四-八章/</id>
     <published>2017-02-07T15:23:22.000Z</published>
-    <updated>2017-02-14T06:24:29.642Z</updated>
+    <updated>2017-02-14T06:24:29.643Z</updated>
     
     <content type="html"><![CDATA[<h1 id="使徒行傳4-32-5-16細研"><a href="#使徒行傳4-32-5-16細研" class="headerlink" title="使徒行傳4:32~5:16細研"></a>使徒行傳4:32~5:16細研</h1><h2 id="觀察"><a href="#觀察" class="headerlink" title="觀察"></a>觀察</h2><ol>
 <li>4:32~4:35 初代教會凡物公用的光景</li>
@@ -982,7 +996,7 @@ circulararea.o: circulararea.c
     <link href="https://Yu-Che-Gao.github.io/2017/02/06/%E6%88%91%E7%9A%84%E5%A4%A7%E9%9D%88%E6%97%A5%E8%A8%98%E4%BD%BF%E5%BE%92%E8%A1%8C%E5%82%B3%E7%AC%AC%E4%BA%8C~%E5%9B%9B%E7%AB%A0/"/>
     <id>https://Yu-Che-Gao.github.io/2017/02/06/我的大靈日記使徒行傳第二~四章/</id>
     <published>2017-02-06T05:07:42.000Z</published>
-    <updated>2017-02-14T06:24:21.116Z</updated>
+    <updated>2017-02-14T06:24:21.117Z</updated>
     
     <content type="html"><![CDATA[<h1 id="使徒行傳第二章細研"><a href="#使徒行傳第二章細研" class="headerlink" title="使徒行傳第二章細研"></a>使徒行傳第二章細研</h1><h2 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h2><p>五旬節聖靈降臨(v1~v5)</p>
 <p>--&gt;聖靈給門徒說各國鄉談的能力(v6~v12)</p>
@@ -1167,7 +1181,7 @@ circulararea.o: circulararea.c
     <link href="https://Yu-Che-Gao.github.io/2017/02/05/%E6%88%91%E7%9A%84%E5%A4%A7%E9%9D%88%E6%97%A5%E8%A8%98-%E4%BD%BF%E5%BE%92%E8%A1%8C%E5%82%B3%E7%AC%AC%E4%B8%80%E7%AB%A0%E4%B9%8B%E8%A7%80%E5%AF%9F%E7%AF%87/"/>
     <id>https://Yu-Che-Gao.github.io/2017/02/05/我的大靈日記-使徒行傳第一章之觀察篇/</id>
     <published>2017-02-05T14:54:37.000Z</published>
-    <updated>2017-02-14T06:24:23.312Z</updated>
+    <updated>2017-02-14T06:24:23.313Z</updated>
     
     <content type="html"><![CDATA[<h1 id="歸納法查經REVIEW"><a href="#歸納法查經REVIEW" class="headerlink" title="歸納法查經REVIEW"></a>歸納法查經REVIEW</h1><ol>
 <li>觀察: 分段</li>
@@ -1217,8 +1231,8 @@ circulararea.o: circulararea.c
     <title>Hexo 基本安裝</title>
     <link href="https://Yu-Che-Gao.github.io/2017/02/04/hexo-setup/"/>
     <id>https://Yu-Che-Gao.github.io/2017/02/04/hexo-setup/</id>
-    <published>2017-02-04T13:19:59.747Z</published>
-    <updated>2017-02-14T06:24:46.993Z</updated>
+    <published>2017-02-04T13:19:59.748Z</published>
+    <updated>2017-02-14T06:24:46.994Z</updated>
     
     <content type="html"><![CDATA[<p>Welcome to <a href="https://hexo.io/" target="_blank" rel="external">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="external">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="external">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="external">GitHub</a>.</p>
 <h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><pre class="line-numbers language-bash"><code class="language-bash">$ hexo new <span class="token string">"My New Post"</span>

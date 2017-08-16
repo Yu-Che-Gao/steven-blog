@@ -10,7 +10,7 @@
     
     <title>
         
-            過往: 2017/5 | 
+            在Windows下掛載遠端Linux網路磁碟機 | 
         
         Steven&#39;s Blog
     </title>
@@ -48,7 +48,7 @@
     <!-- The Open Graph protocol -->
     <meta property="og:url" content="https://Yu-Che-Gao.github.io">
     <meta property="og:type" content="blog">
-    <meta property="og:title" content="過往: 2017/5 | Steven&#39;s Blog">
+    <meta property="og:title" content="在Windows下掛載遠端Linux網路磁碟機 | Steven&#39;s Blog">
     <meta property="og:description" content="高宇哲的小窩">
 
     <!--[if lte IE 9]>
@@ -201,142 +201,250 @@
                         </button>
                     
 
-                    <!-- Index Module -->
-<div class="material-index mdl-grid">
-    
-    <div class="locate-thumbnail-symbol"></div>
+                    <!-- Post TOC -->
 
     
-        
-            <!-- Paradox Thumbnail -->
-            <div class="post_entry-module mdl-card mdl-cell mdl-cell--12-col fade out">
-    <!-- Post Thumbnail -->
+    <!-- Back Button -->
+    <!--
+    <div class="material-back" id="backhome-div" tabindex="0">
+        <a class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon"
+           href="#" onclick="window.history.back();return false;"
+           target="_self"
+           role="button"
+           data-upgraded=",MaterialButton,MaterialRipple">
+            <i class="material-icons" role="presentation">arrow_back</i>
+            <span class="mdl-button__ripple-container">
+                <span class="mdl-ripple"></span>
+            </span>
+        </a>
+    </div>
+    -->
+
+    <!-- Left aligned menu below button -->
+    <button id="post-toc-trigger-btn"
+        class="mdl-button mdl-js-button mdl-button--icon">
+        <i class="material-icons">format_list_numbered</i>
+    </button>
+
+    <ul class="post-toc-wrap mdl-menu mdl-menu--bottom-left mdl-js-menu mdl-js-ripple-effect" for="post-toc-trigger-btn">
+        <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#動機"><span class="post-toc-number">1.</span> <span class="post-toc-text">動機</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#先看效果"><span class="post-toc-number">2.</span> <span class="post-toc-text">先看效果</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#開始架設SFTP-Server"><span class="post-toc-number">3.</span> <span class="post-toc-text">開始架設SFTP Server</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#Step1-遠端機器Linux的Sftp-server架設"><span class="post-toc-number">3.1.</span> <span class="post-toc-text">Step1 遠端機器Linux的Sftp server架設</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#Step2-本機機器Windwos安裝SFTPNetDrive"><span class="post-toc-number">3.2.</span> <span class="post-toc-text">Step2 本機機器Windwos安裝SFTPNetDrive</span></a></li></ol></li></ol>
+
+        <!--
+        <li class="mdl-menu__item">
+            Some Action
+        </li>
+        -->
+    </ul>
+
+
+
+
+<!-- Layouts -->
+
+    <!-- Post Module -->
+    <div class="material-post_container">
+
+        <div class="material-post mdl-grid">
+            <div class="mdl-card mdl-shadow--4dp mdl-cell mdl-cell--12-col">
+
+                <!-- Post Header(Thumbnail & Title) -->
+                
+    <!-- Paradox Post Header -->
     
         
             <!-- Random Thumbnail -->
             <div class="post_thumbnail-random mdl-card__media mdl-color-text--grey-50">
-        
-    
+            <script>
+    var randomNum = Math.floor(Math.random() * 19 + 1);
 
-        <!-- Post Title -->
-        <p class="article-headline-p"><a href="/steven-blog/2017/05/17/重新審視C語言-型別-Type-下/">重新審視C語言: 型別(Type)(下)</a></p>
-    </div>
-
-    <!-- Post Excerpt -->
-    <div class="mdl-color-text--grey-600 mdl-card__supporting-text post_entry-content">
-        
-            浮點型別
-        
-        &nbsp;&nbsp;&nbsp;
-        <span>
-            <a href="/steven-blog/2017/05/17/重新審視C語言-型別-Type-下/" target="_self">繼續閱讀</a>
-        </span>
-    </div>
-    <!-- Post_entry Info-->
-    <div id="post_entry-info">
-        <div id="post_entry-left-info" class="mdl-card__supporting-text meta mdl-color-text--grey-600 ">
-            <!-- Author Avatar -->
-            <div id="author-avatar">
-                <img src="/steven-blog/img/steven_small_pic.jpg" width="44px" height="44px" alt="高宇哲's avatar">
-            </div>
-            <div>
-                <strong>高宇哲</strong>
-                <span>5月 17, 2017</span>
-            </div>
-        </div>
-        <div id="post_entry-right-info">
-            <!-- Category -->
-            <span class="post_entry-category">
-                <a class="post_category-link" href="/steven-blog/categories/C/">C</a>
-            </span>
-
-            
-
-            <!-- Post Views -->
-            <span class="post_entry-views">
-            </span>
-        </div>
-    </div>
-</div>
-
-        
-        
-    
-        
-            <!-- Paradox Thumbnail -->
-            <div class="post_entry-module mdl-card mdl-cell mdl-cell--12-col fade out">
-    <!-- Post Thumbnail -->
-    
-        
-            <!-- Random Thumbnail -->
-            <div class="post_thumbnail-random mdl-card__media mdl-color-text--grey-50">
-        
-    
-
-        <!-- Post Title -->
-        <p class="article-headline-p"><a href="/steven-blog/2017/05/08/路加福音12-13-34/">路加福音12:13~34</a></p>
-    </div>
-
-    <!-- Post Excerpt -->
-    <div class="mdl-color-text--grey-600 mdl-card__supporting-text post_entry-content">
-        
-            觀察
-        
-        &nbsp;&nbsp;&nbsp;
-        <span>
-            <a href="/steven-blog/2017/05/08/路加福音12-13-34/" target="_self">繼續閱讀</a>
-        </span>
-    </div>
-    <!-- Post_entry Info-->
-    <div id="post_entry-info">
-        <div id="post_entry-left-info" class="mdl-card__supporting-text meta mdl-color-text--grey-600 ">
-            <!-- Author Avatar -->
-            <div id="author-avatar">
-                <img src="/steven-blog/img/steven_small_pic.jpg" width="44px" height="44px" alt="高宇哲's avatar">
-            </div>
-            <div>
-                <strong>高宇哲</strong>
-                <span>5月 08, 2017</span>
-            </div>
-        </div>
-        <div id="post_entry-right-info">
-            <!-- Category -->
-            <span class="post_entry-category">
-                <a class="post_category-link" href="/steven-blog/categories/歸納法研經/">歸納法研經</a>
-            </span>
-
-            
-
-            <!-- Post Views -->
-            <span class="post_entry-views">
-            </span>
-        </div>
-    </div>
-</div>
-
-        
-        
-    
-
-    
-
-    
-        <script>
-    var randomNum;
-
-    var locatePost = $('.locate-thumbnail-symbol').next();
-    for(var i = 0; i < 10; i++) {
-        randomNum = Math.floor(Math.random() * 19 + 1);
-
-        locatePost.children('.post_thumbnail-random').attr('id', 'random_thumbnail-'+randomNum);
-        locatePost.children('.post_thumbnail-random').css('background-image', 'url(' + '/steven-blog/img/random/material-' + randomNum + '.png' + ')')
-
-        locatePost = locatePost.next();
-    }
+    $('.post_thumbnail-random').css('background-image', 'url(' + '/steven-blog/img/random/material-' + randomNum + '.png' + ')');
 </script>
 
+        
+    
+            <p class="article-headline-p">
+                在Windows下掛載遠端Linux網路磁碟機
+            </p>
+        </div>
+
+
+
+
+
+                
+                    <!-- Paradox Post Info -->
+                    <div class="mdl-color-text--grey-700 mdl-card__supporting-text meta">
+
+    <!-- Author Avatar -->
+    <div id="author-avatar">
+        <img src="/steven-blog/img/steven_small_pic.jpg" width="44px" height="44px" alt="Author Avatar"/>
+    </div>
+    <!-- Author Name & Date -->
+    <div>
+        <strong>高宇哲</strong>
+        <span>8月 16, 2017</span>
+    </div>
+
+    <div class="section-spacer"></div>
+
+    <!-- Favorite -->
+    <!--
+        <button id="article-functions-like-button" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon btn-like">
+            <i class="material-icons" role="presentation">favorite</i>
+            <span class="visuallyhidden">favorites</span>
+        </button>
+    -->
+
+    <!-- Qrcode -->
+    
+
+    <!-- Tags (bookmark) -->
+    
+    <button id="article-functions-viewtags-button" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon">
+        <i class="material-icons" role="presentation">bookmark</i>
+        <span class="visuallyhidden">bookmark</span>
+    </button>
+    <ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="article-functions-viewtags-button">
+        <li class="mdl-menu__item">
+        
+    </ul>
+    
+
+    <!-- Share -->
+    <button id="article-fuctions-share-button" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon">
+    <i class="material-icons" role="presentation">share</i>
+    <span class="visuallyhidden">share</span>
+</button>
+<ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="article-fuctions-share-button">
+    
+
+    
+
+    <!-- Share Weibo -->
+    
+
+    <!-- Share Twitter -->
+    
+
+    <!-- Share Facebook -->
+    
+
+    <!-- Share Google+ -->
+    
+
+    <!-- Share LinkedIn -->
+    
+
+    <!-- Share QQ -->
+    
+
+    <!-- Share Telegram -->
+    
+</ul>
+
+</div>
+
+                
+
+                <!-- Post Content -->
+                <div id="post-content" class="markdown-Github mdl-color-text--grey-700 mdl-card__supporting-text fade out">
+    
+        <h1 id="動機"><a href="#動機" class="headerlink" title="動機"></a>動機</h1><p>不知道大家有沒有這種經驗，有些程式(例如相當燒CPU或GPU的LSTM...)需要在Linux上跑，可是自己的慣用OS是Windows，常常在傳檔的時候很不方便，需要很多手續才能把檔案傳到遠端機器的Linux上。筆者本機OS的環境是Win10家用版，遠端OS的環境是Azure上使用Ubuntu 16.04的虛擬機。筆者的思路是如此: 在遠端Linux上架設sftp server，在本機Windows上使用<a href="http://www.sftpnetdrive.com/" target="_blank" rel="external">SFTPNetDrive</a>建立網路磁碟機連到遠端的sftp server，這樣用起來就跟在本機上存取檔案一樣簡單。</p>
+<h1 id="先看效果"><a href="#先看效果" class="headerlink" title="先看效果"></a>先看效果</h1><p>筆者錄製了一段設定完的效果</p>
+<p><img src="/steven-blog/images/sftp架設.gif" alt="sftp架設" title="sftp架設"></p>
+<p>如上GIF動圖，筆者直接針對遠端機器進行了新增資料夾、重新命名等簡單的操作動作，而不用到終端機下命令，並且筆者在寫python時若想在Windows上測試則只需要開啟command windows下指令即可，若想在Linux上測試只需要在Putty上下指令即可，隨時可以在兩個系統間切換。但此法有一壞處即是在存取檔案時速度會較慢，因網路磁碟機並不是真正在本機的硬碟，但卻用檔案系統的方式存取，效能會較為低落。</p>
+<p><b style="color: red;">警告: 筆者利用此法傳輸大量檔案時出現藍屏，請小心使用</b></p>
+<h1 id="開始架設SFTP-Server"><a href="#開始架設SFTP-Server" class="headerlink" title="開始架設SFTP Server"></a>開始架設SFTP Server</h1><h2 id="Step1-遠端機器Linux的Sftp-server架設"><a href="#Step1-遠端機器Linux的Sftp-server架設" class="headerlink" title="Step1 遠端機器Linux的Sftp server架設"></a>Step1 遠端機器Linux的Sftp server架設</h2><p>若讀者是Azure上的機器或是已經做好ssh的相關設定，便可跳過此步驟，因SFTP是走ssh協定(port 22)進行傳輸的，若尚未設定ssh可以參考<a href="https://www.digitalocean.com/community/tutorials/initial-server-setup-with-ubuntu-16-04" target="_blank" rel="external">這篇文章</a>進行設定</p>
+<h2 id="Step2-本機機器Windwos安裝SFTPNetDrive"><a href="#Step2-本機機器Windwos安裝SFTPNetDrive" class="headerlink" title="Step2 本機機器Windwos安裝SFTPNetDrive"></a>Step2 本機機器Windwos安裝SFTPNetDrive</h2><p>在本機端連到<a href="http://www.sftpnetdrive.com/" target="_blank" rel="external">SFTPNetDrive的網站</a>進行下載，目前這個軟體針對個人使用(Personal Use)是免費的。</p>
+<p>安裝好後開啟會出現一些需要填入的設定:</p>
+<table>
+
+<tr><th>屬性</th><th>資料</th></tr>
+
+<tr><td>Profile</td><td>此連線的名稱，可任意填入</td></tr>
+
+<tr><td>Server</td><td>遠端機器的IP address</td></tr>
+
+<tr><td>Username</td><td>遠端機器的帳號</td></tr>
+
+<tr><td>Authentication</td><td>認證方式，讀者使用的認證方式是Password</td></tr>
+
+<tr><td>Password</td><td>遠端機器的密碼</td></tr>
+
+</table>
+
+<p>其他不需要特別設定，最後儲存並且連接成功後會發現您的電腦多一個磁碟，裡面即是遠端機器的所有檔案</p>
+
+    
+
     
 </div>
+
+
+                
+
+                <!-- Post Comments -->
+                
+                    
+
+
+    <!-- 使用 DISQUS -->
+    <div id="disqus-comment">
+        <div id="disqus_thread"></div>
+<script>
+    $('html').ready(function() {
+        setTimeout(function() {
+            var disqus_config = function () {
+                this.page.url = 'https://Yu-Che-Gao.github.io/steven-blog/2017/08/16/在Windows下掛載Linux網路磁碟機/index.html';  // Replace PAGE_URL with your page's canonical URL variable
+                this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+            };
+
+            (function() { // DON'T EDIT BELOW THIS LINE
+                var d = document;
+                var s = d.createElement('script');
+                s.src = '//https-yu-che-gao-github-io-steven-blog.disqus.com/embed.js';
+                s.setAttribute('data-timestamp', + new Date());
+                (d.head || d.body).appendChild(s);
+            })();
+        },1500);
+    });
+</script>
+
+    </div>
+    <style>
+        #disqus-comment{
+            background-color: #eee;
+            padding: 2pc;
+        }
+    </style>
+
+
+                
+            </div>
+
+            <!-- Post Prev & Next Nav -->
+            <nav class="material-nav mdl-color-text--grey-50 mdl-cell mdl-cell--12-col">
+    <!-- Prev Nav -->
+    
+
+    <!-- Section Spacer -->
+    <div class="section-spacer"></div>
+
+    <!-- Next Nav -->
+    
+        <a href="/steven-blog/2017/05/17/重新審視C語言-型別-Type-下/" id="post_nav-older" class="next-content">
+            舊篇
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon mdl-color--white mdl-color-text--grey-900" role="presentation">
+                <i class="material-icons">arrow_forward</i>
+            </button>
+        </a>
+    
+</nav>
+
+        </div>
+    </div>
+
 
 
                     
