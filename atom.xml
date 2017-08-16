@@ -5,7 +5,7 @@
   <link href="/steven-blog/atom.xml" rel="self"/>
   
   <link href="https://Yu-Che-Gao.github.io/"/>
-  <updated>2017-08-16T12:50:32.814Z</updated>
+  <updated>2017-08-16T13:51:33.112Z</updated>
   <id>https://Yu-Che-Gao.github.io/</id>
   
   <author>
@@ -20,7 +20,7 @@
     <link href="https://Yu-Che-Gao.github.io/2017/08/16/%E5%9C%A8Windows%E4%B8%8B%E6%8E%9B%E8%BC%89Linux%E7%B6%B2%E8%B7%AF%E7%A3%81%E7%A2%9F%E6%A9%9F/"/>
     <id>https://Yu-Che-Gao.github.io/2017/08/16/在Windows下掛載Linux網路磁碟機/</id>
     <published>2017-08-16T07:16:24.000Z</published>
-    <updated>2017-08-16T12:50:32.814Z</updated>
+    <updated>2017-08-16T13:51:33.112Z</updated>
     
     <content type="html"><![CDATA[<h1 id="動機"><a href="#動機" class="headerlink" title="動機"></a>動機</h1><p>不知道大家有沒有這種經驗，有些程式(例如相當燒CPU或GPU的LSTM...)需要在Linux上跑，可是自己的慣用OS是Windows，常常在傳檔的時候很不方便，需要很多手續才能把檔案傳到遠端機器的Linux上。筆者本機OS的環境是Win10家用版，遠端OS的環境是Azure上使用Ubuntu 16.04的虛擬機。筆者的思路是如此: 在遠端Linux上架設sftp server，在本機Windows上使用<a href="http://www.sftpnetdrive.com/" target="_blank" rel="external">SFTPNetDrive</a>建立網路磁碟機連到遠端的sftp server，這樣用起來就跟在本機上存取檔案一樣簡單。</p>
 <h1 id="先看效果"><a href="#先看效果" class="headerlink" title="先看效果"></a>先看效果</h1><p>筆者錄製了一段設定完的效果</p>
@@ -40,7 +40,7 @@
 
 <tr><td>Username</td><td>遠端機器的帳號</td></tr>
 
-<tr><td>Authentication</td><td>認證方式，讀者使用的認證方式是Password</td></tr>
+<tr><td>Authentication</td><td>認證方式，筆者使用的認證方式是Password</td></tr>
 
 <tr><td>Password</td><td>遠端機器的密碼</td></tr>
 
